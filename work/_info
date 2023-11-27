@@ -1,0 +1,290 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/18.1
+Ealu
+Z0 w1701086828
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z3 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z6 dC:/intelFPGA/18.1/Project
+Z7 8C:\intelFPGA\18.1\Project\ALU.vhd
+Z8 FC:\intelFPGA\18.1\Project\ALU.vhd
+l0
+L7
+VPhAn`8PCKM6n9S<hTRNB41
+!s100 _jV^B1TiGER8c]98<kD^P3
+Z9 OV;C;10.5b;63
+33
+Z10 !s110 1701091310
+!i10b 1
+Z11 !s108 1701091310.000000
+Z12 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:\intelFPGA\18.1\Project\ALU.vhd|
+Z13 !s107 C:\intelFPGA\18.1\Project\ALU.vhd|
+!i113 1
+Z14 o-work work -2008 -explicit
+Z15 tExplicit 1 CvgOpt 0
+Aarch_alu
+R1
+R2
+R3
+R4
+R5
+DEx4 work 3 alu 0 22 PhAn`8PCKM6n9S<hTRNB41
+l20
+L16
+V83dk>XoZC>;jNi4^P^GQL1
+!s100 3B721^=T2TGdoFbL:0FAW3
+R9
+33
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+R15
+Aarchalu
+R1
+R2
+R3
+R4
+R5
+DEx4 work 3 alu 0 22 ^ANzH@lQTV6E`ZLJCR1Tc0
+l20
+L16
+V^FQLXXHc;kmabEH:6>;I>0
+!s100 dFST6jXIL]CR[oe<_XKlU1
+R9
+33
+!s110 1701086017
+!i10b 1
+!s108 1701086017.000000
+R12
+R13
+!i113 1
+R14
+R15
+w1701084114
+Efetch
+Z16 w1701091276
+R2
+R3
+R1
+R4
+R5
+Z17 DPx4 work 6 my_pkg 0 22 ULJR`;A1hBaK7<;WRNCCc0
+R6
+Z18 8C:/intelFPGA/18.1/Project/fetch.vhd
+Z19 FC:/intelFPGA/18.1/Project/fetch.vhd
+l0
+L9
+V>R^:izCeQPzn5Sj_ERHO41
+!s100 _;Q@?kG`:0R;UL`aj>NnI3
+R9
+33
+Z20 !s110 1701091311
+!i10b 1
+Z21 !s108 1701091311.000000
+Z22 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/intelFPGA/18.1/Project/fetch.vhd|
+Z23 !s107 C:/intelFPGA/18.1/Project/fetch.vhd|
+!i113 1
+R14
+R15
+Aarch_fetch
+R2
+R3
+R1
+R4
+R5
+R17
+DEx4 work 5 fetch 0 22 >R^:izCeQPzn5Sj_ERHO41
+l22
+L18
+V=bX9Z:E;j>hN5V7naoh423
+!s100 0dPZ<PJf<aoRhHL@Rdn8N0
+R9
+33
+R20
+!i10b 1
+R21
+R22
+R23
+!i113 1
+R14
+R15
+Ememory_access
+Z24 w1701091613
+R1
+R2
+R3
+Z25 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+R4
+R5
+R17
+R6
+Z26 8C:\intelFPGA\18.1\Project\memoryAccess.vhd
+Z27 FC:\intelFPGA\18.1\Project\memoryAccess.vhd
+l0
+L9
+V4E4DEHK?iFZ2>Wb4GUNeE0
+!s100 gkXE<o?BHTSJkH8m2M9^H3
+R9
+33
+Z28 !s110 1701091620
+!i10b 1
+Z29 !s108 1701091620.000000
+Z30 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:\intelFPGA\18.1\Project\memoryAccess.vhd|
+Z31 !s107 C:\intelFPGA\18.1\Project\memoryAccess.vhd|
+!i113 1
+R14
+R15
+Aarch_memory_access
+R1
+R2
+R3
+R25
+R4
+R5
+R17
+DEx4 work 13 memory_access 0 22 4E4DEHK?iFZ2>Wb4GUNeE0
+l22
+L20
+VNhR`02WHB@<R<n[?0mC2M2
+!s100 <UVzh?`W1cUZ7MGN;lHUj0
+R9
+33
+R28
+!i10b 1
+R29
+R30
+R31
+!i113 1
+R14
+R15
+Ememory_initialization
+Z32 w1701084132
+R3
+R2
+R25
+R4
+R5
+R17
+R6
+Z33 8C:\intelFPGA\18.1\Project\initializeMemory.vhd
+Z34 FC:\intelFPGA\18.1\Project\initializeMemory.vhd
+l0
+L18
+Vh7>OIMHizafRaIH:``k?30
+!s100 jGP7i]7olZ]FbTAhZM@gA0
+R9
+33
+R20
+!i10b 1
+R11
+Z35 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:\intelFPGA\18.1\Project\initializeMemory.vhd|
+Z36 !s107 C:\intelFPGA\18.1\Project\initializeMemory.vhd|
+!i113 1
+R14
+R15
+Abehavioral
+R3
+R2
+R25
+R4
+R5
+R17
+DEx4 work 21 memory_initialization 0 22 h7>OIMHizafRaIH:``k?30
+l27
+L23
+Vmz@`h7>nDld=`lFNzch5m1
+!s100 [gYgHMJ;3MH94`46>?OmI0
+R9
+33
+R20
+!i10b 1
+R11
+R35
+R36
+!i113 1
+R14
+R15
+Ememoryaccess
+Z37 w1701082562
+R1
+R2
+R3
+R25
+R4
+R5
+R17
+R6
+R26
+R27
+l0
+L9
+VZaN>ME?Wem<md=VJElN::2
+!s100 WN4dKzL@lh?ea[^EBCMDJ0
+R9
+33
+Z38 !s110 1701082651
+!i10b 1
+Z39 !s108 1701082651.000000
+R30
+R31
+!i113 1
+R14
+R15
+Async_memoryaccess
+R1
+R2
+R3
+R25
+R4
+R5
+R17
+DEx4 work 12 memoryaccess 0 22 ZaN>ME?Wem<md=VJElN::2
+l22
+L20
+V18?`eB6VK<^5ghNkCT2Qd3
+!s100 A[S@[QCd?cLj]AZ2EaY=G3
+R9
+33
+R38
+!i10b 1
+R39
+R30
+R31
+!i113 1
+R14
+R15
+Pmy_pkg
+R4
+R5
+R32
+R6
+R33
+R34
+l0
+L4
+VULJR`;A1hBaK7<;WRNCCc0
+!s100 Cl9f^h:]TJX?fUEz?8EDC3
+R9
+33
+R20
+!i10b 1
+R11
+R35
+R36
+!i113 1
+R14
+R15
