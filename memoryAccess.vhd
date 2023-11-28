@@ -1,38 +1,32 @@
-use work.my_pkg.all;
+USE work.my_pkg.ALL;
 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_textio.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_textio.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
-use std.textio.all;
-USE IEEE.numeric_std.all;
-ENTITY memory_access IS
-PORT (
- ram : IN  memory_array(0 to 4095)(15 downto 0);
- write_en : IN std_logic;
-read_en : IN std_logic; 
-address : IN std_logic_vector(5 DOWNTO 0);
-datain : IN std_logic_vector(15 DOWNTO 0);
-dataout : OUT std_logic_vector(15 DOWNTO 0 ));
-END ENTITY ;
+USE std.textio.ALL;
+USE IEEE.numeric_std.ALL;
+ENTITY memoryAccess IS
+    PORT (
 
-
-ARCHITECTURE arch_memory_access OF memory_access IS
-signal temp :memory_array(0 to 4095)(15 downto 0);
+        ram : IN memory_array(0 TO 4095)(15 DOWNTO 0);
+        we : IN STD_LOGIC;
+        re : IN STD_LOGIC;
+        address : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
+        datain : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+        dataout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0));
+END ENTITY memoryAccess;
+ARCHITECTURE sync_memoryAccess OF memoryAccess IS
+    SIGNAL temp : memory_array(0 TO 4095)(15 DOWNTO 0);
 BEGIN
-temp<=ram;
-PROCESS(write_en,read_en,datain,address) IS
-BEGIN
+    temp <= ram;
+    PROCESS (we, re, address, datain) IS
+    BEGIN
+        IF we = '1' THEN
+            temp(to_integer(unsigned(address))) <= datain;
 
-
- IF write_en = '1' THEN
-temp(to_integer(unsigned(address))) <= datain;
-ELSIF read_en = '1' THEN
-dataout <= ram(to_integer(unsigned(address)));
-END IF;
-
-
-END PROCESS; 
-END ARCHITECTURE;
-
-
+        ELSIF re = '1' THEN
+            dataout <= ram(to_integer(unsigned(address)));
+        END IF;
+    END PROCESS;
+END sync_memoryAccess;

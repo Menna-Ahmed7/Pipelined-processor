@@ -1,44 +1,38 @@
-Library ieee;
-Use ieee.std_logic_1164.all;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
-use std.STANDARD.NATURAL;
-use ieee.numeric_std.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE std.STANDARD.NATURAL;
+USE ieee.numeric_std.ALL;
 --Entity B
-entity alu IS
-port (
-src1,src2:IN std_logic_vector(31 downto 0);
-ALU_signal:IN std_logic_vector (3 downto 0);
-result: out std_logic_vector (31 downto 0);
-flags:out std_logic_vector (3 downto 0)
-);
-end entity;
+ENTITY alu IS
+    PORT (
+        src1, src2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        ALU_signal : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+        flags : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+    );
+END ENTITY;
 
-Architecture arch_alu of alu IS
-signal one:std_logic_vector(31 downto 0);
-signal zero:std_logic_vector(31 downto 0);
-signal temp:std_logic_vector(31 downto 0);
-begin 
-zero<=(Others => '0');
-one<=(0=>'1', Others => '0');
-temp<=(to_integer(unsigned(src2))=>'1',Others=>'0');
+ARCHITECTURE arch_alu OF alu IS
+    SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL zero : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL temp : STD_LOGIC_VECTOR(31 DOWNTO 0);
+BEGIN
+    zero <= (OTHERS => '0');
+    one <= (0 => '1', OTHERS => '0');
+    temp <= (to_integer(unsigned(src2)) => '1', OTHERS => '0');
 
-result <= not src2 WHEN ALU_signal="0001" ELSE
-    zero-src2 WHEN ALU_signal="0010" ELSE
-    src2+one WHEN ALU_signal="0011" ELSE
-    src2-one WHEN ALU_signal="0100" ELSE
-    src1+src2 when ALU_signal="0110" ELSE
-    src1-src2 when ALU_signal="0111" ELSE
-    src1 and src2 when ALU_signal="1000" ELSE
-    src1 OR src2 when ALU_signal="1001" ELSE
-    src1 XOR src2 when ALU_signal="1010" ELSE
-    src1 or temp  when  ALU_signal="1011" ELSE
-    src2(0)&src2(31 downto 1)  when  ALU_signal="1101" ELSE
-    src2(30 downto 0)&src2(31)  when  ALU_signal="1100";
+    result <= NOT src2 WHEN ALU_signal = "0001" ELSE
+        zero - src2 WHEN ALU_signal = "0010" ELSE
+        src2 + one WHEN ALU_signal = "0011" ELSE
+        src2 - one WHEN ALU_signal = "0100" ELSE
+        src1 + src2 WHEN ALU_signal = "0110" ELSE
+        src1 - src2 WHEN ALU_signal = "0111" ELSE
+        src1 AND src2 WHEN ALU_signal = "1000" ELSE
+        src1 OR src2 WHEN ALU_signal = "1001" ELSE
+        src1 XOR src2 WHEN ALU_signal = "1010" ELSE
+        src1 OR temp WHEN ALU_signal = "1011" ELSE
+        src2(0) & src2(31 DOWNTO 1) WHEN ALU_signal = "1101" ELSE
+        src2(30 DOWNTO 0) & src2(31) WHEN ALU_signal = "1100";
 
-end Architecture;
-
-
-
-
-
-
+END ARCHITECTURE;
