@@ -1,37 +1,35 @@
-library ieee;
-use ieee.std_logic_1164.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
 
-package my_pkg is
-        type memory_array is array(natural range <>) of std_logic_vector;
-end package;
-use work.my_pkg.all;
+PACKAGE my_pkg IS
+    TYPE memory_array IS ARRAY(NATURAL RANGE <>) OF STD_LOGIC_VECTOR;
+END PACKAGE;
+USE work.my_pkg.ALL;
 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_textio.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_textio.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
-use std.textio.all;
-
-
+USE std.textio.ALL;
 
 ENTITY Memory_Initialization IS
     PORT (
-        ram : OUT memory_array(0 to 100)(15 downto 0)
+        ram : OUT memory_array(0 TO 100)(15 DOWNTO 0)
+        
+
     );
 END Memory_Initialization;
 ARCHITECTURE Behavioral OF Memory_Initialization IS
 
-
-    
 BEGIN
     -- Loading data from the file into memory during initialization
     initialize_memory : PROCESS
-FILE memory_file : text OPEN READ_MODE IS "memory.txt";
-VARIABLE file_line : line;
-    VARIABLE temp_data : STD_LOGIC_VECTOR(15 DOWNTO 0);
+        FILE memory_file : text OPEN READ_MODE IS "data.txt";
+        VARIABLE file_line : line;
+        VARIABLE temp_data : STD_LOGIC_VECTOR(15 DOWNTO 0);
     BEGIN
-	
+
         FOR i IN ram'RANGE LOOP
             IF NOT endfile(memory_file) THEN
                 readline(memory_file, file_line);
@@ -43,6 +41,7 @@ VARIABLE file_line : line;
                 WAIT;
             END IF;
         END LOOP;
+
     END PROCESS initialize_memory;
 
 END Behavioral;
