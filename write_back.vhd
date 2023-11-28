@@ -2,21 +2,21 @@ USE work.my_pkg1.ALL;
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-use ieee.numeric_std.all;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
-
-
-ENTITY decode IS
+USE ieee.numeric_std.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+ENTITY write_back IS
     PORT (
-        registers : INOUT register_array(0 TO 6)(31 DOWNTO 0); 
-        dest_address:IN std_logic_vector(2 downto 0);
-        result:IN std_logic_vector(31 downto 0)
+        registers : INOUT register_array(0 TO 7)(31 DOWNTO 0);
+        dest_address : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+        result_alu : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        result_memory : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        memory_read : IN STD_LOGIC;
+        write_back : IN STD_LOGIC
     );
 END ENTITY;
-ARCHITECTURE arch_decode OF decode IS
+ARCHITECTURE arch_write_back OF write_back IS
 
 BEGIN
-registers(to_integer(unsigned(dest_address)))<=result;
+    registers(to_integer(unsigned(dest_address))) <= result;
 
 END ARCHITECTURE;
-

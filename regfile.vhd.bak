@@ -14,7 +14,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 use std.textio.all;
 ENTITY register_file IS
     PORT (
-        registers : OUT register_array(0 to 7)(31 downto 0)
+        registers : OUT register_array(0 to 6)(31 downto 0)
     );
 END ENTITY;
 ARCHITECTURE arch_register_file OF register_file IS
