@@ -1,4 +1,24 @@
-C:/intelFPGA/18.1/Project/fetch.vhd {2 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/fetch.vhd
+C:/intelFPGA/18.1/Project/mux_3bits.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/intelFPGA/18.1/Project/mux_3bits.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mux_3bits
+-- Compiling architecture arch_mux_3bits of mux_3bits
+
+} {} {}} C:/intelFPGA/18.1/Project/ALU.vhd {2 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/ALU.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity alu
+-- Compiling architecture arch_alu of alu
+** Warning: C:/intelFPGA/18.1/Project/ALU.vhd(23): (vcom-1073) Non-locally static choice (association #1, choice #1) is allowed only if it is the only choice of the only association.
+
+} {} {}} C:/intelFPGA/18.1/Project/fetch.vhd {2 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/fetch.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -11,33 +31,20 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling architecture arch_fetch of fetch
 ** Warning: C:/intelFPGA/18.1/Project/fetch.vhd(31): (vcom-1272) Length of expected is 32; length of slice name is 3.
 
-} {} {}} C:/intelFPGA/18.1/Project/ALU.vhd {2 {vcom -work work -2008 -explicit -stats=none {C:\intelFPGA\18.1\Project\ALU.vhd}
+} {} {}} C:/intelFPGA/18.1/Project/regfile.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/regfile.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Loading package NUMERIC_STD
--- Compiling entity alu
--- Compiling architecture arch_alu of alu
-** Warning: C:\intelFPGA\18.1\Project\ALU.vhd(23): (vcom-1073) Non-locally static choice (association #1, choice #1) is allowed only if it is the only choice of the only association.
-
-} {} {}} C:/intelFPGA/18.1/Project/memoryAccess.vhd {0 {vcom -work work -2008 -explicit -stats=none {C:\intelFPGA\18.1\Project\memoryAccess.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package my_pkg
+-- Compiling package my_pkg1
+-- Loading package my_pkg1
 -- Loading package std_logic_textio
 -- Loading package std_logic_arith
 -- Loading package STD_LOGIC_UNSIGNED
--- Loading package NUMERIC_STD
--- Compiling entity memory_access
-** Error: C:\intelFPGA\18.1\Project\memoryAccess.vhd(11): (vcom-1136) Unknown identifier "memory_array".
-** Error: C:\intelFPGA\18.1\Project\memoryAccess.vhd(17): VHDL Compiler exiting
+-- Compiling entity register_file
+-- Compiling architecture arch_register_file of register_file
 
-} {12.0 14.0} {}} C:/intelFPGA/18.1/Project/initializeMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none {C:\intelFPGA\18.1\Project\initializeMemory.vhd}
+} {} {}} C:/intelFPGA/18.1/Project/initializeMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/initializeMemory.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -50,22 +57,53 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity Memory_Initialization
 -- Compiling architecture Behavioral of Memory_Initialization
 
-} {} {}} C:/intelFPGA/18.1/Project/control_unit.vhd {0 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/control_unit.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
-** Error (suppressible): C:/intelFPGA/18.1/Project/control_unit.vhd(2): (vcom-1491) Empty source files.
-
-} {} {}} C:/intelFPGA/18.1/Project/decode.vhd {0 {vcom -work work -2008 -explicit -stats=none {C:\intelFPGA\18.1\Project\decode.vhd}
+} {} {}} C:/intelFPGA/18.1/Project/memoryAccess.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/memoryAccess.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package my_pkg
+-- Loading package std_logic_textio
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity memory_access
+-- Compiling architecture arch_memory_access of memory_access
+
+} {} {}} C:/intelFPGA/18.1/Project/write_back.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/write_back.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package my_pkg1
 -- Loading package NUMERIC_STD
 -- Loading package std_logic_arith
 -- Loading package STD_LOGIC_UNSIGNED
 -- Compiling entity decode
-** Error: C:\intelFPGA\18.1\Project\decode.vhd(11): (vcom-1136) Unknown identifier "register_array".
-** Error: C:\intelFPGA\18.1\Project\decode.vhd(16): near ")": (vcom-1576) expecting IDENTIFIER.
+-- Compiling architecture arch_decode of decode
 
-} {11.0 13.0} {}}
+} {} {}} C:/intelFPGA/18.1/Project/decode.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/decode.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package my_pkg1
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity decode
+-- Compiling architecture arch_decode of decode
+
+} {} {}} C:/intelFPGA/18.1/Project/control_unit.vhd {0 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Project/control_unit.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package my_pkg1
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity decode
+** Error: C:/intelFPGA/18.1/Project/control_unit.vhd(31): near ")": (vcom-1576) expecting IDENTIFIER.
+
+} {11.0 12.0} {}}
