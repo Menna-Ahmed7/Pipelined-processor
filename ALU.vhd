@@ -18,21 +18,30 @@ ARCHITECTURE arch_alu OF alu IS
     SIGNAL zero : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL temp : STD_LOGIC_VECTOR(31 DOWNTO 0);
 BEGIN
-    zero <= (OTHERS => '0');
-    one <= (0 => '1', OTHERS => '0');
-    temp <= (to_integer(unsigned(src2)) => '1', OTHERS => '0');
+    alu_unit : PROCESS
+    BEGIN
+        zero <= (OTHERS => '0');
+        one <= (0 => '1', OTHERS => '0');
+        -- temp <= (to_integer(unsigned(src2)) => '1', OTHERS => '0');
 
-    result <= NOT src2 WHEN ALU_signal = "0001" ELSE
-        zero - src2 WHEN ALU_signal = "0010" ELSE
-        src2 + one WHEN ALU_signal = "0011" ELSE
-        src2 - one WHEN ALU_signal = "0100" ELSE
-        src1 + src2 WHEN ALU_signal = "0110" ELSE
-        src1 - src2 WHEN ALU_signal = "0111" ELSE
-        src1 AND src2 WHEN ALU_signal = "1000" ELSE
-        src1 OR src2 WHEN ALU_signal = "1001" ELSE
-        src1 XOR src2 WHEN ALU_signal = "1010" ELSE
-        src1 OR temp WHEN ALU_signal = "1011" ELSE
-        src2(0) & src2(31 DOWNTO 1) WHEN ALU_signal = "1101" ELSE
-        src2(30 DOWNTO 0) & src2(31) WHEN ALU_signal = "1100";
+        -- FOR i IN 0 TO 31 LOOP
+        --     IF (i = to_integer(unsigned(src2))) THEN
+        --         src1(i) <= '1';
+        --     END IF;
+        -- END LOOP;
 
+        result <= NOT src2 WHEN ALU_signal = "0001" ELSE
+            zero - src2 WHEN ALU_signal = "0010" ELSE
+            src2 + one WHEN ALU_signal = "0011" ELSE
+            src2 - one WHEN ALU_signal = "0100" ELSE
+            src1 + src2 WHEN ALU_signal = "0111" ELSE
+            src1 - src2 WHEN ALU_signal = "1000" ELSE
+            src1 AND src2 WHEN ALU_signal = "1001" ELSE
+            src1 OR src2 WHEN ALU_signal = "1010" ELSE
+            src1 XOR src2 WHEN ALU_signal = "1011";
+        -- src1 OR te        src1((31 - unsigned(src2)      
+        -- src1((31 - to_integer(unsigned(src2))) DOWNTO 0) & src1((31 - to_integer(unsigned(src2)) + 1) TO 31) WHEN ALU_signal = "1101" ELSE
+        -- src1(0 TO (to_integer(unsigned(src2)) - 1)) & src1(31 DOWNTO to_integer(unsigned(src2))) WHEN ALU_signal = "1110" ;
+        WAIT;
+    END PROCESS;
 END ARCHITECTURE;

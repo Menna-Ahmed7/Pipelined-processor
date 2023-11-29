@@ -1,23 +1,17 @@
-Library ieee;
-Use ieee.std_logic_1164.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
 
-entity mux_3bits IS
-port (
-IN1,IN2,IN3:IN std_logic_vector(31 downto 0);
-SEL:IN std_logic_vector (1 downto 0);
+ENTITY mux_3bits IS
+    PORT (
+        IN1, IN2, IN3 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        SEL : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+        SELECTED : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+    );
+END ENTITY;
 
-SELECTED:OUT std_logic_vector (31 downto 0)
-);
-end entity;
-
-Architecture arch_mux_3bits of mux_3bits IS
-begin 
-
-
-SELECTED <= IN1 WHEN sel="00" ELSE
-    IN2 WHEN SEL="01" else
-    IN3 WHEN SEL="10";
-    
-
-end Architecture;
-
+ARCHITECTURE arch_mux_3bits OF mux_3bits IS
+BEGIN
+    SELECTED <= IN1 WHEN sel = "00" ELSE
+        IN2 WHEN SEL = "01" ELSE
+        IN3 WHEN SEL = "10";
+END ARCHITECTURE;

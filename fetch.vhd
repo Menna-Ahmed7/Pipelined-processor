@@ -15,7 +15,7 @@ ENTITY fetch IS
         instruction : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
         next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
-END Fetch;
+END ENTITY;
 ARCHITECTURE arch_fetch OF fetch IS
     SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL reg : STD_LOGIC_VECTOR (2 DOWNTO 0);

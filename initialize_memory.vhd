@@ -13,14 +13,13 @@ USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 USE std.textio.ALL;
 
-ENTITY Memory_Initialization IS
+ENTITY memory_initialization IS
     PORT (
         ram : OUT memory_array(0 TO 100)(15 DOWNTO 0)
-        
 
     );
-END Memory_Initialization;
-ARCHITECTURE Behavioral OF Memory_Initialization IS
+END ENTITY;
+ARCHITECTURE arch_memory_initialization OF memory_initialization IS
 
 BEGIN
     -- Loading data from the file into memory during initialization
@@ -42,6 +41,6 @@ BEGIN
             END IF;
         END LOOP;
 
-    END PROCESS initialize_memory;
+    END PROCESS;
 
-END Behavioral;
+END ARCHITECTURE;

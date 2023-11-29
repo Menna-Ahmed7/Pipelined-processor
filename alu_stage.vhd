@@ -1,50 +1,48 @@
-Library ieee;
-Use ieee.std_logic_1164.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
 
-entity alu_stage IS
-port (
-src1,src2,imm,write_back_data,result_in:IN std_logic_vector(31 downto 0);
-forward_unit_signal1,forward_unit_signal2:IN std_logic_vector (1 downto 0);
-imm_signal: in std_logic ;
-ALU_sig:IN std_logic_vector (3 downto 0);
-result_alu: out std_logic_vector (31 downto 0);
-flags_alu:out std_logic_vector (3 downto 0)
-);
-end entity;
-Architecture arch_alu_stage of alu_stage IS
-signal tmp:std_logic_vector(31 downto 0);
-signal src1_alu,src2_alu:std_logic_vector(31 downto 0);
+ENTITY alu_stage IS
+    PORT (
+        src1, src2, imm, write_back_data, result_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        forward_unit_signal1, forward_unit_signal2 : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+        imm_signal : IN STD_LOGIC;
+        ALU_sig : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        result_alu : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+        flags_alu : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+    );
+END ENTITY;
+ARCHITECTURE arch_alu_stage OF alu_stage IS
+    SIGNAL tmp : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL src1_alu, src2_alu : STD_LOGIC_VECTOR(31 DOWNTO 0);
 
-Component mux_3bits IS
-port(
-    IN1,IN2,IN3:IN std_logic_vector(31 downto 0);
-    SEL:IN std_logic_vector (1 downto 0);
-    
-    SELECTED:OUT std_logic_vector (31 downto 0)
-);
-end component ;
+    COMPONENT mux_3bits IS
+        PORT (
+            IN1, IN2, IN3 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            SEL : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
 
-Component alu IS
-port(
-    src1,src2:IN std_logic_vector(31 downto 0);
-    ALU_signal:IN std_logic_vector (3 downto 0);
-    result: out std_logic_vector (31 downto 0);
-    flags:out std_logic_vector (3 downto 0)
-);
-end component ;
+            SELECTED : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT alu IS
+        PORT (
+            src1, src2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            ALU_signal : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+            result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+            flags : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+        );
+    END COMPONENT;
 
 BEGIN
-tmp<= src2 when imm_signal ='0' else
-    imm when imm_signal ='1';
-obj1: mux_3bits port map (
-src1,result_in,write_back_data,forward_unit_signal1,src1_alu
-);
-obj2: mux_3bits port map (
-tmp,result_in,write_back_data,forward_unit_signal2,src2_alu
-);
-obj3: alu port map (
-src1_alu,src2_alu,ALU_sig,result_alu,flags_alu
-);
-
-
-END architecture;
+    tmp <= src2 WHEN imm_signal = '0' ELSE
+        imm WHEN imm_signal = '1';
+    obj1 : mux_3bits PORT MAP(
+        src1, result_in, write_back_data, forward_unit_signal1, src1_alu
+    );
+    obj2 : mux_3bits PORT MAP(
+        tmp, result_in, write_back_data, forward_unit_signal2, src2_alu
+    );
+    obj3 : alu PORT MAP(
+        src1_alu, src2_alu, ALU_sig, result_alu, flags_alu
+    );
+END ARCHITECTURE;

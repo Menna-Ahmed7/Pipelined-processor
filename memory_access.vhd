@@ -1,12 +1,12 @@
 USE work.my_pkg.ALL;
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_textio.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 USE std.textio.ALL;
 USE IEEE.numeric_std.ALL;
-ENTITY memoryAccess IS
+
+ENTITY memory_access IS
     PORT (
 
         ram : IN memory_array(0 TO 4095)(15 DOWNTO 0);
@@ -15,8 +15,9 @@ ENTITY memoryAccess IS
         address : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
         datain : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         dataout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0));
-END ENTITY memoryAccess;
-ARCHITECTURE sync_memoryAccess OF memoryAccess IS
+END ENTITY;
+
+ARCHITECTURE arch_memory_access OF memory_access IS
     SIGNAL temp : memory_array(0 TO 4095)(15 DOWNTO 0);
 BEGIN
     temp <= ram;
@@ -29,4 +30,4 @@ BEGIN
             dataout <= ram(to_integer(unsigned(address)));
         END IF;
     END PROCESS;
-END sync_memoryAccess;
+END ARCHITECTURE;

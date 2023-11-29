@@ -74,7 +74,7 @@ BEGIN
         written_address2 <= (OTHERS => '0');
         written_address3 <= (OTHERS => '0');
         written_data1 <= (OTHERS => '0');
-        written_data2 <= "0000000000000"&CCR;
+        written_data2 <= (OTHERS => '0')& CCR;
         dataout2 <= (OTHERS => '0');
         memory_write3_sel <= '0';
         memory_read3_sel <= '0';

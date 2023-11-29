@@ -1,32 +1,33 @@
-library ieee;
-use ieee.std_logic_1164.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
 
-package my_pkg1 is
-        type register_array is array(natural range <>) of std_logic_vector;
-end package;
-use work.my_pkg1.all;
+PACKAGE my_pkg1 IS
+    TYPE register_array IS ARRAY(NATURAL RANGE <>) OF STD_LOGIC_VECTOR;
+END PACKAGE;
+USE work.my_pkg1.ALL;
 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_textio.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_textio.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
-use std.textio.all;
+USE std.textio.ALL;
+
 ENTITY register_file IS
     PORT (
-        registers : OUT register_array(0 to 7)(31 downto 0)
+        registers : OUT register_array(0 TO 7)(31 DOWNTO 0)
     );
 END ENTITY;
 ARCHITECTURE arch_register_file OF register_file IS
 
 BEGIN
     -- Loading data from the file into memory during initialization
-reg_file : PROCESS
-FILE reg_file : text OPEN READ_MODE IS "register.txt";
-VARIABLE file_line : line;
-    VARIABLE temp_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    reg_file : PROCESS
+        FILE reg_file : text OPEN READ_MODE IS "register.txt";
+        VARIABLE file_line : line;
+        VARIABLE temp_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
     BEGIN
-	
+
         FOR i IN registers'RANGE LOOP
             IF NOT endfile(reg_file) THEN
                 readline(reg_file, file_line);
@@ -38,7 +39,6 @@ VARIABLE file_line : line;
                 WAIT;
             END IF;
         END LOOP;
-    END PROCESS ;
+    END PROCESS;
 
 END ARCHITECTURE;
-

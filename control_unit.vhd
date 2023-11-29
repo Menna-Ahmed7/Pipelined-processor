@@ -1,79 +1,223 @@
-USE work.my_pkg1.ALL;
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-use ieee.numeric_std.all;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE ieee.numeric_std.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-
-ENTITY decode IS
+ENTITY control_unit IS
     PORT (
-        opcode : IN std_logic_vector(8 DOWNTO 0); 
-        alu_signal:OUT std_logic_vector(3 downto 0);
-        memory_read:out std_logic;
-        memory_write:out std_logic;
-        write_back:out std_logic;
-        read_src1:out std_logic;
-        read_src2:out std_logic;
-        read_dest:out std_logic;
-        reg_dest_selector:out std_logic_vector(1 downto 0);
-        io_read:out std_logic;
-        io_write:out std_logic;
-        push:out std_logic;
-        pop:out std_logic;
-        swap:out std_logic;
-        imm:out std_logic;
-        branch:out std_logic;
-        RTI:out std_logic;
-        RET:out std_logic;
-        call:out std_logic;
-        jz:out std_logic;
+        opcode : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+        alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+        memory_read : OUT STD_LOGIC;
+        memory_write : OUT STD_LOGIC;
+        write_back : OUT STD_LOGIC;
+        read_src1 : OUT STD_LOGIC;
+        read_src2 : OUT STD_LOGIC;
+        reg_dest_selector : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+        io_read : OUT STD_LOGIC;
+        io_write : OUT STD_LOGIC;
+        push : OUT STD_LOGIC;
+        pop : OUT STD_LOGIC;
+        swap : OUT STD_LOGIC;
+        imm : OUT STD_LOGIC;
+        RTI : OUT STD_LOGIC;
+        RET : OUT STD_LOGIC;
+        call : OUT STD_LOGIC;
+        jz : OUT STD_LOGIC
     );
 END ENTITY;
-ARCHITECTURE arch_decode OF decode IS
+
+ARCHITECTURE arch_control_unit OF control_unit IS
 
 BEGIN
-alu_signal<="0000";
-memory_read<='0';
-memory_write<='0';
-write_back<='0';
-read_src1<='0';
-read_src2<='0';
-read_dest<='0';
-reg_dest_selector<="00";
-io_read<='0';
-io_write<='0';
-push<='0';
-pop<='0';
-swap<='0';
-imm<='0';
-branch<='0';
-RTI<='0';
-RET<='0';
-call<='0';
-jz<='0';
-process(opcode)
+    PROCESS (opcode) IS
+    BEGIN
+        memory_read <= '0';
+        memory_write <= '0';
+        write_back <= '0';
+        read_src1 <= '0';
+        read_src2 <= '0';
+        reg_dest_selector <= "00";
+        io_read <= '0';
+        io_write <= '0';
+        push <= '0';
+        pop <= '0';
+        swap <= '0';
+        imm <= '0';
+        RTI <= '0';
+        RET <= '0';
+        call <= '0';
+        jz <= '0';
+        alu_signal <= opcode(3 DOWNTO 0);
 
-if opcode="010000000" then 
+        --not
+        IF opcode = "00001" THEN
+            write_back <= '1';
+            reg_dest_selector <= "11";
 
-elsif opcode="010000001" then 
-elsif opcode="010000010" then 
-elsif opcode="010000011" then 
+            --neg
+        ELSIF opcode = "00010" THEN
+            write_back <= '1';
+            reg_dest_selector <= "11";
 
-elsif opcode="011000100" then 
-elsif opcode="010100101" then 
-elsif opcode="010100110" then 
-elsif opcode="010100111" then 
-elsif opcode="010101000" then 
-elsif opcode="010101001" then 
-elsif opcode="010111010" then 
-elsif opcode="010100001" then 
-elsif opcode="010000001" then 
-elsif opcode="010000001" then 
-elsif opcode="010000001" then 
- 
+            --inc
+        ELSIF opcode = "00011" THEN
+            write_back <= '1';
+            reg_dest_selector <= "11";
 
-end if;
-end process;
+            --dec
+        ELSIF opcode = "00100" THEN
+            write_back <= '1';
+            reg_dest_selector <= "11";
+
+            --swap1
+        ELSIF opcode = "00101" THEN
+            write_back <= '1';
+            swap <= '1';
+            read_src1 <= '1';
+            read_src2 <= '1';
+            reg_dest_selector <= "11";
+
+            --swap2
+        ELSIF opcode = "00110" THEN
+            write_back <= '1';
+            swap <= '1';
+            reg_dest_selector <= "01";
+
+            --add
+        ELSIF opcode = "00111" THEN
+            write_back <= '1';
+            read_src1 <= '1';
+            read_src2 <= '1';
+            reg_dest_selector <= "11";
+
+            --sub
+        ELSIF opcode = "01000" THEN
+            write_back <= '1';
+            read_src1 <= '1';
+            read_src2 <= '1';
+            reg_dest_selector <= "11";
+
+            --and
+        ELSIF opcode = "01001" THEN
+            write_back <= '1';
+            read_src1 <= '1';
+            read_src2 <= '1';
+            reg_dest_selector <= "11";
+
+            --or
+        ELSIF opcode = "01010" THEN
+            write_back <= '1';
+            read_src1 <= '1';
+            read_src2 <= '1';
+            reg_dest_selector <= "11";
+
+            --xor
+        ELSIF opcode = "01011" THEN
+            write_back <= '1';
+            read_src1 <= '1';
+            read_src2 <= '1';
+            reg_dest_selector <= "11";
+
+            --addi
+        ELSIF opcode = "01100" THEN
+            write_back <= '1';
+            read_src1 <= '1';
+            imm <= '1';
+            reg_dest_selector <= "10";
+            --cmp
+        ELSIF opcode = "01101" THEN
+            read_src1 <= '1';
+            read_src2 <= '1';
+
+            --bitset
+        ELSIF opcode = "01110" THEN
+            write_back <= '1';
+            imm <= '1';
+            reg_dest_selector <= "10";
+
+            --rcl
+        ELSIF opcode = "01111" THEN
+            write_back <= '1';
+            imm <= '1';
+            reg_dest_selector <= "10";
+
+            --rcr
+        ELSIF opcode = "10000" THEN
+            write_back <= '1';
+            imm <= '1';
+            reg_dest_selector <= "10";
+
+            --jz
+        ELSIF opcode = "10001" THEN
+            jz <= '1';
+
+            --jmp
+        ELSIF opcode = "10010" THEN
+            read_src1 <= '1';
+
+            --call
+        ELSIF opcode = "10011" THEN
+            read_src1 <= '1';
+            call <= '1';
+            memory_write <= '1';
+
+            --ret
+        ELSIF opcode = "10100" THEN
+            memory_read <= '1';
+            ret <= '1';
+
+            --rti
+        ELSIF opcode = "10101" THEN
+            memory_read <= '1';
+            rti <= '1';
+
+            --push
+        ELSIF opcode = "10110" THEN
+            memory_write <= '1';
+            read_src1 <= '1';
+            push <= '1';
+
+            --pop
+        ELSIF opcode = "10111" THEN
+            memory_read <= '1';
+            pop <= '1';
+            reg_dest_selector <= "01";
+
+            --in
+        ELSIF opcode = "11000" THEN
+            write_back <= '1';
+            io_read <= '1';
+            reg_dest_selector <= "01";
+
+            --out
+        ELSIF opcode = "11001" THEN
+            io_write <= '1';
+            read_src1 <= '1';
+
+            --  ldm
+        ELSIF opcode = "11010" THEN
+            write_back <= '1';
+            reg_dest_selector <= "01";
+            imm <= '1';
+
+            --lld
+        ELSIF opcode = "11011" THEN
+            write_back <= '1';
+            memory_read <= '1';
+            reg_dest_selector <= "01";
+
+            --std
+        ELSIF opcode = "11100" THEN
+            write_back <= '1';
+            read_src1 <= '1';
+
+            --protect
+        ELSIF opcode = "11101" THEN
+
+            --free
+        ELSE
+
+        END IF;
+    END PROCESS;
 END ARCHITECTURE;
-
