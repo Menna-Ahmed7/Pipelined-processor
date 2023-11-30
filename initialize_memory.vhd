@@ -15,7 +15,7 @@ USE std.textio.ALL;
 
 ENTITY memory_initialization IS
     PORT (
-        ram : OUT memory_array(0 TO 100)(15 DOWNTO 0)
+        ram : OUT memory_array(0 TO 4095)(15 DOWNTO 0)
 
     );
 END ENTITY;
