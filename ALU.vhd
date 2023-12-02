@@ -6,7 +6,8 @@ USE ieee.numeric_std.ALL;
 --Entity B
 ENTITY alu IS
     PORT (
-        src1, src2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        clk: in std_logic;
+        src1, src2 : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
         ALU_signal : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
         flags : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
@@ -14,34 +15,48 @@ ENTITY alu IS
 END ENTITY;
 
 ARCHITECTURE arch_alu OF alu IS
-    SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0);
-    SIGNAL zero : STD_LOGIC_VECTOR(31 DOWNTO 0);
-    SIGNAL temp : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL one : STD_LOGIC_VECTOR(32 DOWNTO 0);
+    SIGNAL zero : STD_LOGIC_VECTOR(32 DOWNTO 0);
+    -- SIGNAL temp : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    signal temp_result:  std_logic_vector (32 downto 0);
+    signal temp:  std_logic_vector (32 downto 0);
+    signal temp_src2:  std_logic_vector (32 downto 0);
+    signal temp_src1:  std_logic_vector (32 downto 0);
+
 BEGIN
-    alu_unit : PROCESS
+temp_src2<= src2(31) & src2;
+temp_src1<= src1(31) & src1;
+zero <= (OTHERS => '0');
+one <= (0 => '1', OTHERS => '0');
+temp <= (others => '0');
+-- temp(to_integer(unsigned(temp_src2))) <= '1';
+temp_result <= NOT temp_src2 WHEN ALU_signal = "0001" ELSE
+zero - temp_src2 WHEN ALU_signal = "0010" ELSE
+temp_src2 + one WHEN ALU_signal = "0011" ELSE
+temp_src2 - one WHEN ALU_signal = "0100" ELSE
+temp_src1 + temp_src2 WHEN ALU_signal = "0111" ELSE
+temp_src1 - temp_src2 WHEN ALU_signal = "1000" ELSE
+temp_src1 AND temp_src2 WHEN ALU_signal = "1001" ELSE
+temp_src1 OR temp_src2 WHEN ALU_signal = "1010" ELSE
+temp_src1 XOR temp_src2 WHEN ALU_signal = "1011" ;
+-- temp_src1 or temp  when  ALU_signal="1011" ELSE
+-- temp_src2(0)&temp_src2(31 downto 1)  when  ALU_signal="1101" ELSE
+-- temp_src2(30 downto 0)&temp_src2(31)  when  ALU_signal="1100";
+    alu_unit : PROCESS (clk)
     BEGIN
-        zero <= (OTHERS => '0');
-        one <= (0 => '1', OTHERS => '0');
-        -- temp <= (to_integer(unsigned(src2)) => '1', OTHERS => '0');
+    if clk'event and clk = '1' then
+       
+        result<=temp_result(31 downto 0);
+        flags(2)<=temp_result(32);
+        flags(0)<='0';
+        flags(1)<='0';
 
-        -- FOR i IN 0 TO 31 LOOP
-        --     IF (i = to_integer(unsigned(src2))) THEN
-        --         src1(i) <= '1';
-        --     END IF;
-        -- END LOOP;
+        flags(0) <='1' when temp_result(31 downto 0) = "00000000000000000000000000000000";
+        flags(1) <='1' when temp_result(31)='1';
 
-        result <= NOT src2 WHEN ALU_signal = "0001" ELSE
-            zero - src2 WHEN ALU_signal = "0010" ELSE
-            src2 + one WHEN ALU_signal = "0011" ELSE
-            src2 - one WHEN ALU_signal = "0100" ELSE
-            src1 + src2 WHEN ALU_signal = "0111" ELSE
-            src1 - src2 WHEN ALU_signal = "1000" ELSE
-            src1 AND src2 WHEN ALU_signal = "1001" ELSE
-            src1 OR src2 WHEN ALU_signal = "1010" ELSE
-            src1 XOR src2 WHEN ALU_signal = "1011";
-        -- src1 OR te        src1((31 - unsigned(src2)      
-        -- src1((31 - to_integer(unsigned(src2))) DOWNTO 0) & src1((31 - to_integer(unsigned(src2)) + 1) TO 31) WHEN ALU_signal = "1101" ELSE
-        -- src1(0 TO (to_integer(unsigned(src2)) - 1)) & src1(31 DOWNTO to_integer(unsigned(src2))) WHEN ALU_signal = "1110" ;
-        WAIT;
+       --0 ->zero flag
+       --1 -> sign flag
+       --2 -> carry flag
+    end if;
     END PROCESS;
 END ARCHITECTURE;
