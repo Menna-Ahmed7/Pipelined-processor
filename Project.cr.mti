@@ -9,31 +9,26 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity alu
 -- Compiling architecture arch_alu of alu
 
-} {} {}} C:/intelFPGA/18.1/Pipelined-processor/fetch.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/fetch.vhd
+} {} {}} C:/intelFPGA/18.1/Pipelined-processor/regfile.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/regfile.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package my_pkg
+-- Compiling package my_pkg1
 -- Loading package my_pkg1
--- Loading package NUMERIC_STD
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity fetch
--- Compiling architecture arch_fetch of fetch
-
-} {} {}} C:/intelFPGA/18.1/Pipelined-processor/initialize_memory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/initialize_memory.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling package my_pkg
--- Loading package my_pkg
 -- Loading package std_logic_textio
 -- Loading package std_logic_arith
 -- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity memory_initialization
--- Compiling architecture arch_memory_initialization of memory_initialization
+-- Compiling entity register_file
+-- Compiling architecture arch_register_file of register_file
+
+} {} {}} C:/intelFPGA/18.1/Pipelined-processor/mux_3bits.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/mux_3bits.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mux_3bits
+-- Compiling architecture arch_mux_3bits of mux_3bits
 
 } {} {}} C:/intelFPGA/18.1/Pipelined-processor/memory_access.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/memory_access.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -48,26 +43,31 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity memory_access
 -- Compiling architecture arch_memory_access of memory_access
 
-} {} {}} C:/intelFPGA/18.1/Pipelined-processor/mux_3bits.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/mux_3bits.vhd
+} {} {}} C:/intelFPGA/18.1/Pipelined-processor/initialize_memory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/initialize_memory.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity mux_3bits
--- Compiling architecture arch_mux_3bits of mux_3bits
-
-} {} {}} C:/intelFPGA/18.1/Pipelined-processor/regfile.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/regfile.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling package my_pkg1
--- Loading package my_pkg1
+-- Compiling package my_pkg
+-- Loading package my_pkg
 -- Loading package std_logic_textio
 -- Loading package std_logic_arith
 -- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity register_file
--- Compiling architecture arch_register_file of register_file
+-- Compiling entity memory_initialization
+-- Compiling architecture arch_memory_initialization of memory_initialization
+
+} {} {}} C:/intelFPGA/18.1/Pipelined-processor/fetch.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/fetch.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package my_pkg
+-- Loading package my_pkg1
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity fetch
+-- Compiling architecture arch_fetch of fetch
 
 } {} {}} C:/intelFPGA/18.1/Pipelined-processor/alu_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/alu_tb.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -76,17 +76,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package std_logic_1164
 -- Compiling entity ALU_tb
 -- Compiling architecture arch_ALU_tb of ALU_tb
-
-} {} {}} C:/intelFPGA/18.1/Pipelined-processor/control_unit.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/control_unit.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity control_unit
--- Compiling architecture arch_control_unit of control_unit
 
 } {} {}} C:/intelFPGA/18.1/Pipelined-processor/decode.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/decode.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -100,6 +89,25 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity decode
 -- Compiling architecture arch_decode of decode
 
+} {} {}} C:/intelFPGA/18.1/Pipelined-processor/control_unit.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/control_unit.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity control_unit
+-- Compiling architecture arch_control_unit of control_unit
+
+} {} {}} C:/intelFPGA/18.1/Pipelined-processor/alu_stage.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/alu_stage.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity alu_stage
+-- Compiling architecture arch_alu_stage of alu_stage
+
 } {} {}} C:/intelFPGA/18.1/Pipelined-processor/memory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/memory.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
@@ -111,13 +119,5 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package STD_LOGIC_UNSIGNED
 -- Compiling entity memory
 -- Compiling architecture arch_memory of memory
-
-} {} {}} C:/intelFPGA/18.1/Pipelined-processor/alu_stage.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/intelFPGA/18.1/Pipelined-processor/alu_stage.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity alu_stage
--- Compiling architecture arch_alu_stage of alu_stage
 
 } {} {}}

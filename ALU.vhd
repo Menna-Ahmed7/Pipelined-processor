@@ -47,13 +47,14 @@ temp_src1 XOR temp_src2 WHEN ALU_signal = "1011" ;
     if clk'event and clk = '1' then
        
         result<=temp_result(31 downto 0);
-        flags(2)<=temp_result(32);
+        flags(2)<=temp_result(32);  
         flags(0)<='0';
         flags(1)<='0';
-
-        flags(0) <='1' when temp_result(31 downto 0) = "00000000000000000000000000000000";
+        flags(0) <='1' when temp_result(31 downto 0) = "00000000000000000000000000000000" ;
         flags(1) <='1' when temp_result(31)='1';
-
+        --not signal has no carry or sign flag
+        flags(2)<='0' when  ALU_signal= "0001" ;
+        flags(1)<='0' when  ALU_signal= "0001" ;
        --0 ->zero flag
        --1 -> sign flag
        --2 -> carry flag
