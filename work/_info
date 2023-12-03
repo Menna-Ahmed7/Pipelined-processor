@@ -1,351 +1,318 @@
 m255
 K4
 z2
+!s11e MIXED_VERSIONS
 13
 !s112 1.1
 !i10d 8192
 !i10e 25
 !i10f 100
 cModel Technology
-dC:/intelFPGA/18.1
+dC:/20.1/modelsim_ase/win32aloem
 Ealu
-Z0 w1701086828
-Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z0 w1701352529
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z3 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z6 dC:/intelFPGA/18.1/Project
-Z7 8C:/intelFPGA/18.1/Project/ALU.vhd
-Z8 FC:/intelFPGA/18.1/Project/ALU.vhd
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 189
+Z6 dD:/arck/Pipelined-processor
+8D:/arck/Pipelined-processor/ALU.vhd
+FD:/arck/Pipelined-processor/ALU.vhd
 l0
-L7
-VPhAn`8PCKM6n9S<hTRNB41
-!s100 _jV^B1TiGER8c]98<kD^P3
-Z9 OV;C;10.5b;63
+L7 1
+V<V`[;]=WJa2z0=Il01Fg;3
+!s100 ^>bQ54V0i10nY68mVUhT90
+Z7 OV;C;2020.1;71
 33
-Z10 !s110 1701198686
+Z8 !s110 1701451568
 !i10b 1
-Z11 !s108 1701198686.000000
-Z12 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/intelFPGA/18.1/Project/ALU.vhd|
-Z13 !s107 C:/intelFPGA/18.1/Project/ALU.vhd|
+Z9 !s108 1701451568.000000
+!s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/ALU.vhd|
+!s107 D:/arck/Pipelined-processor/ALU.vhd|
 !i113 1
-Z14 o-work work -2008 -explicit
-Z15 tExplicit 1 CvgOpt 0
-Aarch_alu
-R1
-R2
-R3
-R4
-R5
-DEx4 work 3 alu 0 22 PhAn`8PCKM6n9S<hTRNB41
-l20
-L16
-V83dk>XoZC>;jNi4^P^GQL1
-!s100 3B721^=T2TGdoFbL:0FAW3
-R9
-33
-R10
-!i10b 1
-R11
-R12
-R13
-!i113 1
-R14
-R15
-Aarchalu
-R1
-R2
-R3
-R4
-R5
-DEx4 work 3 alu 0 22 ^ANzH@lQTV6E`ZLJCR1Tc0
-l20
-L16
-V^FQLXXHc;kmabEH:6>;I>0
-!s100 dFST6jXIL]CR[oe<_XKlU1
-R9
-33
-!s110 1701086017
-!i10b 1
-!s108 1701086017.000000
-!s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:\intelFPGA\18.1\Project\ALU.vhd|
-!s107 C:\intelFPGA\18.1\Project\ALU.vhd|
-!i113 1
-R14
-R15
-w1701084114
-FC:\intelFPGA\18.1\Project\ALU.vhd
-8C:\intelFPGA\18.1\Project\ALU.vhd
+Z10 o-work work -2008 -explicit
+Z11 tExplicit 1 CvgOpt 0
 Ealu_stage
-Z16 w1701201475
+R0
 R4
 R5
+!i122 190
 R6
-Z17 8C:\intelFPGA\18.1\Project\alu_stage.vhd
-Z18 FC:\intelFPGA\18.1\Project\alu_stage.vhd
+Z12 8D:/arck/Pipelined-processor/alu_stage.vhd
+Z13 FD:/arck/Pipelined-processor/alu_stage.vhd
 l0
-L4
-V@PILIoE=Cd@H>>C1TOW5h2
-!s100 >OHz^XI51DPziLQmiC2Me2
-R9
-32
-Z19 !s110 1701201487
+L4 1
+Vcb?h2MUiF8735LgUY:R5F2
+!s100 Y6[<4hjPT9>]OQej`BYM@0
+R7
+33
+R8
 !i10b 1
-Z20 !s108 1701201487.000000
-Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\intelFPGA\18.1\Project\alu_stage.vhd|
-Z22 !s107 C:\intelFPGA\18.1\Project\alu_stage.vhd|
+R9
+Z14 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/alu_stage.vhd|
+Z15 !s107 D:/arck/Pipelined-processor/alu_stage.vhd|
 !i113 1
-Z23 o-work work -2002 -explicit
-R15
+R10
+R11
 Aarch_alu_stage
 R4
 R5
-DEx4 work 9 alu_stage 0 22 @PILIoE=Cd@H>>C1TOW5h2
+DEx4 work 9 alu_stage 0 22 cb?h2MUiF8735LgUY:R5F2
+!i122 190
 l36
-L14
-VD?bZKDMLP@Q:AE?C@8j802
-!s100 Qd5l^c>lSM4Vd[8G8a6FZ0
-R9
-32
-R19
+L14 35
+Vk;7beba?oO]ZJ?CB@J`_m3
+!s100 H]zmdMWa74=W2VRKTmnj61
+R7
+33
+R8
 !i10b 1
-R20
-R21
-R22
-!i113 1
-R23
+R9
+R14
 R15
-Edecode
-Z24 w1701097851
+!i113 1
+R10
+R11
+Econtrol_unit
+Z16 w1701363810
 R2
 R3
 R1
 R4
 R5
-Z25 DPx4 work 7 my_pkg1 0 22 cJ2PHWL;?6<aB0<9kS1VF0
+!i122 191
 R6
-Z26 8C:/intelFPGA/18.1/Project/write_back.vhd
-Z27 FC:/intelFPGA/18.1/Project/write_back.vhd
+Z17 8D:/arck/Pipelined-processor/control_unit.vhd
+Z18 FD:/arck/Pipelined-processor/control_unit.vhd
 l0
-L9
-VE`eO@J2dfl9`fN=c?=3o:2
-!s100 IS93Lf7TjZjUO7RD0?nR<1
-R9
+L7 1
+VL6Mh7ZKWWX;@0ez>3@M8?1
+!s100 H[A]_1cF;T5]CW[FLnO;X3
+R7
 33
-Z28 !s110 1701198690
+R8
 !i10b 1
-Z29 !s108 1701198690.000000
-Z30 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/intelFPGA/18.1/Project/write_back.vhd|
-Z31 !s107 C:/intelFPGA/18.1/Project/write_back.vhd|
+R9
+Z19 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/control_unit.vhd|
+Z20 !s107 D:/arck/Pipelined-processor/control_unit.vhd|
 !i113 1
-R14
-R15
+R10
+R11
+Aarch_control_unit
+R2
+R3
+R1
+R4
+R5
+DEx4 work 12 control_unit 0 22 L6Mh7ZKWWX;@0ez>3@M8?1
+!i122 191
+l33
+L31 198
+Vh3^HHdM1Ri?b5=GK6cCiL0
+!s100 5nH=EY<gKX:_h2OF4HO4D0
+R7
+33
+R8
+!i10b 1
+R9
+R19
+R20
+!i113 1
+R10
+R11
+Edata_memory
+Z21 w1701454901
+R1
+R2
+R3
+Z22 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
+R4
+R5
+Z23 DPx4 work 6 my_pkg 0 22 ;omfTkmf`Pj@flL5kfi^:3
+!i122 205
+R6
+Z24 8D:/arck/Pipelined-processor/data_memory.vhd
+Z25 FD:/arck/Pipelined-processor/data_memory.vhd
+l0
+Z26 L10 1
+V`KCD_V3mLi00dAoWmk>g33
+!s100 UzCX3=a<VOAbh:W54_81h1
+R7
+33
+Z27 !s110 1701454923
+!i10b 1
+Z28 !s108 1701454923.000000
+Z29 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/data_memory.vhd|
+Z30 !s107 D:/arck/Pipelined-processor/data_memory.vhd|
+!i113 1
+R10
+R11
+Aarch_data_memory
+R1
+R2
+R3
+R22
+R4
+R5
+R23
+DEx4 work 11 data_memory 0 22 `KCD_V3mLi00dAoWmk>g33
+!i122 205
+l32
+L26 59
+V^an=l6h]3]=EUmP^Lc<:e1
+!s100 kkD4`;bEeNXCR1EiWObAH2
+R7
+33
+R27
+!i10b 1
+R28
+R29
+R30
+!i113 1
+R10
+R11
+Edecode
+Z31 w1701371978
+R2
+R3
+R1
+R4
+R5
+Z32 DPx4 work 7 my_pkg1 0 22 je1dNXaZPI<X<UBcO<BIT3
+!i122 192
+R6
+Z33 8D:/arck/Pipelined-processor/decode.vhd
+Z34 FD:/arck/Pipelined-processor/decode.vhd
+l0
+L7 1
+V5>fMMTgdT=oc2_ejFg?C12
+!s100 c;fD^1BUNN1jkLPdaYo^10
+R7
+33
+Z35 !s110 1701451569
+!i10b 1
+Z36 !s108 1701451569.000000
+Z37 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/decode.vhd|
+Z38 !s107 D:/arck/Pipelined-processor/decode.vhd|
+!i113 1
+R10
+R11
 Aarch_decode
 R2
 R3
 R1
 R4
 R5
-R25
-DEx4 work 6 decode 0 22 E`eO@J2dfl9`fN=c?=3o:2
-l18
-L16
-VLJHd_Y8ZkeEmHTH38hGhe2
-!s100 9W]Ki3KKTRP9?alobU4mn1
-R9
+R32
+DEx4 work 6 decode 0 22 5>fMMTgdT=oc2_ejFg?C12
+!i122 192
+l65
+L34 72
+V<m42[7DPj^82nf5^k?[g53
+!s100 T71GgeX5TLf]m:EAMPU=B3
+R7
 33
-R28
+R35
 !i10b 1
-R29
-R30
-R31
+R36
+R37
+R38
 !i113 1
-R14
-R15
+R10
+R11
 Efetch
-Z32 w1701091276
+Z39 w1701600015
 R2
 R3
 R1
+R32
 R4
 R5
-Z33 DPx4 work 6 my_pkg 0 22 ULJR`;A1hBaK7<;WRNCCc0
+R23
+!i122 214
 R6
-Z34 8C:/intelFPGA/18.1/Project/fetch.vhd
-Z35 FC:/intelFPGA/18.1/Project/fetch.vhd
+Z40 8D:/arck/Pipelined-processor/fetch.vhd
+Z41 FD:/arck/Pipelined-processor/fetch.vhd
 l0
-L9
-V>R^:izCeQPzn5Sj_ERHO41
-!s100 _;Q@?kG`:0R;UL`aj>NnI3
-R9
+L8 1
+VeaA=g5;8;5GQP0@;Wn`A;1
+!s100 WF_>QY7z30RP1AU>D4ChE1
+R7
 33
-R10
+Z42 !s110 1701600024
 !i10b 1
-R11
-Z36 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/intelFPGA/18.1/Project/fetch.vhd|
-Z37 !s107 C:/intelFPGA/18.1/Project/fetch.vhd|
+Z43 !s108 1701600024.000000
+Z44 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/fetch.vhd|
+Z45 !s107 D:/arck/Pipelined-processor/fetch.vhd|
 !i113 1
-R14
-R15
+R10
+R11
 Aarch_fetch
 R2
 R3
 R1
+R32
 R4
 R5
-R33
-DEx4 work 5 fetch 0 22 >R^:izCeQPzn5Sj_ERHO41
-l22
-L18
-V=bX9Z:E;j>hN5V7naoh423
-!s100 0dPZ<PJf<aoRhHL@Rdn8N0
-R9
+R23
+Z46 DEx4 work 5 fetch 0 22 eaA=g5;8;5GQP0@;Wn`A;1
+!i122 214
+l35
+Z47 L21 49
+VnhYRaKWh55V2_0JZ<Oi;O2
+!s100 ZhH40zOVMSI<U;2kWIW<G0
+R7
 33
-R10
-!i10b 1
-R11
-R36
-R37
-!i113 1
-R14
-R15
-Ememory_access
-Z38 w1701091627
-R1
-R2
-R3
-Z39 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
-R4
-R5
-R33
-R6
-Z40 8C:/intelFPGA/18.1/Project/memoryAccess.vhd
-Z41 FC:/intelFPGA/18.1/Project/memoryAccess.vhd
-l0
-L9
-V4E4DEHK?iFZ2>Wb4GUNeE0
-!s100 gkXE<o?BHTSJkH8m2M9^H3
-R9
-33
-R10
-!i10b 1
-R11
-Z42 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/intelFPGA/18.1/Project/memoryAccess.vhd|
-Z43 !s107 C:/intelFPGA/18.1/Project/memoryAccess.vhd|
-!i113 1
-R14
-R15
-Aarch_memory_access
-R1
-R2
-R3
-R39
-R4
-R5
-R33
-DEx4 work 13 memory_access 0 22 4E4DEHK?iFZ2>Wb4GUNeE0
-l22
-L20
-VUgE=0>U3J1Z^[1;bB;0lB0
-!s100 olh1AL[E590GVEFBd]jg=1
-R9
-33
-R10
-!i10b 1
-R11
 R42
+!i10b 1
 R43
+R44
+R45
 !i113 1
-R14
-R15
-Ememory_initialization
-Z44 w1701084132
-R3
-R2
-R39
-R4
-R5
-R33
-R6
-Z45 8C:/intelFPGA/18.1/Project/initializeMemory.vhd
-Z46 FC:/intelFPGA/18.1/Project/initializeMemory.vhd
-l0
-L18
-Vh7>OIMHizafRaIH:``k?30
-!s100 jGP7i]7olZ]FbTAhZM@gA0
-R9
-33
 R10
-!i10b 1
 R11
-Z47 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/intelFPGA/18.1/Project/initializeMemory.vhd|
-Z48 !s107 C:/intelFPGA/18.1/Project/initializeMemory.vhd|
-!i113 1
-R14
-R15
-Abehavioral
+Einitialize_memory
+Z48 w1701439857
 R3
 R2
-R39
+R22
 R4
 R5
-R33
-DEx4 work 21 memory_initialization 0 22 h7>OIMHizafRaIH:``k?30
-l27
-L23
-Vmz@`h7>nDld=`lFNzch5m1
-!s100 [gYgHMJ;3MH94`46>?OmI0
-R9
-33
-R10
-!i10b 1
-R11
-R47
-R48
-!i113 1
-R14
-R15
-Ememoryaccess
-Z49 w1701082562
-R1
-R2
-R3
-R39
-R4
-R5
-R33
+R23
+!i122 148
 R6
-Z50 8C:\intelFPGA\18.1\Project\memoryAccess.vhd
-Z51 FC:\intelFPGA\18.1\Project\memoryAccess.vhd
+Z49 8D:/arck/Pipelined-processor/initialize_memory.vhd
+Z50 FD:/arck/Pipelined-processor/initialize_memory.vhd
 l0
-L9
-VZaN>ME?Wem<md=VJElN::2
-!s100 WN4dKzL@lh?ea[^EBCMDJ0
-R9
+Z51 L16 1
+VfZ07j2co8588>cjHdELCn0
+!s100 0PI81e789A[YcbK4U]mg_3
+R7
 33
-Z52 !s110 1701082651
+Z52 !s110 1701440956
 !i10b 1
-Z53 !s108 1701082651.000000
-Z54 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:\intelFPGA\18.1\Project\memoryAccess.vhd|
-Z55 !s107 C:\intelFPGA\18.1\Project\memoryAccess.vhd|
+Z53 !s108 1701440956.000000
+Z54 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/initialize_memory.vhd|
+Z55 !s107 D:/arck/Pipelined-processor/initialize_memory.vhd|
 !i113 1
-R14
-R15
-Async_memoryaccess
-R1
-R2
+R10
+R11
+Aarch_memory_initialization
 R3
-R39
+R2
+R22
 R4
 R5
-R33
-DEx4 work 12 memoryaccess 0 22 ZaN>ME?Wem<md=VJElN::2
-l22
-L20
-V18?`eB6VK<^5ghNkCT2Qd3
-!s100 A[S@[QCd?cLj]AZ2EaY=G3
-R9
+R23
+DEx4 work 17 initialize_memory 0 22 fZ07j2co8588>cjHdELCn0
+!i122 148
+l25
+L23 32
+VXPPMmd3B1hPP;6zYgk;;60
+!s100 UR9Ila?OK[izJN2]I@RPJ2
+R7
 33
 R52
 !i10b 1
@@ -353,133 +320,388 @@ R53
 R54
 R55
 !i113 1
-R14
-R15
-Emux_3bits
-Z56 w1701198669
+R10
+R11
+Einstruction_memory
+Z56 w1701599268
+R1
+R2
+R3
+R22
 R4
 R5
-R6
-Z57 8C:/intelFPGA/18.1/Project/mux_3bits.vhd
-Z58 FC:/intelFPGA/18.1/Project/mux_3bits.vhd
-l0
-L4
-VOfC`<P^PCc=Y^FnBX^EQE2
-!s100 imI_L;@cG1gj9AAjP=C@j2
-R9
-32
-R28
-!i10b 1
-R29
-Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/intelFPGA/18.1/Project/mux_3bits.vhd|
-Z60 !s107 C:/intelFPGA/18.1/Project/mux_3bits.vhd|
-!i113 1
 R23
-R15
+!i122 210
+R6
+Z57 8D:/arck/Pipelined-processor/instruction_memory.vhd
+Z58 FD:/arck/Pipelined-processor/instruction_memory.vhd
+l0
+R26
+VT=kidk:U4S9bU9W]O8Lki3
+!s100 4124nIVAl>2j603Z;^>Oe1
+R7
+33
+Z59 !s110 1701599276
+!i10b 1
+Z60 !s108 1701599276.000000
+Z61 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/instruction_memory.vhd|
+Z62 !s107 D:/arck/Pipelined-processor/instruction_memory.vhd|
+!i113 1
+R10
+R11
+Aarch_instruction_memory
+R1
+R2
+R3
+R22
+R4
+R5
+R23
+DEx4 work 18 instruction_memory 0 22 T=kidk:U4S9bU9W]O8Lki3
+!i122 210
+l22
+L18 30
+V_I1i=1V0aggDhPg^TB:R=3
+!s100 <SZ?c;iO9DL1RhbQ_YzHj2
+R7
+33
+R59
+!i10b 1
+R60
+R61
+R62
+!i113 1
+R10
+R11
+Ememory
+Z63 w1701451790
+R3
+R2
+R22
+R23
+R4
+R5
+!i122 206
+R6
+Z64 8D:/arck/Pipelined-processor/memory.vhd
+Z65 FD:/arck/Pipelined-processor/memory.vhd
+l0
+L13 1
+V<jR5ERP3VBW5BTLo:U5cZ2
+!s100 o44NhmTX_e9<R5mLS_LP>1
+R7
+33
+Z66 !s110 1701454928
+!i10b 1
+Z67 !s108 1701454927.000000
+Z68 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/memory.vhd|
+Z69 !s107 D:/arck/Pipelined-processor/memory.vhd|
+!i113 1
+R10
+R11
+Aarch_memory
+R3
+R2
+R22
+R23
+R4
+R5
+DEx4 work 6 memory 0 22 <jR5ERP3VBW5BTLo:U5cZ2
+!i122 206
+l61
+L32 79
+VGJUnTZ2L@:461G_GnF6IW3
+!s100 =3DCj0<mbe7^I9kYPBC[D1
+R7
+33
+R66
+!i10b 1
+R67
+R68
+R69
+!i113 1
+R10
+R11
+Ememory_access
+Z70 w1701368282
+R1
+R2
+R3
+R22
+R4
+R5
+R23
+!i122 36
+R6
+Z71 8D:/arck/Pipelined-processor/memory_access.vhd
+Z72 FD:/arck/Pipelined-processor/memory_access.vhd
+l0
+L9 1
+V]LgXlJ:9CCUofdI=F:Zl31
+!s100 PVUff]fUI@c67LWLV?OkH3
+R7
+33
+Z73 !s110 1701368529
+!i10b 1
+Z74 !s108 1701368525.000000
+Z75 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/memory_access.vhd|
+Z76 !s107 D:/arck/Pipelined-processor/memory_access.vhd|
+!i113 1
+R10
+R11
+Aarch_memory_access
+R1
+R2
+R3
+R22
+R4
+R5
+R23
+DEx4 work 13 memory_access 0 22 ]LgXlJ:9CCUofdI=F:Zl31
+!i122 36
+l23
+L22 15
+V8mnQgm8CYabf<fLoUzE0L1
+!s100 ZFH^z2nc>EFAickf[H>Ml3
+R7
+33
+R73
+!i10b 1
+R74
+R75
+R76
+!i113 1
+R10
+R11
+Ememory_initialization
+R0
+R3
+R2
+R22
+R4
+R5
+R23
+!i122 3
+R6
+R49
+R50
+l0
+R51
+V[eXce9MnQ[Co7?L3?>UH32
+!s100 iNZ8l1ml0jX:mdj6UR>cf1
+R7
+33
+Z77 !s110 1701353017
+!i10b 1
+Z78 !s108 1701353017.000000
+R54
+R55
+!i113 1
+R10
+R11
+Aarch_memory_initialization
+R3
+R2
+R22
+R4
+R5
+R23
+DEx4 work 21 memory_initialization 0 22 [eXce9MnQ[Co7?L3?>UH32
+!i122 3
+l24
+L22 25
+Vi^n]^5gBLfZ6ZL@czOai73
+!s100 4hETO8<g[5BfU=7_JZmZ^0
+R7
+33
+R77
+!i10b 1
+R78
+R54
+R55
+!i113 1
+R10
+R11
+Emux_3bits
+R0
+R4
+R5
+!i122 194
+R6
+Z79 8D:/arck/Pipelined-processor/mux_3bits.vhd
+Z80 FD:/arck/Pipelined-processor/mux_3bits.vhd
+l0
+L4 1
+Vg?8XD;<nZGIb7>;><Me?`2
+!s100 I<mAS:K>65P5kVPPiCo?A0
+R7
+33
+Z81 !s110 1701451574
+!i10b 1
+Z82 !s108 1701451574.000000
+Z83 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/mux_3bits.vhd|
+Z84 !s107 D:/arck/Pipelined-processor/mux_3bits.vhd|
+!i113 1
+R10
+R11
 Aarch_mux_3bits
 R4
 R5
-DEx4 work 9 mux_3bits 0 22 OfC`<P^PCc=Y^FnBX^EQE2
-l14
-L13
-V:VYjDI>OkU2<HBc=C3feT0
-!s100 DMDZR9PWb[Eb[K8kHT>F:1
-R9
-32
-R28
+DEx4 work 9 mux_3bits 0 22 g?8XD;<nZGIb7>;><Me?`2
+!i122 194
+l13
+L12 6
+VJmQbzR;Xg`FmCkica=Gjj1
+!s100 >bm4ElE5c9IEH=[0Z=<h?2
+R7
+33
+R81
 !i10b 1
-R29
-R59
-R60
+R82
+R83
+R84
 !i113 1
-R23
-R15
+R10
+R11
 Pmy_pkg
 R4
 R5
-R44
-R6
-R45
-R46
-l0
-L4
-VULJR`;A1hBaK7<;WRNCCc0
-!s100 Cl9f^h:]TJX?fUEz?8EDC3
-R9
-33
-R10
-!i10b 1
-R11
-R47
+!i122 148
 R48
+R6
+R49
+R50
+l0
+L4 1
+V;omfTkmf`Pj@flL5kfi^:3
+!s100 I:BjRkaWhbRDd;CSgNdSY1
+R7
+33
+R52
+!i10b 1
+R53
+R54
+R55
 !i113 1
-R14
-R15
+R10
+R11
 Pmy_pkg1
 R4
 R5
-Z61 w1701094266
+!i122 195
+R0
 R6
-Z62 8C:/intelFPGA/18.1/Project/regfile.vhd
-Z63 FC:/intelFPGA/18.1/Project/regfile.vhd
+Z85 8D:/arck/Pipelined-processor/regfile.vhd
+Z86 FD:/arck/Pipelined-processor/regfile.vhd
 l0
-L4
-VcJ2PHWL;?6<aB0<9kS1VF0
-!s100 zOZ;D7X0^7<UVgOX4GA6F3
-R9
+L4 1
+Vje1dNXaZPI<X<UBcO<BIT3
+!s100 i]m_C=A?^l_4nmG>AcT1J0
+R7
 33
-Z64 !s110 1701198687
+Z87 !s110 1701451575
 !i10b 1
-R11
-Z65 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/intelFPGA/18.1/Project/regfile.vhd|
-Z66 !s107 C:/intelFPGA/18.1/Project/regfile.vhd|
+Z88 !s108 1701451575.000000
+Z89 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/regfile.vhd|
+Z90 !s107 D:/arck/Pipelined-processor/regfile.vhd|
 !i113 1
-R14
-R15
+R10
+R11
 Eregister_file
-R61
+R0
 R3
 R2
-R39
+R22
 R4
 R5
-R25
+R32
+!i122 195
 R6
-R62
-R63
+R85
+R86
 l0
-L15
-V>d?l^MEES9lim6cdJ5m?a3
-!s100 o2hcali`@cn;Yn6Y2a_zd3
-R9
+R51
+VIJICPeR0Eg]EH4WU>HSYF1
+!s100 K>hBVL^7_He:Xl1Jjf=VY1
+R7
 33
-R64
+R87
 !i10b 1
-R11
-R65
-R66
+R88
+R89
+R90
 !i113 1
-R14
-R15
+R10
+R11
 Aarch_register_file
 R3
 R2
-R39
+R22
 R4
 R5
-R25
-DEx4 work 13 register_file 0 22 >d?l^MEES9lim6cdJ5m?a3
-l22
-L20
-VP19>oEC>Z;[A`hjNTRd?S3
-!s100 [jinbUAe61<VDKKQD]md21
-R9
+R32
+DEx4 work 13 register_file 0 22 IJICPeR0Eg]EH4WU>HSYF1
+!i122 195
+l23
+L21 24
+VZc>n_G66KaZM59fd^MRoS1
+!s100 IchI_W2Bn=;V@I<G8Yin;3
+R7
 33
-R64
+R87
 !i10b 1
-R11
-R65
-R66
+R88
+R89
+R90
 !i113 1
-R14
-R15
+R10
+R11
+Ewrite_back
+Z91 w1701365968
+R2
+R3
+R1
+R4
+R5
+R32
+!i122 196
+R6
+Z92 8D:/arck/Pipelined-processor/write_back.vhd
+Z93 FD:/arck/Pipelined-processor/write_back.vhd
+l0
+L7 1
+VbjJ7e?ekRUcm4m7S1Ui_n1
+!s100 G9T7AH>d6^VEAo?4fZEFm1
+R7
+33
+R87
+!i10b 1
+R88
+Z94 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/write_back.vhd|
+Z95 !s107 D:/arck/Pipelined-processor/write_back.vhd|
+!i113 1
+R10
+R11
+Aarch_write_back
+R2
+R3
+R1
+R4
+R5
+R32
+DEx4 work 10 write_back 0 22 bjJ7e?ekRUcm4m7S1Ui_n1
+!i122 196
+l17
+L15 6
+VCBVKK;H>M:>oO[KKFQlNZ1
+!s100 QoYg3`6Hf2T3WUX[YVH5P2
+R7
+33
+R87
+!i10b 1
+R88
+R94
+R95
+!i113 1
+R10
+R11

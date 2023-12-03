@@ -6,8 +6,9 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY decode IS
   PORT (
+    clk : IN STD_LOGIC;
     instruction : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    registers : IN register_array(0 TO 6)(31 DOWNTO 0);
+    registers : IN register_array(0 TO 7)(31 DOWNTO 0);
     src2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     src1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -33,6 +34,8 @@ END ENTITY;
 ARCHITECTURE arch_decode OF decode IS
   COMPONENT control_unit IS
     PORT (
+
+      clk : IN STD_LOGIC;
       opcode : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
       alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       memory_read : OUT STD_LOGIC;
@@ -60,32 +63,43 @@ ARCHITECTURE arch_decode OF decode IS
   SIGNAL reg_dest_selector : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
 BEGIN
-  control : control_unit PORT MAP(instruction(31 DOWNTO 23), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz);
+  control : control_unit PORT MAP(clk, instruction(31 DOWNTO 23), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz);
 
-  deocode_unit : PROCESS
+  deocode_unit : PROCESS (clk)
 
   BEGIN
+    IF clk'event AND clk = '0' THEN
+      src1 <= instruction(22 DOWNTO 20);
+      --mux to choose src2 
+      IF (read_src2 = '1') THEN
+        src2 <= instruction(19 DOWNTO 17);
+      ELSE
+        src2 <= instruction(16 DOWNTO 14);
+      END IF;
 
-    IF (read_src2 = '1') THEN
-      src2 <= instruction(19 DOWNTO 17);
-    ELSE
-      src2 <= instruction(16 DOWNTO 14);
+      --mux to choose reg distination
+      IF (reg_dest_selector = "01") THEN
+        reg_dest <= instruction(22 DOWNTO 20);
+      ELSIF (reg_dest_selector = "10") THEN
+        reg_dest <= instruction(19 DOWNTO 17);
+      ELSIF (reg_dest_selector = "11") THEN
+        reg_dest <= instruction(16 DOWNTO 14);
+      ELSE
+        reg_dest <= (OTHERS => '0');
+      END IF;
+
+      --sign extend tor imm
+      IF (instruction(15) = '0') THEN
+        imm_value <= "0000000000000000" & instruction(15 DOWNTO 0);
+      ELSE
+        imm_value <= "1111111111111111" & instruction(15 DOWNTO 0);
+      END IF;
+
+      -- read from reg file
+
     END IF;
-
-    IF (reg_dest_selector = "01") THEN
-      reg_dest <= instruction(22 DOWNTO 20);
-    ELSIF (reg_dest_selector = "10") THEN
-      reg_dest <= instruction(19 DOWNTO 17);
-    ELSIF (reg_dest_selector = "11") THEN
-      reg_dest <= instruction(16 DOWNTO 14);
-    ELSE
-      reg_dest <= (OTHERS => '0');
-    END IF;
-
-    imm_value <= "0000000000000000" & instruction(15 DOWNTO 0);
-    src1_data <= registers(to_integer(unsigned(src1)));
-    src2_data <= registers(to_integer(unsigned(src2)));
-    WAIT;
-
   END PROCESS;
+  src1_data <= registers(to_integer(unsigned(src1)));
+  src2_data <= registers(to_integer(unsigned(src2)));
+
 END ARCHITECTURE;

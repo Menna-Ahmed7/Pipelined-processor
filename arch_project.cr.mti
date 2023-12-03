@@ -1,0 +1,86 @@
+D:/arck/Pipelined-processor/mux_3bits.vhd {1 {vcom -work work -2008 -explicit -stats=none D:/arck/Pipelined-processor/mux_3bits.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mux_3bits
+-- Compiling architecture arch_mux_3bits of mux_3bits
+
+} {} {}} D:/arck/Pipelined-processor/instruction_memory.vhd {1 {vcom -work work -2008 -explicit -stats=none D:/arck/Pipelined-processor/instruction_memory.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package my_pkg
+-- Loading package std_logic_textio
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity instruction_memory
+-- Compiling architecture arch_instruction_memory of instruction_memory
+
+} {} {}} D:/arck/Pipelined-processor/data_memory.vhd {1 {vcom -work work -2008 -explicit -stats=none D:/arck/Pipelined-processor/data_memory.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package my_pkg
+-- Loading package std_logic_textio
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity data_memory
+-- Compiling architecture arch_data_memory of data_memory
+
+} {} {}} D:/arck/Pipelined-processor/ALU.vhd {0 {vcom -work work -2008 -explicit -stats=none D:/arck/Pipelined-processor/ALU.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity alu
+-- Compiling architecture arch_alu of alu
+** Error: D:/arck/Pipelined-processor/ALU.vhd(32): Cannot drive signal 'src2' of mode IN.
+** Error: D:/arck/Pipelined-processor/ALU.vhd(32): (vcom-1604) No feasible entries for subprogram "RESIZE" with expected return type "STD_LOGIC_VECTOR".
+   Visible subprograms are:
+      (explicit) NUMERIC_STD.RESIZE[UNRESOLVED_SIGNED, NATURAL return UNRESOLVED_SIGNED] at $MODEL_TECH/../vhdl_src/ieee/mti_numeric_std.vhd(1415)
+      (explicit) NUMERIC_STD.RESIZE[UNRESOLVED_UNSIGNED, NATURAL return UNRESOLVED_UNSIGNED] at $MODEL_TECH/../vhdl_src/ieee/mti_numeric_std.vhd(1425)
+      (explicit) NUMERIC_STD.RESIZE[UNRESOLVED_UNSIGNED, UNRESOLVED_UNSIGNED return UNRESOLVED_UNSIGNED] at $MODEL_TECH/../vhdl_src/ieee/mti_numeric_std.vhd(1434)
+      (explicit) NUMERIC_STD.RESIZE[UNRESOLVED_SIGNED, UNRESOLVED_SIGNED return UNRESOLVED_SIGNED] at $MODEL_TECH/../vhdl_src/ieee/mti_numeric_std.vhd(1439)
+** Warning: D:/arck/Pipelined-processor/ALU.vhd(33): (vcom-1272) Length of expected is 33; length of actual is 32.
+** Warning: D:/arck/Pipelined-processor/ALU.vhd(37): (vcom-1272) Length of expected is 33; length of actual is 32.
+** Warning: D:/arck/Pipelined-processor/ALU.vhd(38): (vcom-1272) Length of expected is 33; length of actual is 32.
+** Warning: D:/arck/Pipelined-processor/ALU.vhd(39): (vcom-1272) Length of expected is 33; length of actual is 32.
+** Warning: D:/arck/Pipelined-processor/ALU.vhd(40): (vcom-1272) Length of expected is 33; length of actual is 32.
+** Warning: D:/arck/Pipelined-processor/ALU.vhd(41): (vcom-1272) Length of expected is 33; length of actual is 32.
+** Note: D:/arck/Pipelined-processor/ALU.vhd(59): VHDL Compiler exiting
+
+} {11.0 13.0} {}} D:/arck/Pipelined-processor/alu_stage.vhd {1 {vcom -work work -2008 -explicit -stats=none D:/arck/Pipelined-processor/alu_stage.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity alu_stage
+-- Compiling architecture arch_alu_stage of alu_stage
+
+} {} {}} D:/arck/Pipelined-processor/regfile.vhd {1 {vcom -work work -2008 -explicit -stats=none D:/arck/Pipelined-processor/regfile.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package my_pkg1
+-- Loading package my_pkg1
+-- Loading package std_logic_textio
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity register_file
+-- Compiling architecture arch_register_file of register_file
+
+} {} {}} D:/arck/Pipelined-processor/processor.vhd {0 {vcom -work work -2008 -explicit -stats=none D:/arck/Pipelined-processor/processor.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+** Error (suppressible): D:/arck/Pipelined-processor/processor.vhd(2): (vcom-1491) Empty source files.
+
+} {} {}}
