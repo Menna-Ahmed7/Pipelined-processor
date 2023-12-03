@@ -16,7 +16,7 @@ Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z3 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 189
+!i122 231
 Z6 dD:/arck/Pipelined-processor
 8D:/arck/Pipelined-processor/ALU.vhd
 FD:/arck/Pipelined-processor/ALU.vhd
@@ -26,63 +26,63 @@ V<V`[;]=WJa2z0=Il01Fg;3
 !s100 ^>bQ54V0i10nY68mVUhT90
 Z7 OV;C;2020.1;71
 33
-Z8 !s110 1701451568
+!s110 1701607271
 !i10b 1
-Z9 !s108 1701451568.000000
+!s108 1701607271.000000
 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/ALU.vhd|
 !s107 D:/arck/Pipelined-processor/ALU.vhd|
 !i113 1
-Z10 o-work work -2008 -explicit
-Z11 tExplicit 1 CvgOpt 0
+Z8 o-work work -2008 -explicit
+Z9 tExplicit 1 CvgOpt 0
 Ealu_stage
 R0
 R4
 R5
-!i122 190
+!i122 232
 R6
-Z12 8D:/arck/Pipelined-processor/alu_stage.vhd
-Z13 FD:/arck/Pipelined-processor/alu_stage.vhd
+Z10 8D:/arck/Pipelined-processor/alu_stage.vhd
+Z11 FD:/arck/Pipelined-processor/alu_stage.vhd
 l0
 L4 1
 Vcb?h2MUiF8735LgUY:R5F2
 !s100 Y6[<4hjPT9>]OQej`BYM@0
 R7
 33
-R8
+Z12 !s110 1701607272
 !i10b 1
-R9
+Z13 !s108 1701607272.000000
 Z14 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/alu_stage.vhd|
 Z15 !s107 D:/arck/Pipelined-processor/alu_stage.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_alu_stage
 R4
 R5
 DEx4 work 9 alu_stage 0 22 cb?h2MUiF8735LgUY:R5F2
-!i122 190
+!i122 232
 l36
 L14 35
 Vk;7beba?oO]ZJ?CB@J`_m3
 !s100 H]zmdMWa74=W2VRKTmnj61
 R7
 33
-R8
+R12
 !i10b 1
-R9
+R13
 R14
 R15
 !i113 1
-R10
-R11
+R8
+R9
 Econtrol_unit
-Z16 w1701363810
+Z16 w1701491864
 R2
 R3
 R1
 R4
 R5
-!i122 191
+!i122 233
 R6
 Z17 8D:/arck/Pipelined-processor/control_unit.vhd
 Z18 FD:/arck/Pipelined-processor/control_unit.vhd
@@ -92,14 +92,14 @@ VL6Mh7ZKWWX;@0ez>3@M8?1
 !s100 H[A]_1cF;T5]CW[FLnO;X3
 R7
 33
-R8
+R12
 !i10b 1
-R9
+R13
 Z19 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/control_unit.vhd|
 Z20 !s107 D:/arck/Pipelined-processor/control_unit.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_control_unit
 R2
 R3
@@ -107,23 +107,23 @@ R1
 R4
 R5
 DEx4 work 12 control_unit 0 22 L6Mh7ZKWWX;@0ez>3@M8?1
-!i122 191
+!i122 233
 l33
 L31 198
 Vh3^HHdM1Ri?b5=GK6cCiL0
 !s100 5nH=EY<gKX:_h2OF4HO4D0
 R7
 33
-R8
+R12
 !i10b 1
-R9
+R13
 R19
 R20
 !i113 1
-R10
-R11
+R8
+R9
 Edata_memory
-Z21 w1701454901
+Z21 w1701607248
 R1
 R2
 R3
@@ -131,24 +131,24 @@ Z22 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
 R4
 R5
 Z23 DPx4 work 6 my_pkg 0 22 ;omfTkmf`Pj@flL5kfi^:3
-!i122 205
+!i122 240
 R6
 Z24 8D:/arck/Pipelined-processor/data_memory.vhd
 Z25 FD:/arck/Pipelined-processor/data_memory.vhd
 l0
 Z26 L10 1
-V`KCD_V3mLi00dAoWmk>g33
-!s100 UzCX3=a<VOAbh:W54_81h1
+VD1i?YokSEf@?hno3k3PNB1
+!s100 >EQ[XYlbkDAh>9=8>AYYM2
 R7
 33
-Z27 !s110 1701454923
+Z27 !s110 1701607277
 !i10b 1
-Z28 !s108 1701454923.000000
+Z28 !s108 1701607277.000000
 Z29 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/data_memory.vhd|
 Z30 !s107 D:/arck/Pipelined-processor/data_memory.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_data_memory
 R1
 R2
@@ -157,12 +157,12 @@ R22
 R4
 R5
 R23
-DEx4 work 11 data_memory 0 22 `KCD_V3mLi00dAoWmk>g33
-!i122 205
-l32
-L26 59
-V^an=l6h]3]=EUmP^Lc<:e1
-!s100 kkD4`;bEeNXCR1EiWObAH2
+DEx4 work 11 data_memory 0 22 D1i?YokSEf@?hno3k3PNB1
+!i122 240
+l27
+L21 38
+VegNae>;S:9ARngMQa6N^z0
+!s100 Iz8le7F;18=Glg<AIHS[G2
 R7
 33
 R27
@@ -171,17 +171,17 @@ R28
 R29
 R30
 !i113 1
-R10
-R11
+R8
+R9
 Edecode
-Z31 w1701371978
+Z31 w1701491871
 R2
 R3
 R1
 R4
 R5
 Z32 DPx4 work 7 my_pkg1 0 22 je1dNXaZPI<X<UBcO<BIT3
-!i122 192
+!i122 234
 R6
 Z33 8D:/arck/Pipelined-processor/decode.vhd
 Z34 FD:/arck/Pipelined-processor/decode.vhd
@@ -191,14 +191,14 @@ V5>fMMTgdT=oc2_ejFg?C12
 !s100 c;fD^1BUNN1jkLPdaYo^10
 R7
 33
-Z35 !s110 1701451569
+Z35 !s110 1701607273
 !i10b 1
-Z36 !s108 1701451569.000000
+Z36 !s108 1701607273.000000
 Z37 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/decode.vhd|
 Z38 !s107 D:/arck/Pipelined-processor/decode.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_decode
 R2
 R3
@@ -207,7 +207,7 @@ R4
 R5
 R32
 DEx4 work 6 decode 0 22 5>fMMTgdT=oc2_ejFg?C12
-!i122 192
+!i122 234
 l65
 L34 72
 V<m42[7DPj^82nf5^k?[g53
@@ -220,8 +220,8 @@ R36
 R37
 R38
 !i113 1
-R10
-R11
+R8
+R9
 Efetch
 Z39 w1701600015
 R2
@@ -231,7 +231,7 @@ R32
 R4
 R5
 R23
-!i122 214
+!i122 235
 R6
 Z40 8D:/arck/Pipelined-processor/fetch.vhd
 Z41 FD:/arck/Pipelined-processor/fetch.vhd
@@ -241,14 +241,14 @@ VeaA=g5;8;5GQP0@;Wn`A;1
 !s100 WF_>QY7z30RP1AU>D4ChE1
 R7
 33
-Z42 !s110 1701600024
+Z42 !s110 1701607274
 !i10b 1
-Z43 !s108 1701600024.000000
-Z44 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/fetch.vhd|
-Z45 !s107 D:/arck/Pipelined-processor/fetch.vhd|
+R36
+Z43 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/fetch.vhd|
+Z44 !s107 D:/arck/Pipelined-processor/fetch.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_fetch
 R2
 R3
@@ -257,24 +257,24 @@ R32
 R4
 R5
 R23
-Z46 DEx4 work 5 fetch 0 22 eaA=g5;8;5GQP0@;Wn`A;1
-!i122 214
+DEx4 work 5 fetch 0 22 eaA=g5;8;5GQP0@;Wn`A;1
+!i122 235
 l35
-Z47 L21 49
+L21 49
 VnhYRaKWh55V2_0JZ<Oi;O2
 !s100 ZhH40zOVMSI<U;2kWIW<G0
 R7
 33
 R42
 !i10b 1
+R36
 R43
 R44
-R45
 !i113 1
-R10
-R11
+R8
+R9
 Einitialize_memory
-Z48 w1701439857
+Z45 w1701439857
 R3
 R2
 R22
@@ -283,22 +283,22 @@ R5
 R23
 !i122 148
 R6
-Z49 8D:/arck/Pipelined-processor/initialize_memory.vhd
-Z50 FD:/arck/Pipelined-processor/initialize_memory.vhd
+Z46 8D:/arck/Pipelined-processor/initialize_memory.vhd
+Z47 FD:/arck/Pipelined-processor/initialize_memory.vhd
 l0
-Z51 L16 1
+Z48 L16 1
 VfZ07j2co8588>cjHdELCn0
 !s100 0PI81e789A[YcbK4U]mg_3
 R7
 33
-Z52 !s110 1701440956
+Z49 !s110 1701440956
 !i10b 1
-Z53 !s108 1701440956.000000
-Z54 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/initialize_memory.vhd|
-Z55 !s107 D:/arck/Pipelined-processor/initialize_memory.vhd|
+Z50 !s108 1701440956.000000
+Z51 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/initialize_memory.vhd|
+Z52 !s107 D:/arck/Pipelined-processor/initialize_memory.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_memory_initialization
 R3
 R2
@@ -314,16 +314,16 @@ VXPPMmd3B1hPP;6zYgk;;60
 !s100 UR9Ila?OK[izJN2]I@RPJ2
 R7
 33
-R52
+R49
 !i10b 1
-R53
-R54
-R55
+R50
+R51
+R52
 !i113 1
-R10
-R11
+R8
+R9
 Einstruction_memory
-Z56 w1701599268
+Z53 w1701599268
 R1
 R2
 R3
@@ -331,24 +331,24 @@ R22
 R4
 R5
 R23
-!i122 210
+!i122 241
 R6
-Z57 8D:/arck/Pipelined-processor/instruction_memory.vhd
-Z58 FD:/arck/Pipelined-processor/instruction_memory.vhd
+Z54 8D:/arck/Pipelined-processor/instruction_memory.vhd
+Z55 FD:/arck/Pipelined-processor/instruction_memory.vhd
 l0
 R26
 VT=kidk:U4S9bU9W]O8Lki3
 !s100 4124nIVAl>2j603Z;^>Oe1
 R7
 33
-Z59 !s110 1701599276
+Z56 !s110 1701607278
 !i10b 1
-Z60 !s108 1701599276.000000
-Z61 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/instruction_memory.vhd|
-Z62 !s107 D:/arck/Pipelined-processor/instruction_memory.vhd|
+Z57 !s108 1701607278.000000
+Z58 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/instruction_memory.vhd|
+Z59 !s107 D:/arck/Pipelined-processor/instruction_memory.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_instruction_memory
 R1
 R2
@@ -358,72 +358,72 @@ R4
 R5
 R23
 DEx4 work 18 instruction_memory 0 22 T=kidk:U4S9bU9W]O8Lki3
-!i122 210
+!i122 241
 l22
 L18 30
 V_I1i=1V0aggDhPg^TB:R=3
 !s100 <SZ?c;iO9DL1RhbQ_YzHj2
 R7
 33
-R59
+R56
 !i10b 1
-R60
-R61
-R62
+R57
+R58
+R59
 !i113 1
-R10
-R11
+R8
+R9
 Ememory
-Z63 w1701451790
-R3
-R2
+Z60 w1701604566
 R22
-R23
+R2
+R3
+Z61 DPx4 work 6 my_pkg 0 22 Y?m4o;^KKA3hBMZ>1>PQb2
 R4
 R5
-!i122 206
+!i122 276
 R6
-Z64 8D:/arck/Pipelined-processor/memory.vhd
-Z65 FD:/arck/Pipelined-processor/memory.vhd
+Z62 8D:/arck/Pipelined-processor/memory.vhd
+Z63 FD:/arck/Pipelined-processor/memory.vhd
 l0
 L13 1
-V<jR5ERP3VBW5BTLo:U5cZ2
-!s100 o44NhmTX_e9<R5mLS_LP>1
+ViTdXXGo@dlIme]<66?`211
+!s100 BO4S2`DnNY47PETT]=n2>3
 R7
 33
-Z66 !s110 1701454928
+Z64 !s110 1701617993
 !i10b 1
-Z67 !s108 1701454927.000000
-Z68 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/memory.vhd|
-Z69 !s107 D:/arck/Pipelined-processor/memory.vhd|
+Z65 !s108 1701617993.000000
+Z66 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/memory.vhd|
+Z67 !s107 D:/arck/Pipelined-processor/memory.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_memory
-R3
-R2
 R22
-R23
+R2
+R3
+R61
 R4
 R5
-DEx4 work 6 memory 0 22 <jR5ERP3VBW5BTLo:U5cZ2
-!i122 206
-l61
-L32 79
-VGJUnTZ2L@:461G_GnF6IW3
-!s100 =3DCj0<mbe7^I9kYPBC[D1
+DEx4 work 6 memory 0 22 iTdXXGo@dlIme]<66?`211
+!i122 276
+l52
+L32 59
+VN7J8ICDBS?17O8C6^dHo_0
+!s100 WZQ7k13dL??mJ6DmmKdBW3
 R7
 33
-R66
+R64
 !i10b 1
+R65
+R66
 R67
-R68
-R69
 !i113 1
-R10
-R11
+R8
+R9
 Ememory_access
-Z70 w1701368282
+Z68 w1701368282
 R1
 R2
 R3
@@ -433,22 +433,22 @@ R5
 R23
 !i122 36
 R6
-Z71 8D:/arck/Pipelined-processor/memory_access.vhd
-Z72 FD:/arck/Pipelined-processor/memory_access.vhd
+Z69 8D:/arck/Pipelined-processor/memory_access.vhd
+Z70 FD:/arck/Pipelined-processor/memory_access.vhd
 l0
 L9 1
 V]LgXlJ:9CCUofdI=F:Zl31
 !s100 PVUff]fUI@c67LWLV?OkH3
 R7
 33
-Z73 !s110 1701368529
+Z71 !s110 1701368529
 !i10b 1
-Z74 !s108 1701368525.000000
-Z75 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/memory_access.vhd|
-Z76 !s107 D:/arck/Pipelined-processor/memory_access.vhd|
+Z72 !s108 1701368525.000000
+Z73 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/memory_access.vhd|
+Z74 !s107 D:/arck/Pipelined-processor/memory_access.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_memory_access
 R1
 R2
@@ -465,14 +465,14 @@ V8mnQgm8CYabf<fLoUzE0L1
 !s100 ZFH^z2nc>EFAickf[H>Ml3
 R7
 33
-R73
+R71
 !i10b 1
+R72
+R73
 R74
-R75
-R76
 !i113 1
-R10
-R11
+R8
+R9
 Ememory_initialization
 R0
 R3
@@ -483,22 +483,22 @@ R5
 R23
 !i122 3
 R6
-R49
-R50
+R46
+R47
 l0
-R51
+R48
 V[eXce9MnQ[Co7?L3?>UH32
 !s100 iNZ8l1ml0jX:mdj6UR>cf1
 R7
 33
-Z77 !s110 1701353017
+Z75 !s110 1701353017
 !i10b 1
-Z78 !s108 1701353017.000000
-R54
-R55
+Z76 !s108 1701353017.000000
+R51
+R52
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_memory_initialization
 R3
 R2
@@ -514,174 +514,180 @@ Vi^n]^5gBLfZ6ZL@czOai73
 !s100 4hETO8<g[5BfU=7_JZmZ^0
 R7
 33
-R77
+R75
 !i10b 1
-R78
-R54
-R55
+R76
+R51
+R52
 !i113 1
-R10
-R11
+R8
+R9
 Emux_3bits
 R0
 R4
 R5
-!i122 194
+!i122 237
 R6
-Z79 8D:/arck/Pipelined-processor/mux_3bits.vhd
-Z80 FD:/arck/Pipelined-processor/mux_3bits.vhd
+Z77 8D:/arck/Pipelined-processor/mux_3bits.vhd
+Z78 FD:/arck/Pipelined-processor/mux_3bits.vhd
 l0
 L4 1
 Vg?8XD;<nZGIb7>;><Me?`2
 !s100 I<mAS:K>65P5kVPPiCo?A0
 R7
 33
-Z81 !s110 1701451574
+Z79 !s110 1701607275
 !i10b 1
-Z82 !s108 1701451574.000000
-Z83 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/mux_3bits.vhd|
-Z84 !s107 D:/arck/Pipelined-processor/mux_3bits.vhd|
+Z80 !s108 1701607275.000000
+Z81 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/mux_3bits.vhd|
+Z82 !s107 D:/arck/Pipelined-processor/mux_3bits.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_mux_3bits
 R4
 R5
 DEx4 work 9 mux_3bits 0 22 g?8XD;<nZGIb7>;><Me?`2
-!i122 194
+!i122 237
 l13
 L12 6
 VJmQbzR;Xg`FmCkica=Gjj1
 !s100 >bm4ElE5c9IEH=[0Z=<h?2
 R7
 33
-R81
+R79
 !i10b 1
+R80
+R81
 R82
-R83
-R84
 !i113 1
-R10
-R11
+R8
+R9
 Pmy_pkg
+R2
+R3
 R4
 R5
-!i122 148
-R48
+!i122 277
+Z83 w1701617982
 R6
-R49
-R50
+Z84 8D:/arck/Pipelined-processor/regfile.vhd
+Z85 FD:/arck/Pipelined-processor/regfile.vhd
 l0
-L4 1
-V;omfTkmf`Pj@flL5kfi^:3
-!s100 I:BjRkaWhbRDd;CSgNdSY1
+L5 1
+VY?m4o;^KKA3hBMZ>1>PQb2
+!s100 6Q66zJ>MV5mN]6jj6T@ji1
 R7
 33
-R52
+Z86 !s110 1701617998
 !i10b 1
-R53
-R54
-R55
+Z87 !s108 1701617997.000000
+Z88 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/regfile.vhd|
+Z89 !s107 D:/arck/Pipelined-processor/regfile.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Pmy_pkg1
 R4
 R5
-!i122 195
-R0
+DPx4 work 6 my_pkg 0 22 :=[`WcIO9`;lAOfo56D1R2
+DPx4 work 7 my_pkg1 0 22 D0RYmdW<52fJNgc[PcIiO1
+!i122 269
+w1701617243
 R6
-Z85 8D:/arck/Pipelined-processor/regfile.vhd
-Z86 FD:/arck/Pipelined-processor/regfile.vhd
-l0
-L4 1
-Vje1dNXaZPI<X<UBcO<BIT3
-!s100 i]m_C=A?^l_4nmG>AcT1J0
-R7
-33
-Z87 !s110 1701451575
-!i10b 1
-Z88 !s108 1701451575.000000
-Z89 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/regfile.vhd|
-Z90 !s107 D:/arck/Pipelined-processor/regfile.vhd|
-!i113 1
-R10
-R11
-Eregister_file
-R0
-R3
-R2
-R22
-R4
-R5
-R32
-!i122 195
-R6
+R84
 R85
-R86
 l0
-R51
-VIJICPeR0Eg]EH4WU>HSYF1
-!s100 K>hBVL^7_He:Xl1Jjf=VY1
+L6 1
+VnFo8@ifkQ_^Hd<e>k;mBX1
+!s100 A`kQ8nzW_kJREgSooXKR>0
 R7
 33
-R87
+!s110 1701617254
 !i10b 1
+!s108 1701617254.000000
 R88
 R89
-R90
 !i113 1
-R10
-R11
-Aarch_register_file
-R3
-R2
+R8
+R9
+Eregister_file
+R83
+R1
 R22
+R2
+R3
 R4
 R5
-R32
-DEx4 work 13 register_file 0 22 IJICPeR0Eg]EH4WU>HSYF1
-!i122 195
-l23
-L21 24
-VZc>n_G66KaZM59fd^MRoS1
-!s100 IchI_W2Bn=;V@I<G8Yin;3
+R61
+!i122 277
+R6
+R84
+R85
+l0
+L18 1
+VUWU;ZN^b:86e=VjdOYDi63
+!s100 k>z3ZCY9zMTbNAz;<NjS91
 R7
 33
-R87
+R86
 !i10b 1
+R87
 R88
 R89
-R90
 !i113 1
-R10
-R11
+R8
+R9
+Aarch_register_file
+R1
+R22
+R2
+R3
+R4
+R5
+R61
+DEx4 work 13 register_file 0 22 UWU;ZN^b:86e=VjdOYDi63
+!i122 277
+l31
+L28 33
+V]aEaRm<@eBVJ6]>6A4k3g1
+!s100 62?9M^an2Bizko<_B[?I`3
+R7
+33
+R86
+!i10b 1
+R87
+R88
+R89
+!i113 1
+R8
+R9
 Ewrite_back
-Z91 w1701365968
+Z90 w1701491868
 R2
 R3
 R1
 R4
 R5
 R32
-!i122 196
+!i122 239
 R6
-Z92 8D:/arck/Pipelined-processor/write_back.vhd
-Z93 FD:/arck/Pipelined-processor/write_back.vhd
+Z91 8D:/arck/Pipelined-processor/write_back.vhd
+Z92 FD:/arck/Pipelined-processor/write_back.vhd
 l0
 L7 1
 VbjJ7e?ekRUcm4m7S1Ui_n1
 !s100 G9T7AH>d6^VEAo?4fZEFm1
 R7
 33
-R87
+R27
 !i10b 1
-R88
+Z93 !s108 1701607276.000000
 Z94 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/write_back.vhd|
 Z95 !s107 D:/arck/Pipelined-processor/write_back.vhd|
 !i113 1
-R10
-R11
+R8
+R9
 Aarch_write_back
 R2
 R3
@@ -690,18 +696,18 @@ R4
 R5
 R32
 DEx4 work 10 write_back 0 22 bjJ7e?ekRUcm4m7S1Ui_n1
-!i122 196
+!i122 239
 l17
 L15 6
 VCBVKK;H>M:>oO[KKFQlNZ1
 !s100 QoYg3`6Hf2T3WUX[YVH5P2
 R7
 33
-R87
+R27
 !i10b 1
-R88
+R93
 R94
 R95
 !i113 1
-R10
-R11
+R8
+R9

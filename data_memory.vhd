@@ -10,16 +10,11 @@ USE std.textio.ALL;
 ENTITY data_memory IS
     PORT (
         clk : IN STD_LOGIC;
-        we1 : IN STD_LOGIC;
-        we2 : IN STD_LOGIC;
-        re1 : IN STD_LOGIC;
-        re2 : IN STD_LOGIC;
+        we : IN STD_LOGIC;
+        re : IN STD_LOGIC;
         address : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
-        datain1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        stack_memory : IN STD_LOGIC;
-        datain2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        dataout1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
-        dataout2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0')
+        datain : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        dataout : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
 END ENTITY;
 
@@ -50,35 +45,14 @@ BEGIN
             initial_flag <= '0';
 
         ELSIF clk'event AND clk = '0' THEN
-            --stack 
-            IF stack_memory = '1' THEN
-                IF we2 = '1' THEN
-                    ram(to_integer(unsigned(address - one))) <= datain2(31 DOWNTO 16);
-                    ram(to_integer(unsigned(address))) <= datain2(15 DOWNTO 0);
-                    ram(to_integer(unsigned(address - three))) <= datain1(31 DOWNTO 16);
-                    ram(to_integer(unsigned(address - two))) <= datain1(15 DOWNTO 0);
 
-                ELSIF we1 = '1' THEN
-                    ram(to_integer(unsigned(address - one))) <= datain1(31 DOWNTO 16);
-                    ram(to_integer(unsigned(address))) <= datain1(15 DOWNTO 0);
+            IF we = '1' THEN
+                ram(to_integer(unsigned(address))) <= datain(31 DOWNTO 16);
+                ram(to_integer(unsigned(address + one))) <= datain(15 DOWNTO 0);
 
-                ELSIF re2 = '1' THEN
-                    dataout1 <= ram(to_integer(unsigned(address - one))) & ram(to_integer(unsigned(address - two)));
-                    dataout2 <= ram(to_integer(unsigned(address - two - one))) & ram(to_integer(unsigned(address - two - two)));
-                ELSIF re1 = '1' THEN
-                    dataout1 <= ram(to_integer(unsigned(address - one))) & ram(to_integer(unsigned(address - two)));
-                END IF;
-                --memory
-            ELSE
-                IF we1 = '1' THEN
-                    ram(to_integer(unsigned(address))) <= datain1(31 DOWNTO 16);
-                    ram(to_integer(unsigned(address + one))) <= datain1(15 DOWNTO 0);
-
-                ELSIF re1 = '1' THEN
-                    dataout1 <= ram(to_integer(unsigned(address))) & ram(to_integer(unsigned(address + one)));
-                END IF;
+            ELSIF re = '1' THEN
+                dataout <= ram(to_integer(unsigned(address))) & ram(to_integer(unsigned(address + one)));
             END IF;
         END IF;
-
     END PROCESS data_memory;
 END ARCHITECTURE;
