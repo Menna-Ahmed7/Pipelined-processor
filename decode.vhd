@@ -1,4 +1,4 @@
-USE work.my_pkg1.ALL;
+USE work.reg.ALL;
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -7,8 +7,8 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 ENTITY decode IS
   PORT (
     clk : IN STD_LOGIC;
-    instruction : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    registers : IN register_array(0 TO 7)(31 DOWNTO 0);
+    instruction : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    registers : IN registers_block(0 TO 7)(31 DOWNTO 0);
     src2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     src1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -35,8 +35,7 @@ ARCHITECTURE arch_decode OF decode IS
   COMPONENT control_unit IS
     PORT (
 
-      clk : IN STD_LOGIC;
-      opcode : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+      opcode : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       memory_read : OUT STD_LOGIC;
       memory_write : OUT STD_LOGIC;
@@ -63,7 +62,7 @@ ARCHITECTURE arch_decode OF decode IS
   SIGNAL reg_dest_selector : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
 BEGIN
-  control : control_unit PORT MAP(clk, instruction(31 DOWNTO 23), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz);
+  control : control_unit PORT MAP(instruction(15 DOWNTO 11), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz);
 
   deocode_unit : PROCESS (clk)
 
@@ -87,19 +86,8 @@ BEGIN
       ELSE
         reg_dest <= (OTHERS => '0');
       END IF;
-
-      --sign extend tor imm
-      IF (instruction(15) = '0') THEN
-        imm_value <= "0000000000000000" & instruction(15 DOWNTO 0);
-      ELSE
-        imm_value <= "1111111111111111" & instruction(15 DOWNTO 0);
-      END IF;
-
-      -- read from reg file
-
+      src1_data <= registers(to_integer(unsigned(src1)));
+      src2_data <= registers(to_integer(unsigned(src2)));
     END IF;
   END PROCESS;
-  src1_data <= registers(to_integer(unsigned(src1)));
-  src2_data <= registers(to_integer(unsigned(src2)));
-
 END ARCHITECTURE;
