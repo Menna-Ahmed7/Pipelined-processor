@@ -1,4 +1,3 @@
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
@@ -63,7 +62,7 @@ ARCHITECTURE arch_processor OF processor IS
     COMPONENT fetch IS
         PORT (
             clk : IN STD_LOGIC;
-            registers : IN register_array(0 TO 7)(31 DOWNTO 0);
+            registers : IN registers_block(0 TO 7)(31 DOWNTO 0);
             jz : IN STD_LOGIC;
             jz_address : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
             instruction : OUT STD_LOGIC_VECTOR (15 DOWNTO 0) := (OTHERS => 'Z');
@@ -103,22 +102,39 @@ ARCHITECTURE arch_processor OF processor IS
             dataout : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
         );
     END COMPONENT;
-
-    COMPONENT register_file IS
+    COMPONENT fetch_decode IS
         PORT (
-            registers : OUT registers_block(0 TO 7)(31 DOWNTO 0)
+            clk : IN STD_LOGIC;
+            instruction : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+            pc : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            out_instruction : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+
+            out_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+
         );
     END COMPONENT;
 
-    SIGNAL instruction : STD_LOGIC_VECTOR(15 DOWNTO 0);
+    COMPONENT register_file IS
+        PORT (
+
+            registers : OUT registers_block(0 TO 7)(31 DOWNTO 0)
+        );
+    END COMPONENT;
+    SIGNAL in_instruction : STD_LOGIC_VECTOR(15 DOWNTO 0);
+    SIGNAL out_instruction : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL registers : registers_block(0 TO 7)(31 DOWNTO 0);
     SIGNAL src2_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL next_pc : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL out_pc : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL sp : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL CCR : STD_LOGIC_VECTOR(3 DOWNTO 0);
+
     SIGNAL src1_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL alu_signal : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL imm_value : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL memory_read : STD_LOGIC;
     SIGNAL memory_write : STD_LOGIC;
-    SIGNAL write_back : STD_LOGIC;
+    SIGNAL write_back_signal : STD_LOGIC;
     SIGNAL read_src1 : STD_LOGIC;
     SIGNAL io_read : STD_LOGIC;
     SIGNAL io_write : STD_LOGIC;
@@ -131,16 +147,27 @@ ARCHITECTURE arch_processor OF processor IS
     SIGNAL call : STD_LOGIC;
     SIGNAL jz : STD_LOGIC;
     SIGNAL reg_dest : STD_LOGIC_VECTOR(2 DOWNTO 0);
+    SIGNAL out_port : STD_LOGIC_VECTOR(31 DOWNTO 0);
+
+    SIGNAL jz_address : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL memory_pc : STD_LOGIC_VECTOR(31 DOWNTO 0);
 
 BEGIN
-    fetch_instance : PORT MAP fetch(clk, registers, jz, jz_address, instruction, next_pc, rti, ret, memory_pc);
-    decode_instance : PORT MAP decode(clk, instruction, registers, src2_data, src1_data, alu_signal, imm_value, memory_read, memory_write, write_back, read_src1, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, reg_dest);
-    alu_instance : PORT MAP alu_stage (clk, src1, src2, imm, write_back_data, result_in, forward_unit_signal1, forward_unit_signal2, imm_signal, iow_signal, ALU_sig, out_port, result_alu, flags_alu);
-    memory_instance : PORT MAP memory (clk, EA, datain, pc, CCR, memory_write, memory_read, rti, ret, call, pop, push, sp, next_pc, dataout);
-    write_back_instance : PORT MAP write_back (clk, memory_read, registers, dest_address, data_alu, data_memory, out_registers);
+    reg_file_instance : register_file PORT MAP(registers);
 
-END COMPONENT;
+    fetch_instance : fetch PORT MAP(clk, registers, jz, jz_address, in_instruction, next_pc, rti, ret, memory_pc);
 
-processor_p : PROCESS (clk)
+    fetch_decode_instance : fetch_decode PORT MAP(clk, in_instruction, next_pc, out_instruction, out_pc);
 
-END PROCESS;
+    decode_instance : decode PORT MAP(clk, out_instruction, registers, src2_data, src1_data, alu_signal, imm_value, memory_read, memory_write, write_back_signal, read_src1, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, reg_dest);
+
+    -- decode_alu_instance : PORT MAP decode_alu(clk, src2_data, src1_data, alu_signal, imm_value, memory_read, memory_write, write_back, read_src1, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, reg_dest, out_instruction(7 DOWNTO 4), out_src2_data, out_src1_data, out_alu_signal, out_imm_value, out_memory_read, out_memory_write, out_write_back, out_read_src1, out_io_read, out_io_write, out_push, out_pop, out_swap, out_imm, out_RTI, out_RET, out_call, out_jz, out_reg_dest, out_out_instruction);
+
+    -- alu_instance : PORT MAP alu_stage (clk, out_src1_data, out_src2_data, out_imm_value, //write_back_data, // result_in, // forward_unit_signal1, // forward_unit_signal2, out_imm, out_io_write, out_alu_signal, out_port, result_alu, flags_alu);
+    -- alu_memory_instance : PORT MAP alu_memory (clk, out_io_read, out_io_write, out_push, out_pop, out_RTI, out_RET, out_call, out_memory_read, out_memory_write, out_write_back, out_reg_dest, result_alu, flags_alu, out_out_instruction & out_instruction, out_out_memory_read, out_out_write_back, out_out_reg_dest, out_result_alu);
+    -- memory_instance : PORT MAP memory (clk, //EA, //datain, // pc, // CCR, // memory_write, memory_read, rti, ret, call, pop, push, sp, next_pc, dataout);
+    -- memory_write_back_instance : PORT MAP memory_write_back (clk, out_out_memory_read, out_out_write_back, out_out_reg_dest, out_result_alu, dataout, out_out_out_memory_read, out_out_out_write_back, out_out_out_reg_dest, out_out_result_alu, out_dataout);
+    -- write_back_instance : PORT MAP write_back (clk, out_out_out_memory_read, out_out_out_write_back, registers, out_out_out_reg_dest, data_alu, out_out_result_alu, out_registers);
+    -- registers <= out_registers;
+
+END ARCHITECTURE;

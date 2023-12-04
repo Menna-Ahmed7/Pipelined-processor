@@ -18,9 +18,12 @@ USE std.textio.ALL;
 ENTITY register_file IS
     PORT (
         registers : OUT registers_block(0 TO 7)(31 DOWNTO 0)
+
     );
 END ENTITY;
 ARCHITECTURE arch_register_file OF register_file IS
+
+    SIGNAL flag : STD_LOGIC := '1';
 BEGIN
     -- Loading data from the file into memory during initialization
     reg_file : PROCESS
@@ -28,16 +31,19 @@ BEGIN
         VARIABLE file_line : line;
         VARIABLE temp_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
     BEGIN
-        FOR i IN registers'RANGE LOOP
-            IF NOT endfile(reg_file) THEN
-                readline(reg_file, file_line);
-                read(file_line, temp_data);
-                registers(i) <= temp_data;
-            ELSE
-                file_close(reg_file);
+        IF (flag = '1')then 
+            FOR i IN registers'RANGE LOOP
+                IF NOT endfile(reg_file) THEN
+                    readline(reg_file, file_line);
+                    read(file_line, temp_data);
+                    registers(i) <= temp_data;
+                ELSE
+                    file_close(reg_file);
 
-            END IF;
-        END LOOP;
+                END IF;
+            END LOOP;
+            flag <= '0';
+        END IF;
         WAIT;
 
     END PROCESS;

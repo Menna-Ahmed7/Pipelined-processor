@@ -8,6 +8,7 @@ ENTITY write_back IS
     PORT (
         clk : IN STD_LOGIC;
         memory_read : IN STD_LOGIC;
+        write_back : IN STD_LOGIC;
         registers : IN registers_block(0 TO 7)(31 DOWNTO 0);
         dest_address : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         data_alu : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -23,12 +24,14 @@ BEGIN
     BEGIN
         IF clk'event AND clk = '1' THEN
             out_registers <= registers;
-            IF (memory_read = '1') THEN
-                data <= data_memory;
-            ELSE
-                data <= data_alu;
+            IF (write_back = '1')then 
+                IF (memory_read = '1') THEN
+                    data <= data_memory;
+                ELSE
+                    data <= data_alu;
+                END IF;
+                out_registers(to_integer(unsigned(dest_address))) <= data;
             END IF;
-            out_registers(to_integer(unsigned(dest_address))) <= data;
         END IF;
     END PROCESS;
 END ARCHITECTURE;

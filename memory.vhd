@@ -71,7 +71,7 @@ BEGIN
             END IF;
 
             IF (call = '1') THEN
-                written_data <= pc + one;
+                written_data <= pc;
 
             ELSIF (push = '1') THEN
                 written_data <= datain;

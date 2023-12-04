@@ -68,21 +68,21 @@ BEGIN
 
   BEGIN
     IF clk'event AND clk = '0' THEN
-      src1 <= instruction(22 DOWNTO 20);
+      src1 <= instruction(10 DOWNTO 8);
       --mux to choose src2 
       IF (read_src2 = '1') THEN
-        src2 <= instruction(19 DOWNTO 17);
+        src2 <= instruction(7 DOWNTO 5);
       ELSE
-        src2 <= instruction(16 DOWNTO 14);
+        src2 <= instruction(4 DOWNTO 2);
       END IF;
 
       --mux to choose reg distination
       IF (reg_dest_selector = "01") THEN
-        reg_dest <= instruction(22 DOWNTO 20);
+        reg_dest <= instruction(10 DOWNTO 8);
       ELSIF (reg_dest_selector = "10") THEN
-        reg_dest <= instruction(19 DOWNTO 17);
+        reg_dest <= instruction(7 DOWNTO 5);
       ELSIF (reg_dest_selector = "11") THEN
-        reg_dest <= instruction(16 DOWNTO 14);
+        reg_dest <= instruction(4 DOWNTO 2);
       ELSE
         reg_dest <= (OTHERS => '0');
       END IF;
