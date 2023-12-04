@@ -8,6 +8,7 @@ USE std.textio.ALL;
 ENTITY alu_memory IS
     PORT (
         clk : IN STD_LOGIC;
+        src1_data : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
         io_read : IN STD_LOGIC;
         io_write : IN STD_LOGIC;
         push : IN STD_LOGIC;
@@ -21,11 +22,12 @@ ENTITY alu_memory IS
         reg_dest : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
         result_alu : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
         flags_alu : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-        firstbitsinEA : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        EA : IN STD_LOGIC_VECTOR (19 DOWNTO 0);
 
         out_write_back : OUT STD_LOGIC;
         out_reg_dest : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
         out_result_alu : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+        out_flags_alu : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         out_io_read : OUT STD_LOGIC;
         out_io_write : OUT STD_LOGIC;
         out_push : OUT STD_LOGIC;
@@ -35,7 +37,8 @@ ENTITY alu_memory IS
         out_call : OUT STD_LOGIC;
         out_memory_read : OUT STD_LOGIC;
         out_memory_write : OUT STD_LOGIC;
-        out_firstbitsinEA : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+        out_EA : OUT STD_LOGIC_VECTOR (19 DOWNTO 0);
+        out_src1_data : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
     );
 END ENTITY;
 
@@ -56,8 +59,10 @@ BEGIN
             out_call <= call;
             out_memory_read <= memory_read;
             out_memory_write <= memory_write;
-            out_firstbitsinEA <= firstbitsinEA;
-        END IF;
-    END PROCESS;
+            out_EA <= EA;
+            out_src1_data <= src1_data;
+            out_flags_alu <= flags_alu;
+            END IF;
+        END PROCESS;
 
-END ARCHITECTURE;
+    END ARCHITECTURE;

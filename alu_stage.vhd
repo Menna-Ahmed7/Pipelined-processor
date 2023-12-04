@@ -5,7 +5,8 @@ USE ieee.std_logic_1164.ALL;
 ENTITY alu_stage IS
     PORT (
         clk : IN STD_LOGIC;
-        src1, src2, imm, write_back_data, result_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        src1, src2, write_back_data, result_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        imm : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         forward_unit_signal1, forward_unit_signal2 : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
         imm_signal, iow_signal : IN STD_LOGIC;
         ALU_sig : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -16,6 +17,7 @@ ENTITY alu_stage IS
 END ENTITY;
 ARCHITECTURE arch_alu_stage OF alu_stage IS
     SIGNAL tmp : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL tmp_imm : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL src1_alu, src2_alu : STD_LOGIC_VECTOR(31 DOWNTO 0);
 
     COMPONENT mux_3bits IS
@@ -40,8 +42,9 @@ ARCHITECTURE arch_alu_stage OF alu_stage IS
     END COMPONENT;
 
 BEGIN
-    tmp <= src2 WHEN imm_signal = '0' ELSE
-        imm WHEN imm_signal = '1';
+    tmp_imm <= "0000000000000000" & imm;
+        tmp <= src2 WHEN imm_signal = '0' ELSE
+        tmp_imm WHEN imm_signal = '1';
     obj1 : mux_3bits PORT MAP(
         src1, result_in, write_back_data, forward_unit_signal1, src1_alu
     );

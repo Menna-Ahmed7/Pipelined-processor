@@ -1,5 +1,11 @@
-USE work.my_pkg.ALL;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+PACKAGE my_pkg IS
+    TYPE memory_array IS ARRAY(NATURAL RANGE <>) OF STD_LOGIC_VECTOR;
+END PACKAGE;
 
+USE work.my_pkg.ALL;
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_textio.ALL;
@@ -17,7 +23,7 @@ END ENTITY;
 
 ARCHITECTURE arch_instruction_memory OF instruction_memory IS
     SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', OTHERS => '0');
-    SIGNAL ram : memory_array(0 TO 3)(15 DOWNTO 0);
+    SIGNAL ram : memory_array(0 TO 20)(15 DOWNTO 0);
     SIGNAL initial_flag : STD_LOGIC := '1';
 BEGIN
 
@@ -39,7 +45,7 @@ BEGIN
             END LOOP;
             initial_flag <= '0';
 
-        ELSIF clk'event AND clk = '1' THEN
+        ELSIF clk'event AND clk = '0' THEN
             dataout <= ram(to_integer(unsigned(address)));
         END IF;
 

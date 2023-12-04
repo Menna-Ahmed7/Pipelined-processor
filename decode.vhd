@@ -8,11 +8,10 @@ ENTITY decode IS
   PORT (
     clk : IN STD_LOGIC;
     instruction : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-    registers : IN registers_block(0 TO 7)(31 DOWNTO 0);
-    src2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    src1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    -- registers : IN registers_block(0 TO 7)(31 DOWNTO 0);
+    -- src2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    -- src1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-    imm_value : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     memory_read : OUT STD_LOGIC;
     memory_write : OUT STD_LOGIC;
     write_back : OUT STD_LOGIC;
@@ -27,7 +26,9 @@ ENTITY decode IS
     RET : OUT STD_LOGIC;
     call : OUT STD_LOGIC;
     jz : OUT STD_LOGIC;
-    reg_dest : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+    reg_dest : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+    src1 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+    src2 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
   );
 END ENTITY;
 
@@ -55,9 +56,6 @@ ARCHITECTURE arch_decode OF decode IS
       jz : OUT STD_LOGIC
     );
   END COMPONENT;
-
-  SIGNAL src1 : STD_LOGIC_VECTOR(2 DOWNTO 0);
-  SIGNAL src2 : STD_LOGIC_VECTOR(2 DOWNTO 0);
   SIGNAL read_src2 : STD_LOGIC;
   SIGNAL reg_dest_selector : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
@@ -86,8 +84,8 @@ BEGIN
       ELSE
         reg_dest <= (OTHERS => '0');
       END IF;
-      src1_data <= registers(to_integer(unsigned(src1)));
-      src2_data <= registers(to_integer(unsigned(src2)));
+      -- src1_data <= registers(to_integer(unsigned(src1)));
+      -- src2_data <= registers(to_integer(unsigned(src2)));
     END IF;
   END PROCESS;
 END ARCHITECTURE;

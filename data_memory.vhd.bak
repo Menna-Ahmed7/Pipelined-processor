@@ -27,7 +27,7 @@ ARCHITECTURE arch_data_memory OF data_memory IS
     SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', OTHERS => '0');
     SIGNAL two : STD_LOGIC_VECTOR(31 DOWNTO 0) := (1 => '1', OTHERS => '0');
     SIGNAL three : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', 1 => '1', OTHERS => '0');
-    SIGNAL ram : memory_array(0 TO 3)(15 DOWNTO 0);
+    SIGNAL ram : memory_array(0 TO 20)(15 DOWNTO 0);
     SIGNAL initial_flag : STD_LOGIC := '1';
 BEGIN
 

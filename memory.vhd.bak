@@ -28,7 +28,7 @@ ENTITY memory IS
         sp : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         dataout1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        next_ram : OUT memory_array(0 TO 3)(15 DOWNTO 0)
+        next_ram : OUT memory_array(0 TO 20)(15 DOWNTO 0)
 
     );
 END memory;
@@ -37,13 +37,13 @@ ARCHITECTURE arch_memory OF memory IS
     COMPONENT data_memory
         PORT (
             clk : IN STD_LOGIC;
-            ram : IN memory_array(0 TO 3)(15 DOWNTO 0);
+            ram : IN memory_array(0 TO 20)(15 DOWNTO 0);
             we : IN STD_LOGIC;
             re : IN STD_LOGIC;
             address : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
             datain : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
             dataout : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-            next_ram : OUT memory_array(0 TO 3)(15 DOWNTO 0)
+            next_ram : OUT memory_array(0 TO 20)(15 DOWNTO 0)
         );
     END COMPONENT;
 

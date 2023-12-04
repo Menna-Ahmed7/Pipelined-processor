@@ -22,11 +22,11 @@ ARCHITECTURE arch_data_memory OF data_memory IS
     SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', OTHERS => '0');
     SIGNAL two : STD_LOGIC_VECTOR(31 DOWNTO 0) := (1 => '1', OTHERS => '0');
     SIGNAL three : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', 1 => '1', OTHERS => '0');
-    SIGNAL ram : memory_array(0 TO 3)(15 DOWNTO 0);
+    SIGNAL ram : memory_array(0 TO 20)(15 DOWNTO 0);
     SIGNAL initial_flag : STD_LOGIC := '1';
 BEGIN
 
-    data_memory : PROCESS (clk) IS
+    data_memory : PROCESS (clk, address, datain, we, re) IS
         FILE memory_file : text OPEN read_mode IS "data.txt";
         VARIABLE file_line : line;
         VARIABLE temp_data : STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -44,7 +44,7 @@ BEGIN
             END LOOP;
             initial_flag <= '0';
 
-        ELSIF clk'event AND clk = '0' THEN
+        ELSE
 
             IF we = '1' THEN
                 ram(to_integer(unsigned(address))) <= datain(31 DOWNTO 16);

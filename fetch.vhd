@@ -30,7 +30,7 @@ ARCHITECTURE arch_fetch OF fetch IS
     END COMPONENT;
     SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', OTHERS => '0');
     SIGNAL two : STD_LOGIC_VECTOR(31 DOWNTO 0) := (1 => '1', OTHERS => '0');
-    SIGNAL pc : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', 1 => '1', OTHERS => '0');
+    SIGNAL pc : STD_LOGIC_VECTOR(31 DOWNTO 0) := (1 => '1', OTHERS => '0');
     SIGNAL rti_ret : STD_LOGIC;
 BEGIN
 
@@ -38,13 +38,13 @@ BEGIN
     rti_ret <= ret OR rti;
     fetch_unit : PROCESS (clk) IS
     BEGIN
-        IF clk'event AND clk = '0' THEN
+        IF clk'event AND clk = '1' THEN
             ---ret or rti
             IF rti_ret = '1' THEN
                 pc <= memory_pc;
                 next_pc <= memory_pc;
 
-                 --jump or call
+                --jump or call
             ELSIF instruction = "10010" OR instruction = "10011" THEN
                 pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));
                 next_pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));

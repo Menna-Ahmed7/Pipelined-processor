@@ -46,7 +46,7 @@ BEGIN
     -- temp_src2(30 downto 0)&temp_src2(31)  when  ALU_signal="1100";
     alu_unit : PROCESS (clk)
     BEGIN
-        IF clk'event AND clk = '1' THEN
+        IF clk'event AND clk = '0' THEN
             out_port <= src2 WHEN iow_signal = '1';
             result <= temp_result(31 DOWNTO 0);
             flags(2) <= temp_result(32);

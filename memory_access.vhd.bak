@@ -9,7 +9,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY memory_access IS
     PORT (
         clk : IN STD_LOGIC;
-        ram : IN memory_array(0 TO 3)(15 DOWNTO 0);
+        ram : IN memory_array(0 TO 20)(15 DOWNTO 0);
         we : IN STD_LOGIC;
         re : IN STD_LOGIC;
         address : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -18,7 +18,7 @@ ENTITY memory_access IS
 END ENTITY;
 
 ARCHITECTURE arch_memory_access OF memory_access IS
-    SIGNAL temp : memory_array(0 TO 3)(15 DOWNTO 0);
+    SIGNAL temp : memory_array(0 TO 20)(15 DOWNTO 0);
 BEGIN
     temp <= ram;
     PROCESS ((clk)) IS

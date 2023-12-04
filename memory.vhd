@@ -48,6 +48,8 @@ ARCHITECTURE arch_memory OF memory IS
     SIGNAL written_address : STD_LOGIC_VECTOR(11 DOWNTO 0);
     SIGNAL written_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL temp : STD_LOGIC;
+    SIGNAL we1 : STD_LOGIC;
+    SIGNAL re1 : STD_LOGIC;
 
 BEGIN
     one <= (0 => '1', OTHERS => '0');
@@ -55,11 +57,11 @@ BEGIN
     three <= (0 => '1', 1 => '1', OTHERS => '0');
 
     -- memory stage
-    memory_instance : data_memory PORT MAP(clk, memory_write, memory_read, written_address, written_data, dataout);
+    memory_instance : data_memory PORT MAP(clk, we1, re1, written_address, written_data, dataout);
 
     memory : PROCESS (clk)
     BEGIN
-        IF clk'event AND clk = '1' THEN
+        IF clk'event AND clk = '0' THEN
             written_address <= EA(11 DOWNTO 0);
             written_data <= datain;
             --address mux selector
@@ -85,6 +87,8 @@ BEGIN
             END IF;
 
         END IF;
+        we1 <= memory_write;
+        re1 <= memory_read;
     END PROCESS memory;
 
 END ARCHITECTURE;
