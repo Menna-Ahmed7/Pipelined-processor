@@ -10,7 +10,7 @@ z2
 cModel Technology
 dC:/20.1/modelsim_ase/win32aloem
 Ealu
-Z0 w1701693123
+Z0 w1701792637
 Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z3 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
@@ -25,9 +25,9 @@ V5fQmmcZ2lY]FRERW:jlmz3
 !s100 KG3Gk`9;0XWnKo9ia>>;A3
 Z9 OV;C;10.5b;63
 33
-Z10 !s110 1701712228
+Z10 !s110 1701795005
 !i10b 1
-Z11 !s108 1701712228.000000
+Z11 !s108 1701795005.000000
 Z12 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/ALU.vhd|
 Z13 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/ALU.vhd|
 !i113 1
@@ -42,8 +42,8 @@ R5
 DEx4 work 3 alu 0 22 5fQmmcZ2lY]FRERW:jlmz3
 l28
 L19
-VMDabolo]EGMkm?zkWX4RM0
-!s100 IE?G5X^Hj[la0@QZ`2ed62
+V8IP1VXaB0IMn:OZ`MGB:f1
+!s100 k06JEh>=Hda>gRVe`:l:31
 R9
 33
 R10
@@ -55,7 +55,7 @@ R13
 R14
 R15
 Ealu_memory
-Z16 w1701694741
+Z16 w1701793720
 R1
 R2
 R3
@@ -67,8 +67,8 @@ Z18 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/alu_memory.vhd
 Z19 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/alu_memory.vhd
 l0
 L8
-Vi8k_`k=8b?dd=ObUJgNI;0
-!s100 d[hHW^jP^dbiO5ZhQ9oN02
+VWm>117EG_8YKjT@Lc[oS62
+!s100 1g_49ad?]W59QM[9:M74>0
 R9
 33
 R10
@@ -86,11 +86,11 @@ R3
 R17
 R4
 R5
-DEx4 work 10 alu_memory 0 22 i8k_`k=8b?dd=ObUJgNI;0
-l46
-L45
-VMRG`:8EhL6MiN:FUB5HBb3
-!s100 ?V7zzg;<UZe=N5EW=la]F2
+DEx4 work 10 alu_memory 0 22 Wm>117EG_8YKjT@Lc[oS62
+l50
+L49
+V[kT]:m>L9@==7FV2f`7D`1
+!s100 Ggh>4APkT3A;UZB:YkI2`1
 R9
 33
 R10
@@ -102,7 +102,7 @@ R21
 R14
 R15
 Ealu_stage
-Z22 w1701691331
+Z22 w1701794991
 R4
 R5
 R6
@@ -110,8 +110,8 @@ Z23 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/alu_stage.vhd
 Z24 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/alu_stage.vhd
 l0
 L5
-VL`=F5R@bk51HY03ZkK0Wj0
-!s100 GhF1>oAffMYb7Oj6IkR[;2
+VPF>M=]NcPN;WE3gAWIV0n2
+!s100 @MWLXO^naYPE^;78]B[?o1
 R9
 33
 R10
@@ -125,11 +125,11 @@ R15
 Aarch_alu_stage
 R4
 R5
-DEx4 work 9 alu_stage 0 22 L`=F5R@bk51HY03ZkK0Wj0
-l44
-L18
-V_@[KF[VDOHUNSm@?Ezb5L0
-!s100 cVdTb>MXl^@XBlkbDoX3P0
+DEx4 work 9 alu_stage 0 22 PF>M=]NcPN;WE3gAWIV0n2
+l45
+L19
+V^41ZF0YcNEe=bd65J6;M^1
+!s100 =]B`g6=<9gLoRU[H9SRDV3
 R9
 33
 R10
@@ -141,7 +141,7 @@ R26
 R14
 R15
 Econtrol_unit
-Z27 w1701713662
+Z27 w1701784354
 R2
 R3
 R1
@@ -152,15 +152,15 @@ Z28 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/control_unit.vhd
 Z29 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/control_unit.vhd
 l0
 L7
-Vo7BBYinnac=YoaB]VA@7J1
-!s100 dWd8:bRFmXh2PoHWc0[cK3
+VR?6^XFHoF87EmO`d>^4KL3
+!s100 hYH8[O=f@5HCAamdcdJ]13
 R9
 33
-Z30 !s110 1701713683
+Z30 !s110 1701795006
 !i10b 1
-Z31 !s108 1701713682.000000
-Z32 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/control_unit.vhd|
-Z33 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/control_unit.vhd|
+R11
+Z31 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/control_unit.vhd|
+Z32 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/control_unit.vhd|
 !i113 1
 R14
 R15
@@ -170,44 +170,44 @@ R3
 R1
 R4
 R5
-Z34 DEx4 work 12 control_unit 0 22 o7BBYinnac=YoaB]VA@7J1
-l32
-L30
-Veh0Pd?9`F^^R0DcRSLKEJ2
-!s100 UMmdZ`^ioo6UTUO^7D;B82
+DEx4 work 12 control_unit 0 22 R?6^XFHoF87EmO`d>^4KL3
+l34
+L32
+VnLUBSDg40Qgh8Z8zc8UX]3
+!s100 H0A[J5Xk1;Y9S`LCnVACa3
 R9
 33
 R30
 !i10b 1
+R11
 R31
 R32
-R33
 !i113 1
 R14
 R15
 Edata_memory
-Z35 w1701712115
+Z33 w1701765198
 R1
 R17
 R2
 R3
 R4
 R5
-Z36 DPx4 work 6 my_pkg 0 22 B4AL7D]MUHTG8SN07`EfF2
+Z34 DPx4 work 6 my_pkg 0 22 B4AL7D]MUHTG8SN07`EfF2
 R6
-Z37 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd
-Z38 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd
+Z35 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd
+Z36 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd
 l0
 L10
 VD1i?YokSEf@?hno3k3PNB1
 !s100 >EQ[XYlbkDAh>9=8>AYYM2
 R9
 33
-R10
+R30
 !i10b 1
-R11
-Z39 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd|
-Z40 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd|
+Z37 !s108 1701795006.000000
+Z38 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd|
+Z39 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd|
 !i113 1
 R14
 R15
@@ -218,7 +218,7 @@ R2
 R3
 R4
 R5
-R36
+R34
 DEx4 work 11 data_memory 0 22 D1i?YokSEf@?hno3k3PNB1
 l27
 L21
@@ -226,36 +226,36 @@ V`EKmbTEmQP3`R3<Tf:0UP0
 !s100 ?k=Aj`iC0;lbkil?7]Ia^3
 R9
 33
-R10
+R30
 !i10b 1
-R11
+R37
+R38
 R39
-R40
 !i113 1
 R14
 R15
 Edecode
-Z41 w1701700306
+Z40 w1701794964
 R1
 R2
 R3
 R4
 R5
-Z42 DPx4 work 3 reg 0 22 B?cK^]Z?4LQQjfQUJf4D91
+Z41 DPx4 work 3 reg 0 22 B?cK^]Z?4LQQjfQUJf4D91
 R6
-Z43 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode.vhd
-Z44 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode.vhd
+Z42 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode.vhd
+Z43 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode.vhd
 l0
 L7
-VLYHZe]07Z1Kz]faW02_kN2
-!s100 ]nzb7gc7IUP0MDhI=N<=P3
+VW``g8HHabmNA51N<JGXn13
+!s100 IAzmX?S=G[9gfe78=H9PY3
 R9
 33
-Z45 !s110 1701712229
+R30
 !i10b 1
-R11
-Z46 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode.vhd|
-Z47 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode.vhd|
+R37
+Z44 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode.vhd|
+Z45 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode.vhd|
 !i113 1
 R14
 R15
@@ -265,24 +265,24 @@ R2
 R3
 R4
 R5
-R42
-DEx4 work 6 decode 0 22 LYHZe]07Z1Kz]faW02_kN2
-l62
-L35
-V?CYd`R3B<6<<F46M;KNW]1
-!s100 7k5m9jYBH^]Wd6ZjXHPdj2
+R41
+DEx4 work 6 decode 0 22 W``g8HHabmNA51N<JGXn13
+l67
+L38
+VS2lSUjJ]5^=DfNPHC1mK`3
+!s100 o9E36U2S70;0V4NAk7PE_1
 R9
 33
-R45
+R30
 !i10b 1
-R11
-R46
-R47
+R37
+R44
+R45
 !i113 1
 R14
 R15
 Edecode_alu
-Z48 w1701695282
+Z46 w1701794482
 R1
 R2
 R3
@@ -290,19 +290,19 @@ R17
 R4
 R5
 R6
-Z49 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode_alu.vhd
-Z50 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode_alu.vhd
+Z47 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode_alu.vhd
+Z48 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode_alu.vhd
 l0
 L8
-VY7;D1X_^ze^2zA:[bD_d70
-!s100 >@BMQRA`:kTSnP:9NTn031
+Vm@i6XPj;:Ibk0Dbl6L`O<0
+!s100 JZA0TZRRiQ<LhWGO6E<f40
 R9
 33
-R45
+R30
 !i10b 1
-Z51 !s108 1701712229.000000
-Z52 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode_alu.vhd|
-Z53 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode_alu.vhd|
+R37
+Z49 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode_alu.vhd|
+Z50 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/decode_alu.vhd|
 !i113 1
 R14
 R15
@@ -313,72 +313,72 @@ R3
 R17
 R4
 R5
-DEx4 work 10 decode_alu 0 22 Y7;D1X_^ze^2zA:[bD_d70
-l56
-L55
-VZk^;aJo23aclG<OPcD8gV1
-!s100 i>LE]lBZ3VEj[Edj0T9z53
+DEx4 work 10 decode_alu 0 22 m@i6XPj;:Ibk0Dbl6L`O<0
+l61
+L60
+VfWOLFcB1YSCg@gV5bah:>1
+!s100 WPbi`K>VcmL^b8UHZ<oZe3
 R9
 33
-R45
+R30
 !i10b 1
-R51
-R52
-R53
+R37
+R49
+R50
 !i113 1
 R14
 R15
 Efetch
-Z54 w1701687171
-R42
+Z51 w1701798085
+R41
 R1
 R2
 R3
 R4
 R5
-R36
+R34
 R6
-Z55 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch.vhd
-Z56 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch.vhd
+Z52 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch.vhd
+Z53 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch.vhd
 l0
 L8
-V8Ljje7G3YAeL`4F52C]cR1
-!s100 LX`R_5WIKJKFfaA6]KP9G2
+Va<XFdP=FT2J65d]0XfL8;1
+!s100 :loO9CGHXPV2B3FNMAkNc3
 R9
 33
-R45
+Z54 !s110 1701798109
 !i10b 1
-R51
-Z57 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch.vhd|
-Z58 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch.vhd|
+Z55 !s108 1701798108.000000
+Z56 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch.vhd|
+Z57 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch.vhd|
 !i113 1
 R14
 R15
 Aarch_fetch
-R42
+R41
 R1
 R2
 R3
 R4
 R5
-R36
-DEx4 work 5 fetch 0 22 8Ljje7G3YAeL`4F52C]cR1
-l35
-L21
-VJ1_o[nUgJB7=?A[OU8R<?2
-!s100 [;?OI`5IQ8iN<bJNAzdN22
+R34
+DEx4 work 5 fetch 0 22 a<XFdP=FT2J65d]0XfL8;1
+l37
+L22
+VaB<bQn9IjLPWOf1Rnd0QG3
+!s100 l1CQ]OnSF<Y[:WdJ<QBD<3
 R9
 33
-R45
+R54
 !i10b 1
-R51
+R55
+R56
 R57
-R58
 !i113 1
 R14
 R15
 Efetch_decode
-Z59 w1701685940
+Z58 w1701794381
 R1
 R2
 R3
@@ -386,19 +386,19 @@ R17
 R4
 R5
 R6
-Z60 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch_decode.vhd
-Z61 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch_decode.vhd
+Z59 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch_decode.vhd
+Z60 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch_decode.vhd
 l0
 L9
-Vf5MOf2i7eM58?[L2HDC2E3
-!s100 ^K<21O2ic`HHkci]2>l7[2
+VaB>kma@hLTK`FQ62@RHAc1
+!s100 zZGE;7Ij4[4ao9D7hXn`=2
 R9
 33
-R45
+Z61 !s110 1701795007
 !i10b 1
-R51
-Z62 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch_decode.vhd|
-Z63 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch_decode.vhd|
+Z62 !s108 1701795007.000000
+Z63 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch_decode.vhd|
+Z64 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/fetch_decode.vhd|
 !i113 1
 R14
 R15
@@ -409,93 +409,93 @@ R3
 R17
 R4
 R5
-DEx4 work 12 fetch_decode 0 22 f5MOf2i7eM58?[L2HDC2E3
-l21
-L20
-VcD2V=kZed=HPj@65b`g^c2
-!s100 3a@Kc7I0QP2J=5D_?e]Ba2
+DEx4 work 12 fetch_decode 0 22 aB>kma@hLTK`FQ62@RHAc1
+l22
+L21
+Vd`Hn^N?J8zh>i^k]=T=P?0
+!s100 i]]m[Af]16T50BBOL`WW<2
 R9
 33
-R45
+R61
 !i10b 1
-R51
 R62
 R63
+R64
 !i113 1
 R14
 R15
 Einitialize_memory
-Z64 w1701439857
+Z65 w1701439857
 R3
 R2
-Z65 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
+Z66 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
 R4
-Z66 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-Z67 DPx4 work 6 my_pkg 0 22 ;omfTkmf`Pj@flL5kfi^:3
+Z67 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z68 DPx4 work 6 my_pkg 0 22 ;omfTkmf`Pj@flL5kfi^:3
 !i122 148
-Z68 dD:/arck/Pipelined-processor
-Z69 8D:/arck/Pipelined-processor/initialize_memory.vhd
-Z70 FD:/arck/Pipelined-processor/initialize_memory.vhd
+Z69 dD:/arck/Pipelined-processor
+Z70 8D:/arck/Pipelined-processor/initialize_memory.vhd
+Z71 FD:/arck/Pipelined-processor/initialize_memory.vhd
 l0
-Z71 L16 1
+Z72 L16 1
 VfZ07j2co8588>cjHdELCn0
 !s100 0PI81e789A[YcbK4U]mg_3
-Z72 OV;C;2020.1;71
+Z73 OV;C;2020.1;71
 33
-Z73 !s110 1701440956
+Z74 !s110 1701440956
 !i10b 1
-Z74 !s108 1701440956.000000
-Z75 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/initialize_memory.vhd|
-Z76 !s107 D:/arck/Pipelined-processor/initialize_memory.vhd|
+Z75 !s108 1701440956.000000
+Z76 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/initialize_memory.vhd|
+Z77 !s107 D:/arck/Pipelined-processor/initialize_memory.vhd|
 !i113 1
 R14
 R15
 Aarch_memory_initialization
 R3
 R2
-R65
-R4
 R66
+R4
 R67
+R68
 DEx4 work 17 initialize_memory 0 22 fZ07j2co8588>cjHdELCn0
 !i122 148
 l25
 L23 32
 VXPPMmd3B1hPP;6zYgk;;60
 !s100 UR9Ila?OK[izJN2]I@RPJ2
-R72
-33
 R73
-!i10b 1
+33
 R74
+!i10b 1
 R75
 R76
+R77
 !i113 1
 R14
 R15
 Einstruction_memory
-Z77 w1701687972
+Z78 w1701794305
 R1
 R17
 R2
 R3
 R4
 R5
-R36
+R34
 R6
-Z78 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd
-Z79 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd
+Z79 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd
+Z80 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd
 l0
 L16
 Va_aPQP7cE@g@fJE=SY41i3
 !s100 8CYnbb0=Ze`56X>ZR5YKA3
 R9
 33
-R45
+R61
 !i10b 1
-R51
-Z80 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd|
-Z81 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd|
+R62
+Z81 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd|
+Z82 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd|
 !i113 1
 R14
 R15
@@ -506,7 +506,7 @@ R2
 R3
 R4
 R5
-R36
+R34
 DEx4 work 18 instruction_memory 0 22 a_aPQP7cE@g@fJE=SY41i3
 l28
 L24
@@ -514,226 +514,228 @@ VJaAR??3bK^6K5lXWgm6DH3
 !s100 oOioQg2AQRZk8mNHm[1T<2
 R9
 33
-R45
+R61
 !i10b 1
-R51
-R80
+R62
 R81
+R82
 !i113 1
 R14
 R15
 Ememory
-Z82 w1701712199
+Z83 w1701794972
+R1
 R17
 R2
 R3
-R36
 R4
 R5
+R34
 R6
-Z83 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory.vhd
-Z84 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory.vhd
+Z84 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory.vhd
+Z85 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory.vhd
 l0
-L13
-ViTdXXGo@dlIme]<66?`211
-!s100 BO4S2`DnNY47PETT]=n2>3
+L9
+V5oP1k6UT@`Zh]`MV22j081
+!s100 O[kbk9`AZNR3f8c]C4]nN3
 R9
 33
-Z85 !s110 1701712230
+Z86 !s110 1701795008
 !i10b 1
-R51
-Z86 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory.vhd|
-Z87 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory.vhd|
+R62
+Z87 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory.vhd|
+Z88 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory.vhd|
 !i113 1
 R14
 R15
 Aarch_memory
+R1
 R17
 R2
 R3
-R36
 R4
 R5
-DEx4 work 6 memory 0 22 iTdXXGo@dlIme]<66?`211
-l54
-L32
-V0Y__M2k0N8D6aY6PWEOcQ1
-!s100 VG3?F0bgaE?=:UcSdJdDE2
+R34
+DEx4 work 6 memory 0 22 5oP1k6UT@`Zh]`MV22j081
+l56
+L33
+VB6E5KM2Eil_C=l:W`M]5K1
+!s100 eH5SU[Jo>1kQP2ci=fPYN1
 R9
 33
-R85
-!i10b 1
-R51
 R86
+!i10b 1
+R62
 R87
+R88
 !i113 1
 R14
 R15
 Ememory_access
-Z88 w1701368282
-Z89 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z89 w1701368282
+Z90 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 R2
 R3
-R65
-R4
 R66
+R4
 R67
-!i122 36
 R68
-Z90 8D:/arck/Pipelined-processor/memory_access.vhd
-Z91 FD:/arck/Pipelined-processor/memory_access.vhd
+!i122 36
+R69
+Z91 8D:/arck/Pipelined-processor/memory_access.vhd
+Z92 FD:/arck/Pipelined-processor/memory_access.vhd
 l0
 L9 1
 V]LgXlJ:9CCUofdI=F:Zl31
 !s100 PVUff]fUI@c67LWLV?OkH3
-R72
+R73
 33
-Z92 !s110 1701368529
+Z93 !s110 1701368529
 !i10b 1
-Z93 !s108 1701368525.000000
-Z94 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/memory_access.vhd|
-Z95 !s107 D:/arck/Pipelined-processor/memory_access.vhd|
+Z94 !s108 1701368525.000000
+Z95 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/arck/Pipelined-processor/memory_access.vhd|
+Z96 !s107 D:/arck/Pipelined-processor/memory_access.vhd|
 !i113 1
 R14
 R15
 Aarch_memory_access
-R89
+R90
 R2
 R3
-R65
-R4
 R66
+R4
 R67
+R68
 DEx4 work 13 memory_access 0 22 ]LgXlJ:9CCUofdI=F:Zl31
 !i122 36
 l23
 L22 15
 V8mnQgm8CYabf<fLoUzE0L1
 !s100 ZFH^z2nc>EFAickf[H>Ml3
-R72
+R73
 33
-R92
-!i10b 1
 R93
+!i10b 1
 R94
 R95
+R96
 !i113 1
 R14
 R15
 Ememory_initialization
-Z96 w1701352529
+Z97 w1701352529
 R3
 R2
-R65
-R4
 R66
+R4
 R67
-!i122 3
 R68
+!i122 3
 R69
 R70
-l0
 R71
+l0
+R72
 V[eXce9MnQ[Co7?L3?>UH32
 !s100 iNZ8l1ml0jX:mdj6UR>cf1
-R72
+R73
 33
-Z97 !s110 1701353017
+Z98 !s110 1701353017
 !i10b 1
-Z98 !s108 1701353017.000000
-R75
+Z99 !s108 1701353017.000000
 R76
+R77
 !i113 1
 R14
 R15
 Aarch_memory_initialization
 R3
 R2
-R65
-R4
 R66
+R4
 R67
+R68
 DEx4 work 21 memory_initialization 0 22 [eXce9MnQ[Co7?L3?>UH32
 !i122 3
 l24
 L22 25
 Vi^n]^5gBLfZ6ZL@czOai73
 !s100 4hETO8<g[5BfU=7_JZmZ^0
-R72
+R73
 33
-R97
-!i10b 1
 R98
-R75
+!i10b 1
+R99
 R76
+R77
 !i113 1
 R14
 R15
 Ememory_write_back
-R59
-R42
+Z100 w1701794452
+R41
 R2
 R3
 R1
 R4
 R5
 R6
-Z99 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd
-Z100 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd
+Z101 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd
+Z102 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd
 l0
 L6
-VTnTGcG=AW7=0_Ih_H3TU73
-!s100 MAQzgWmQfLfnb2M5Jg4]j3
+VgSj:CGajh^>E;RBOA:SbL3
+!s100 J5=WAJbU1f4ZJcB6m5eTV3
 R9
 33
-R85
+R86
 !i10b 1
-Z101 !s108 1701712230.000000
-Z102 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd|
-Z103 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd|
+Z103 !s108 1701795008.000000
+Z104 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd|
+Z105 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd|
 !i113 1
 R14
 R15
 Aarch_memory_write_back
-R42
+R41
 R2
 R3
 R1
 R4
 R5
-DEx4 work 17 memory_write_back 0 22 TnTGcG=AW7=0_Ih_H3TU73
-l22
-L21
-VjA0OIYhQIE[O550[ollog2
-!s100 ^CA1PGZV^;HBR94Nc^@132
+DEx4 work 17 memory_write_back 0 22 gSj:CGajh^>E;RBOA:SbL3
+l23
+L22
+V[H<QBMRDi9DcC7z2VAl3J3
+!s100 Xia:P1WlAL3o]HVYzNY@L1
 R9
 33
-R85
+R86
 !i10b 1
-R101
-R102
 R103
+R104
+R105
 !i113 1
 R14
 R15
 Emux_3bits
-Z104 w1701515911
+Z106 w1701515911
 R4
 R5
 R6
-Z105 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/mux_3bits.vhd
-Z106 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/mux_3bits.vhd
+Z107 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/mux_3bits.vhd
+Z108 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/mux_3bits.vhd
 l0
 L4
 Vg?8XD;<nZGIb7>;><Me?`2
 !s100 I<mAS:K>65P5kVPPiCo?A0
 R9
 33
-R85
+R86
 !i10b 1
-R101
-Z107 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/mux_3bits.vhd|
-Z108 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/mux_3bits.vhd|
+R103
+Z109 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/mux_3bits.vhd|
+Z110 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/mux_3bits.vhd|
 !i113 1
 R14
 R15
@@ -747,11 +749,11 @@ VJmQbzR;Xg`FmCkica=Gjj1
 !s100 >bm4ElE5c9IEH=[0Z=<h?2
 R9
 33
-R85
+R86
 !i10b 1
-R101
-R107
-R108
+R103
+R109
+R110
 !i113 1
 R14
 R15
@@ -760,39 +762,39 @@ R2
 R3
 R4
 R5
-R77
-R6
 R78
+R6
 R79
+R80
 l0
 L4
 VB4AL7D]MUHTG8SN07`EfF2
 !s100 XJClA@L5lTge7:jmB9Ann3
 R9
 33
-R45
+R61
 !i10b 1
-R51
-R80
+R62
 R81
+R82
 !i113 1
 R14
 R15
 Pmy_pkg1
 R4
-R66
+R67
 DPx4 work 6 my_pkg 0 22 :=[`WcIO9`;lAOfo56D1R2
 DPx4 work 7 my_pkg1 0 22 D0RYmdW<52fJNgc[PcIiO1
 !i122 269
 w1701617243
-R68
+R69
 8D:/arck/Pipelined-processor/regfile.vhd
 FD:/arck/Pipelined-processor/regfile.vhd
 l0
 L6 1
 VnFo8@ifkQ_^Hd<e>k;mBX1
 !s100 A`kQ8nzW_kJREgSooXKR>0
-R72
+R73
 33
 !s110 1701617254
 !i10b 1
@@ -803,53 +805,53 @@ R72
 R14
 R15
 Eprocessor
-Z109 w1701709209
+Z111 w1701798102
 R1
 R17
-R36
-R42
+R34
+R41
 R2
 R3
 R4
 R5
 R6
-Z110 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd
-Z111 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd
+Z112 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd
+Z113 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd
 l0
 L15
-VZPdXh7;0PQzQo4c:fefO60
-!s100 bG86KAEOj4c;Sk:eV76eO2
+V3WbY[Z7gG98dkHZ@FM`F?3
+!s100 9jK`o[5^Ik@d>T8Sj249I2
 R9
 33
-R85
+Z114 !s110 1701798113
 !i10b 1
-R101
-Z112 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd|
-Z113 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd|
+Z115 !s108 1701798113.000000
+Z116 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd|
+Z117 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd|
 !i113 1
 R14
 R15
 Aarch_processor
 R1
 R17
-R36
-R42
+R34
+R41
 R2
 R3
 R4
 R5
-DEx4 work 9 processor 0 22 ZPdXh7;0PQzQo4c:fefO60
-l321
+Z118 DEx4 work 9 processor 0 22 3WbY[Z7gG98dkHZ@FM`F?3
+l341
 L22
-VW3zJ@@iJ5MT^U3iGc27Bn1
-!s100 gI::UdjoHzeWHHVN:RG6Q3
+V`2>4:Yio32kYXOb2@F4;50
+!s100 9O1>?L8e:N<zKnNk[;9FL3
 R9
 33
-R85
+R114
 !i10b 1
-R101
-R112
-R113
+R115
+R116
+R117
 !i113 1
 R14
 R15
@@ -858,27 +860,27 @@ R2
 R3
 R4
 R5
-Z114 w1701709141
+Z119 w1701709141
 R6
-Z115 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/regfile.vhd
-Z116 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/regfile.vhd
+Z120 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/regfile.vhd
+Z121 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/regfile.vhd
 l0
 L5
 VB?cK^]Z?4LQQjfQUJf4D91
 !s100 oTmcUl7<eo[I4fg==Clc@3
 R9
 33
-R85
+Z122 !s110 1701795009
 !i10b 1
-R101
-Z117 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/regfile.vhd|
-Z118 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/regfile.vhd|
+R103
+Z123 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/regfile.vhd|
+Z124 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/regfile.vhd|
 !i113 1
 R14
 R15
 Ereg_intiliaze
-Z119 w1701703329
-R42
+Z125 w1701703329
+R41
 R1
 R17
 R2
@@ -886,24 +888,24 @@ R3
 R4
 R5
 R6
-Z120 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/reg_intiliaze.vhd
-Z121 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/reg_intiliaze.vhd
+Z126 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/reg_intiliaze.vhd
+Z127 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/reg_intiliaze.vhd
 l0
 L12
 V[G?lh:0zRCizafogReA_11
 !s100 N3MbmIemLbUS^CN;<zLaP2
 R9
 33
-Z122 !s110 1701703338
+Z128 !s110 1701703338
 !i10b 1
-Z123 !s108 1701703338.000000
-Z124 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/reg_intiliaze.vhd|
-Z125 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/reg_intiliaze.vhd|
+Z129 !s108 1701703338.000000
+Z130 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/reg_intiliaze.vhd|
+Z131 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/reg_intiliaze.vhd|
 !i113 1
 R14
 R15
 Aarch_reg_intiliaze
-R42
+R41
 R1
 R17
 R2
@@ -917,37 +919,37 @@ V?JoU1:KOBMPo3G>`kg8G=1
 !s100 TKJga@e76md1PcCej=kIR0
 R9
 33
-R122
+R128
 !i10b 1
-R123
-R124
-R125
+R129
+R130
+R131
 !i113 1
 R14
 R15
 Eregister_file
-R114
+R119
 R1
 R17
 R2
 R3
 R4
 R5
-R42
+R41
 R6
-R115
-R116
+R120
+R121
 l0
 L18
 VhX[bmVPmN<Hf_6@H4IGWE3
 !s100 mgYI]5X1FamOE[?j:0YnT0
 R9
 33
-R85
+R122
 !i10b 1
-R101
-R117
-R118
+R103
+R123
+R124
 !i113 1
 R14
 R15
@@ -958,7 +960,7 @@ R2
 R3
 R4
 R5
-R42
+R41
 DEx4 work 13 register_file 0 22 hX[bmVPmN<Hf_6@H4IGWE3
 l35
 L31
@@ -966,36 +968,36 @@ V75ERn^J^H84SG_;d3ioKO1
 !s100 14KlF<:OcRJ[k;YIV6:9V0
 R9
 33
-R85
+R122
 !i10b 1
-R101
-R117
-R118
+R103
+R123
+R124
 !i113 1
 R14
 R15
 Ewrite_back
-Z126 w1701709091
+Z132 w1701794982
 R1
 R2
 R3
 R4
 R5
-R42
+R41
 R6
-Z127 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/write_back.vhd
-Z128 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/write_back.vhd
+Z133 8C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/write_back.vhd
+Z134 FC:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/write_back.vhd
 l0
 L7
-V9l?nl17NfY@iN@LONUZ633
-!s100 8P3Be3M?4i;1aIFNd_<>k1
+VFCiUN]oP1^eUjeIUdbi051
+!s100 =3H7U4H^fKO?G6bCNgUPT0
 R9
 33
 R10
 !i10b 1
 R11
-Z129 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/write_back.vhd|
-Z130 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/write_back.vhd|
+Z135 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/write_back.vhd|
+Z136 !s107 C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/write_back.vhd|
 !i113 1
 R14
 R15
@@ -1005,19 +1007,19 @@ R2
 R3
 R4
 R5
-R42
-DEx4 work 10 write_back 0 22 9l?nl17NfY@iN@LONUZ633
-l22
-L21
-VY`R^29dFW8T;Pc_G9dY^o3
-!s100 0YWCP7HaAEfI^TKW2?]XF1
+R41
+DEx4 work 10 write_back 0 22 FCiUN]oP1^eUjeIUdbi051
+l23
+L22
+VPC``U`_aKB`EoCFW;Z`0e0
+!s100 F?_BEA^DOg<cKckmDLXF]1
 R9
 33
 R10
 !i10b 1
 R11
-R129
-R130
+R135
+R136
 !i113 1
 R14
 R15

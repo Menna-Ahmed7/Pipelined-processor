@@ -7,6 +7,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 ENTITY decode IS
   PORT (
     clk : IN STD_LOGIC;
+    RST : IN STD_LOGIC;
     instruction : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     -- registers : IN registers_block(0 TO 7)(31 DOWNTO 0);
     -- src2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -28,7 +29,9 @@ ENTITY decode IS
     jz : OUT STD_LOGIC;
     reg_dest : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     src1 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-    src2 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+    src2 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+    free : OUT STD_LOGIC;
+    protect : OUT STD_LOGIC
   );
 END ENTITY;
 
@@ -53,14 +56,16 @@ ARCHITECTURE arch_decode OF decode IS
       RTI : OUT STD_LOGIC;
       RET : OUT STD_LOGIC;
       call : OUT STD_LOGIC;
-      jz : OUT STD_LOGIC
+      jz : OUT STD_LOGIC;
+      free : OUT STD_LOGIC;
+      protect : OUT STD_LOGIC
     );
   END COMPONENT;
   SIGNAL read_src2 : STD_LOGIC;
   SIGNAL reg_dest_selector : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
 BEGIN
-  control : control_unit PORT MAP(instruction(15 DOWNTO 11), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz);
+  control : control_unit PORT MAP(instruction(15 DOWNTO 11), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, free, protect);
 
   deocode_unit : PROCESS (clk)
 

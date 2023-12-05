@@ -23,7 +23,9 @@ ENTITY control_unit IS
         RTI : OUT STD_LOGIC;
         RET : OUT STD_LOGIC;
         call : OUT STD_LOGIC;
-        jz : OUT STD_LOGIC
+        jz : OUT STD_LOGIC;
+        free : OUT STD_LOGIC;
+        protect : OUT STD_LOGIC
     );
 END ENTITY;
 
@@ -48,6 +50,8 @@ BEGIN
         RET <= '0';
         call <= '0';
         jz <= '0';
+        free <= '0';
+        protect <= '0';
         alu_signal <= (OTHERS => '0');
 
         IF (instruction_32bit = '1') THEN
@@ -227,14 +231,15 @@ BEGIN
                 instruction_32bit <= '1';
                 --std
             ELSIF opcode = "11100" THEN
-                write_back <= '1';
                 read_src1 <= '1';
                 instruction_32bit <= '1';
+                memory_write <= '1';
                 --protect
             ELSIF opcode = "11101" THEN
-
+                protect <= '1';
                 --free
-            ELSE
+            ELSIF opcode = "11110" THEN
+                free <= '1';
 
             END IF;
         END IF;

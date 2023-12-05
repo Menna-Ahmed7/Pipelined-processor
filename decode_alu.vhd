@@ -8,6 +8,9 @@ USE std.textio.ALL;
 ENTITY decode_alu IS
     PORT (
         clk : IN STD_LOGIC;
+        RST : IN STD_LOGIC;
+        free : IN STD_LOGIC;
+        protect : IN STD_LOGIC;
         pc : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         src2_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         src1_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -48,15 +51,42 @@ ENTITY decode_alu IS
         out_jz : OUT STD_LOGIC;
         out_reg_dest : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
         out_out_instruction : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-        out_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+        out_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+        out_free : OUT STD_LOGIC;
+        out_protect : OUT STD_LOGIC
     );
 END ENTITY;
 
 ARCHITECTURE arch_decode_alu OF decode_alu IS
 BEGIN
-    decode_alu_p : PROCESS (clk)
+    decode_alu_p : PROCESS (clk, RST)
     BEGIN
-        IF clk'event AND clk = '1'THEN
+        IF RST = '1' THEN
+            out_out_instruction <= (OTHERS => '0');
+            out_reg_dest <= (OTHERS => '0');
+            out_jz <= '0';
+            out_call <= '0';
+            out_RET <= '0';
+            out_RTI <= '0';
+            out_imm <= '0';
+            out_swap <= '0';
+            out_pop <= '0';
+            out_push <= '0';
+            out_io_write <= '0';
+            out_io_read <= '0';
+            out_read_src1 <= '0';
+            out_write_back <= '0';
+            out_memory_write <= '0';
+            out_memory_read <= '0';
+
+            out_alu_signal <= (OTHERS => '0');
+            out_src2_data <= (OTHERS => '0');
+            out_src1_data <= (OTHERS => '0');
+
+            out_pc <= (OTHERS => '0');
+            out_free <= '0';
+            out_protect <= '0';
+        ELSIF clk'event AND clk = '1'THEN
             out_out_instruction <= out_instruction;
             out_reg_dest <= reg_dest;
             out_jz <= jz;
@@ -79,6 +109,8 @@ BEGIN
             out_src1_data <= src1_data;
 
             out_pc <= pc;
+            out_free <= free;
+            out_protect <= protect;
         END IF;
     END PROCESS;
 

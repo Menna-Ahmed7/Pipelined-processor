@@ -8,14 +8,15 @@ USE work.reg.ALL;
 ENTITY fetch IS
     PORT (
         clk : IN STD_LOGIC;
-        registers : IN registers_block(0 TO 7)(31 DOWNTO 0);
+        RST : IN STD_LOGIC;
         jz : IN STD_LOGIC;
         jz_address : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        instruction : OUT STD_LOGIC_VECTOR (15 DOWNTO 0) := (OTHERS => 'Z');
-        next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+
         rti : IN STD_LOGIC;
         ret : IN STD_LOGIC;
-        memory_pc : IN STD_LOGIC_VECTOR(31 DOWNTO 0)
+        memory_pc : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        instruction : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+        next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
 END ENTITY;
 ARCHITECTURE arch_fetch OF fetch IS
@@ -23,6 +24,7 @@ ARCHITECTURE arch_fetch OF fetch IS
     COMPONENT instruction_memory
         PORT (
             clk : IN STD_LOGIC;
+
             address : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
             dataout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 
@@ -36,9 +38,12 @@ BEGIN
 
     memory_instance : instruction_memory PORT MAP(clk, pc(11 DOWNTO 0), instruction);
     rti_ret <= ret OR rti;
-    fetch_unit : PROCESS (clk) IS
+    fetch_unit : PROCESS (clk, RST) IS
     BEGIN
-        IF clk'event AND clk = '1' THEN
+        IF RST = '1' THEN
+            pc <= (1 => '1', OTHERS => '0');
+
+        ELSIF clk'event AND clk = '1' THEN
             ---ret or rti
             IF rti_ret = '1' THEN
                 pc <= memory_pc;
@@ -46,8 +51,8 @@ BEGIN
 
                 --jump or call
             ELSIF instruction = "10010" OR instruction = "10011" THEN
-                pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));
-                next_pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));
+                -- pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));
+                -- next_pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));
 
                 --jz
             ELSIF jz = '1' THEN
@@ -60,10 +65,9 @@ BEGIN
                 next_pc <= (OTHERS => '0');
 
             ELSE
+
                 pc <= pc + one;
                 next_pc <= pc + one;
-
-                -- END IF;
             END IF;
         END IF;
     END PROCESS;
