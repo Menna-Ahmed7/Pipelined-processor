@@ -18,6 +18,7 @@ USE std.textio.ALL;
 ENTITY register_file IS
     PORT (
         clk : IN STD_LOGIC;
+        RST : IN STD_LOGIC;
         we : IN STD_LOGIC;
         address1 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         address2 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -30,34 +31,20 @@ ENTITY register_file IS
 END ENTITY;
 ARCHITECTURE arch_register_file OF register_file IS
     SIGNAL registers : registers_block(0 TO 7)(31 DOWNTO 0);
-    SIGNAL intilization : registers_block(0 TO 7)(31 DOWNTO 0);
     SIGNAL flag : STD_LOGIC := '1';
 BEGIN
-    -- intiliaze : reg_intiliaze PORT MAP(intilization);
     -- Loading data from the file into memory during initialization
     dataout1 <= registers(to_integer(unsigned(address1)));
     dataout2 <= registers(to_integer(unsigned(address2)));
 
-    -- tr : PROCESS (we, datain, address1)
-    -- BEGIN
-    --     IF clk = '1' THEN
-    --         IF (we = '1') THEN
-    --             registers(to_integer(unsigned(address1))) <= datain;
-    --         END IF;
-    --     END IF;
-
-    -- END PROCESS;
-    -- registers(to_integer(unsigned(address1))) <= datain WHEN clk = '1'AND we = '1'
-
-    ---intilizate out
-
     reg_file : PROCESS (clk, we, datain, address1)
-        FILE reg_file : text OPEN READ_MODE IS "register.txt";
+        FILE reg_file : text;
         VARIABLE file_line : line;
         VARIABLE temp_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
     BEGIN
-        IF (flag = '1') THEN
-
+        IF (flag = '1' OR RST = '1') THEN
+            file_close(reg_file);
+            file_open(reg_file, "register.txt");
             FOR i IN registers'RANGE LOOP
                 IF NOT endfile(reg_file) THEN
                     readline(reg_file, file_line);
@@ -69,6 +56,7 @@ BEGIN
                 END IF;
             END LOOP;
             flag <= '0';
+            file_close(reg_file);
         ELSIF clk = '1' THEN
             IF (we = '1') THEN
                 registers(to_integer(unsigned(write_address))) <= datain;

@@ -16,6 +16,7 @@ USE std.textio.ALL;
 ENTITY instruction_memory IS
     PORT (
         clk : IN STD_LOGIC;
+        RST : IN STD_LOGIC;
         address : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
         dataout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
@@ -23,7 +24,7 @@ END ENTITY;
 
 ARCHITECTURE arch_instruction_memory OF instruction_memory IS
     SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', OTHERS => '0');
-    SIGNAL ram : memory_array(0 TO 20)(15 DOWNTO 0);
+    SIGNAL ram : memory_array(0 TO 4095)(15 DOWNTO 0);
     SIGNAL initial_flag : STD_LOGIC := '1';
 BEGIN
 
@@ -32,6 +33,7 @@ BEGIN
         VARIABLE file_line : line;
         VARIABLE temp_data : STD_LOGIC_VECTOR(15 DOWNTO 0);
     BEGIN
+
         IF (initial_flag = '1') THEN
             FOR i IN ram'RANGE LOOP
                 IF NOT endfile(memory_file) THEN
@@ -44,10 +46,17 @@ BEGIN
                 END IF;
             END LOOP;
             initial_flag <= '0';
-
-        ELSIF clk'event AND clk = '0' THEN
-            dataout <= ram(to_integer(unsigned(address)));
         END IF;
 
     END PROCESS instruction_memory;
+
+    instruction_memory2 : PROCESS (clk) IS
+    BEGIN
+        IF RST = '1' THEN
+            dataout <= (OTHERS => '0');
+        ELSIF clk'event AND clk = '1' THEN
+            dataout <= ram(to_integer(unsigned(address)));
+        END IF;
+    END PROCESS instruction_memory2;
+
 END ARCHITECTURE;

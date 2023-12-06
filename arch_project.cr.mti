@@ -6,17 +6,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity mux_3bits
 -- Compiling architecture arch_mux_3bits of mux_3bits
 
-} {} {}} C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/ALU.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/ALU.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Loading package NUMERIC_STD
--- Compiling entity alu
--- Compiling architecture arch_alu of alu
-
 } {} {}} C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/data_memory.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
@@ -29,6 +18,17 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package NUMERIC_STD
 -- Compiling entity data_memory
 -- Compiling architecture arch_data_memory of data_memory
+
+} {} {}} C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/ALU.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/ALU.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity alu
+-- Compiling architecture arch_alu of alu
 
 } {} {}} C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/alu_stage.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/alu_stage.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -76,6 +76,20 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity register_file
 -- Compiling architecture arch_register_file of register_file
 
+} {} {}} C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/processor.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package reg
+-- Loading package my_pkg
+-- Loading package std_logic_textio
+-- Loading package NUMERIC_STD
+-- Compiling entity processor
+-- Compiling architecture arch_processor of processor
+
 } {} {}} C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/control_unit.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/control_unit.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
@@ -111,20 +125,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package NUMERIC_STD
 -- Compiling entity alu_memory
 -- Compiling architecture arch_alu_memory of alu_memory
-
-} {} {}} C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/instruction_memory.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Compiling package my_pkg
--- Loading package my_pkg
--- Loading package std_logic_textio
--- Loading package NUMERIC_STD
--- Compiling entity instruction_memory
--- Compiling architecture arch_instruction_memory of instruction_memory
 
 } {} {}} C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/sggln/OneDrive/Desktop/b/Pipelined-processor/memory_write_back.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016

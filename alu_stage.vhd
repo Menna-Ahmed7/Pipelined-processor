@@ -33,6 +33,7 @@ ARCHITECTURE arch_alu_stage OF alu_stage IS
     COMPONENT alu IS
         PORT (
             clk : IN STD_LOGIC;
+            RST : IN STD_LOGIC;
             src1, src2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
             ALU_signal : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -53,7 +54,7 @@ BEGIN
         tmp, result_in, write_back_data, forward_unit_signal2, src2_alu
     );
     obj3 : alu PORT MAP(
-        clk,
+        clk, RST,
         src1_alu, src2_alu, ALU_sig, result_alu, flags_alu, iow_signal, out_port
     );
 END ARCHITECTURE;

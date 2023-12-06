@@ -1,9 +1,8 @@
 
-force -freeze sim:/alu_stage/clk 0 0, 1 {50 ps} -r 100
-force -freeze sim:/alu_stage/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/alu_stage/clk 1 0, 0 {50 ps} -r 100
 force -freeze sim:/alu_stage/src1 00000000000000000000000000000000 0
 force -freeze sim:/alu_stage/src2 00000000000000000000000000000000 0
-force -freeze sim:/alu_stage/imm 00000000000000000000000000000000 0
+force -freeze sim:/alu_stage/imm 0000000000000000 0
 force -freeze sim:/alu_stage/ALU_sig 0001 0
 force -freeze sim:/alu_stage/write_back_data 00000000000000000000000000000000 0
 force -freeze sim:/alu_stage/result_in 00000000000000000000000000000000 0
@@ -19,12 +18,12 @@ force -freeze sim:/alu_stage/ALU_sig 0011 0
 run
 force -freeze sim:/alu_stage/ALU_sig 0100 0
 run
-force -freeze sim:/alu_stage/src2 11100011010101110101000011000000 0
-force -freeze sim:/alu_stage/src1 11100011010101110101000011000000 0
+force -freeze sim:/alu_stage/src2 00100011010101110101000011000000 0
+force -freeze sim:/alu_stage/src1 00100011010101110101000011000000 0
 force -freeze sim:/alu_stage/ALU_sig 0111 0
 run
-force -freeze sim:/alu_stage/src2 01100011010101110101000011000000 0
-force -freeze sim:/alu_stage/src1 01100011010101110101000011000000 0
+force -freeze sim:/alu_stage/src2 11100000000000000000000000000000 0
+force -freeze sim:/alu_stage/src1 01000000000000000000000000000000 0
 force -freeze sim:/alu_stage/ALU_sig 0111 0
 run
 force -freeze sim:/alu_stage/src2 00000000000000000000000000110010 0
@@ -44,7 +43,7 @@ force -freeze sim:/alu_stage/ALU_sig 1010 0
 run
 force -freeze sim:/alu_stage/ALU_sig 1011 0
 run
-force -freeze sim:/alu_stage/imm 00000000000000000000000000000100 0
+force -freeze sim:/alu_stage/imm 0000000000000000 0
 force -freeze sim:/alu_stage/write_back_data 00000000000000000000000000000101 0
 force -freeze sim:/alu_stage/result_in 00000000000000000000000000000110 0
 force -freeze sim:/alu_stage/src1 00000000000000000000000000000010 0

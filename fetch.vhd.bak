@@ -8,14 +8,15 @@ USE work.reg.ALL;
 ENTITY fetch IS
     PORT (
         clk : IN STD_LOGIC;
-        registers : IN registers_block(0 TO 7)(31 DOWNTO 0);
+        RST : IN STD_LOGIC;
         jz : IN STD_LOGIC;
         jz_address : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        instruction : OUT STD_LOGIC_VECTOR (15 DOWNTO 0) := (OTHERS => 'Z');
-        next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+
         rti : IN STD_LOGIC;
         ret : IN STD_LOGIC;
-        memory_pc : IN STD_LOGIC_VECTOR(31 DOWNTO 0)
+        memory_pc : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        instruction : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+        next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
 END ENTITY;
 ARCHITECTURE arch_fetch OF fetch IS
@@ -23,6 +24,7 @@ ARCHITECTURE arch_fetch OF fetch IS
     COMPONENT instruction_memory
         PORT (
             clk : IN STD_LOGIC;
+
             address : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
             dataout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 
@@ -30,39 +32,48 @@ ARCHITECTURE arch_fetch OF fetch IS
     END COMPONENT;
     SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', OTHERS => '0');
     SIGNAL two : STD_LOGIC_VECTOR(31 DOWNTO 0) := (1 => '1', OTHERS => '0');
-    SIGNAL pc : STD_LOGIC_VECTOR(31 DOWNTO 0) := 3;
+    SIGNAL pc : STD_LOGIC_VECTOR(31 DOWNTO 0) := (1 => '1', OTHERS => '0');
     SIGNAL rti_ret : STD_LOGIC;
 BEGIN
 
     memory_instance : instruction_memory PORT MAP(clk, pc(11 DOWNTO 0), instruction);
     rti_ret <= ret OR rti;
-    fetch_unit : PROCESS (instruction) IS
+    fetch_unit : PROCESS (clk, RST) IS
     BEGIN
-        ---ret or rti
-        IF rti_ret = '1' THEN
-            pc <= memory_pc;
-            next_pc <= memory_pc;
+        IF RST = '1' THEN
+            pc <= (1 => '1', OTHERS => '0');
 
-            --jump or call
-        ELSIF instruction = "10010" OR instruction = "10011" THEN
-            pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));
-            next_pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));
+        ELSIF clk'event AND clk = '1' THEN
+            ---ret or rti
+            IF rti_ret = '1' THEN
+                pc <= memory_pc;
+                next_pc <= memory_pc;
 
-            --jz
-        ELSIF jz = '1' THEN
-            pc <= jz_address;
-            next_pc <= jz_address;
+                --jump or call
+            ELSIF instruction = "10010" OR instruction = "10011" THEN
+                -- pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));
+                -- next_pc <= registers(to_integer(unsigned(instruction(22 DOWNTO 20))));
 
-            --ret or rti  ---save 3 location with nop
-        ELSIF instruction = "10100" OR instruction = "10101" THEN
-            pc <= (OTHERS => '0');
-            next_pc <= (OTHERS => '0');
+                --jz
+            ELSIF jz = '1' THEN
+                pc <= jz_address;
+                next_pc <= jz_address;
 
-        ELSE
-            pc <= pc + one;
-            next_pc <= pc + one;
+                --ret or rti  ---save 3 location with nop
+            ELSIF instruction = "10100" OR instruction = "10101" THEN
+                pc <= (OTHERS => '0');
+                next_pc <= (OTHERS => '0');
 
-            -- END IF;
+            ELSE
+
+                pc <= pc + one;
+                next_pc <= pc + one;
+
+            END IF;
+
+        END IF;
+        IF ((pc + one) >= "00000000000000000001000000000000") THEN
+            pc <= (1 => '1', 0 => '1' OTHERS => '0');
         END IF;
     END PROCESS;
 

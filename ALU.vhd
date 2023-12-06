@@ -7,6 +7,7 @@ USE ieee.numeric_std.ALL;
 ENTITY alu IS
     PORT (
         clk : IN STD_LOGIC;
+        RST : IN STD_LOGIC;
         src1, src2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         ALU_signal : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -44,21 +45,44 @@ BEGIN
     -- temp_src1 or temp  when  ALU_signal="1011" ELSE
     -- temp_src2(0)&temp_src2(31 downto 1)  when  ALU_signal="1101" ELSE
     -- temp_src2(30 downto 0)&temp_src2(31)  when  ALU_signal="1100";
-    alu_unit : PROCESS (clk)
+    alu_unit : PROCESS (clk, RST)
+        VARIABLE carry : STD_LOGIC;
     BEGIN
-        IF clk'event AND clk = '0' THEN
+        IF (RST = '1') THEN
+            result <= (OTHERS => '0');
+            flags <= (OTHERS => '0');
+        ELSIF clk'event AND clk = '0' THEN
             out_port <= src1 WHEN iow_signal = '1';
             result <= temp_result(31 DOWNTO 0);
-            flags(2) <= temp_result(32);
-            flags(0) <= '0';
-            flags(1) <= '0';
-            flags(0) <= '1' WHEN temp_result(31 DOWNTO 0) = "00000000000000000000000000000000";
-            flags(1) <= '1' WHEN temp_result(31) = '1';
+            -- flags(2) <= temp_result(32);
+            carry := temp_result(32);
+            -- flags(2) <= NOT flags(2) WHEN ALU_signal = "0010" AND ALU_signal = "0100" AND ALU_signal = "1000";
+            IF temp_result(31 DOWNTO 0) = "00000000000000000000000000000000" THEN
+                flags(0) <= '1';
+            ELSE
+                flags(0) <= '0';
+            END IF;
+
+            IF temp_result(31) = '1' THEN
+                flags(1) <= '1';
+            ELSE
+                flags(1) <= '0';
+            END IF;
+            -- flags(0) <= '1' WHEN temp_result(31 DOWNTO 0) = "00000000000000000000000000000000";
+            -- flags(1) <= '1' WHEN temp_result(31) = '1';
             --not signal has no carry or sign flag
-            flags(2) <= '0' WHEN ALU_signal = "0001";
-            --0 ->zero flag
-            --1 -> sign flag
-            --2 -> carry flag
+            IF ALU_signal = "0001" OR ALU_signal = "1001" OR ALU_signal = "1010" OR ALU_signal = "1011" OR ALU_signal = "0100" OR ALU_signal = "0011"THEN
+                flags(2) <= '0';
+            ELSIF ALU_signal = "0010" OR ALU_signal = "1000" THEN
+                flags(2) <= NOT carry;
+            ELSE
+                flags(2) <= temp_result(32);
+
+                --0 ->zero flag
+                --1 -> sign flag
+                --2 -> carry flag
+            END IF;
         END IF;
+
     END PROCESS;
 END ARCHITECTURE;

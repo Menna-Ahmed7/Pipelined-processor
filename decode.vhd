@@ -9,9 +9,6 @@ ENTITY decode IS
     clk : IN STD_LOGIC;
     RST : IN STD_LOGIC;
     instruction : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-    -- registers : IN registers_block(0 TO 7)(31 DOWNTO 0);
-    -- src2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    -- src1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     memory_read : OUT STD_LOGIC;
     memory_write : OUT STD_LOGIC;
@@ -38,7 +35,7 @@ END ENTITY;
 ARCHITECTURE arch_decode OF decode IS
   COMPONENT control_unit IS
     PORT (
-
+      RST : IN STD_LOGIC;
       opcode : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       memory_read : OUT STD_LOGIC;
@@ -65,12 +62,17 @@ ARCHITECTURE arch_decode OF decode IS
   SIGNAL reg_dest_selector : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
 BEGIN
-  control : control_unit PORT MAP(instruction(15 DOWNTO 11), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, free, protect);
+  control : control_unit PORT MAP(RST, instruction(15 DOWNTO 11), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, free, protect);
 
   deocode_unit : PROCESS (clk)
 
   BEGIN
-    IF clk'event AND clk = '0' THEN
+    IF RST = '1' THEN
+      src1 <= (OTHERS => '0');
+      src2 <= (OTHERS => '0');
+      reg_dest <= (OTHERS => '0');
+
+    ELSIF clk'event AND clk = '0' THEN
       src1 <= instruction(10 DOWNTO 8);
       --mux to choose src2 
       IF (read_src2 = '1') THEN
@@ -89,8 +91,8 @@ BEGIN
       ELSE
         reg_dest <= (OTHERS => '0');
       END IF;
-      -- src1_data <= registers(to_integer(unsigned(src1)));
-      -- src2_data <= registers(to_integer(unsigned(src2)));
+
     END IF;
+
   END PROCESS;
 END ARCHITECTURE;

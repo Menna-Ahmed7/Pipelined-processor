@@ -21,24 +21,8 @@ ENTITY write_back IS
 END ENTITY;
 ARCHITECTURE arch_write_back OF write_back IS
 BEGIN
-    -- write_back_unit : PROCESS (clk)
-
-    -- BEGIN
-
-    -- out_registers <= registers;
-    -- IF  clk = '1' THEN
-
-    --     IF (write_back = '1') THEN
-    --         IF (memory_read = '1') THEN
-    --             dataout <= data_memory;
-    --         ELSE
-    --             dataout <= data_alu;
-    --         END IF;
-
-    --     END IF;
-    -- END IF;
-    dataout <= data_memory WHEN memory_read = '1'
+    dataout <= (OTHERS => '0') WHEN RST = '1'ELSE
+        data_memory WHEN memory_read = '1'
         ELSE
         data_alu;
-    -- END PROCESS;
 END ARCHITECTURE;
