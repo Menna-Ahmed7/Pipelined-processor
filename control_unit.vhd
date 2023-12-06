@@ -168,6 +168,7 @@ BEGIN
                     --jz
                 ELSIF opcode = "10001" THEN
                     jz <= '1';
+                    read_src1 <= '1';
 
                     --jmp
                 ELSIF opcode = "10010" THEN
@@ -200,6 +201,7 @@ BEGIN
                     memory_read <= '1';
                     pop <= '1';
                     reg_dest_selector <= "01";
+                    write_back <= '1';
 
                     --in
                 ELSIF opcode = "11000" THEN
@@ -231,9 +233,13 @@ BEGIN
                     memory_write <= '1';
                     --protect
                 ELSIF opcode = "11101" THEN
+                    read_src1 <= '1';
+
                     protect <= '1';
                     --free
                 ELSIF opcode = "11110" THEN
+                    read_src1 <= '1';
+
                     free <= '1';
 
                 END IF;
