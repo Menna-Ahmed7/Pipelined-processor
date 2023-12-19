@@ -37,7 +37,7 @@ BEGIN
     dataout1 <= registers(to_integer(unsigned(address1)));
     dataout2 <= registers(to_integer(unsigned(address2)));
 
-    reg_file : PROCESS (clk, we, datain, address1)
+    reg_file : PROCESS (clk, we, datain, address1,address1,write_address)
         FILE reg_file : text;
         VARIABLE file_line : line;
         VARIABLE temp_data : STD_LOGIC_VECTOR(31 DOWNTO 0);

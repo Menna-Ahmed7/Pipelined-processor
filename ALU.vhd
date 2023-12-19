@@ -13,7 +13,11 @@ ENTITY alu IS
         result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
         flags : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         iow_signal : IN STD_LOGIC;
-        out_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+        ior_signal : IN STD_LOGIC;
+        out_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+        in_port : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+        imm : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+        imm_signal : IN STD_LOGIC
     );
 END ENTITY;
 
@@ -25,8 +29,9 @@ ARCHITECTURE arch_alu OF alu IS
     SIGNAL temp : STD_LOGIC_VECTOR (32 DOWNTO 0);
     SIGNAL temp_src2 : STD_LOGIC_VECTOR (32 DOWNTO 0);
     SIGNAL temp_src1 : STD_LOGIC_VECTOR (32 DOWNTO 0);
-
+    SIGNAL sign_imm : STD_LOGIC_VECTOR (15 DOWNTO 0);
 BEGIN
+    sign_imm <= (OTHERS => imm(15));
     temp_src2 <= src2(31) & src2;
     temp_src1 <= src1(31) & src1;
     zero <= (OTHERS => '0');
@@ -53,7 +58,9 @@ BEGIN
             flags <= (OTHERS => '0');
         ELSIF clk'event AND clk = '0' THEN
             out_port <= src1 WHEN iow_signal = '1';
+            result <= in_port WHEN ior_signal = '1';
             result <= temp_result(31 DOWNTO 0);
+            result <= (sign_imm & imm) WHEN ALU_signal = "0000" AND imm_signal = '1';
             -- flags(2) <= temp_result(32);
             carry := temp_result(32);
             -- flags(2) <= NOT flags(2) WHEN ALU_signal = "0010" AND ALU_signal = "0100" AND ALU_signal = "1000";

@@ -9,9 +9,10 @@ ENTITY alu_stage IS
         src1, src2, write_back_data, result_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         imm : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         forward_unit_signal1, forward_unit_signal2 : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
-        imm_signal, iow_signal : IN STD_LOGIC;
+        imm_signal, iow_signal, ior_signal : IN STD_LOGIC;
         ALU_sig : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         out_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+        in_port : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
         result_alu : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
         flags_alu : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
     );
@@ -39,7 +40,11 @@ ARCHITECTURE arch_alu_stage OF alu_stage IS
             result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
             flags : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
             iow_signal : IN STD_LOGIC;
-            out_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+            ior_signal : IN STD_LOGIC;
+            out_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+            in_port : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+            imm : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+            imm_signal : IN STD_LOGIC
         );
     END COMPONENT;
 
@@ -55,6 +60,6 @@ BEGIN
     );
     obj3 : alu PORT MAP(
         clk, RST,
-        src1_alu, src2_alu, ALU_sig, result_alu, flags_alu, iow_signal, out_port
+        src1_alu, src2_alu, ALU_sig, result_alu, flags_alu, iow_signal, ior_signal, out_port, in_port, imm, imm_signal
     );
 END ARCHITECTURE;

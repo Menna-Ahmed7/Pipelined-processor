@@ -8,6 +8,7 @@ USE std.textio.ALL;
 ENTITY decode_alu IS
     PORT (
         clk : IN STD_LOGIC;
+        in_port : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         RST : IN STD_LOGIC;
         free : IN STD_LOGIC;
         protect : IN STD_LOGIC;
@@ -30,7 +31,7 @@ ENTITY decode_alu IS
         call : IN STD_LOGIC;
         jz : IN STD_LOGIC;
         reg_dest : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        out_instruction : IN STD_LOGIC_VECTOR(3 DOWNTO 0); ------------------------------help 
+        out_instruction : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         out_src2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         out_src1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         out_alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -53,7 +54,9 @@ ENTITY decode_alu IS
         out_out_instruction : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
         out_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         out_free : OUT STD_LOGIC;
-        out_protect : OUT STD_LOGIC
+        out_protect : OUT STD_LOGIC;
+        out_in_port : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+
     );
 END ENTITY;
 
@@ -84,6 +87,7 @@ BEGIN
             out_src1_data <= (OTHERS => '0');
 
             out_pc <= (OTHERS => '0');
+            out_in_port <= (OTHERS => '0');
             out_free <= '0';
             out_protect <= '0';
         ELSIF clk'event AND clk = '1'THEN
@@ -111,6 +115,8 @@ BEGIN
             out_pc <= pc;
             out_free <= free;
             out_protect <= protect;
+            out_in_port <= in_port;
+
         END IF;
     END PROCESS;
 
