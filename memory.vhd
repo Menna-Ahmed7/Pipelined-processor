@@ -23,7 +23,6 @@ ENTITY memory IS
         push : IN STD_LOGIC;
         sp : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         prot : IN STD_LOGIC;
-
         free : IN STD_LOGIC;
         src1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -50,7 +49,6 @@ ARCHITECTURE arch_memory OF memory IS
     SIGNAL three : STD_LOGIC_VECTOR(11 DOWNTO 0);
     SIGNAL written_address : STD_LOGIC_VECTOR(11 DOWNTO 0);
     SIGNAL written_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
-
     SIGNAL we1 : STD_LOGIC;
     SIGNAL re1 : STD_LOGIC;
     SIGNAL protect : STD_LOGIC_VECTOR(0 TO 4095) := (OTHERS => '0');
@@ -84,7 +82,12 @@ BEGIN
             IF (temp = '1') THEN
                 written_address <= sp(11 DOWNTO 0);
                 address := sp(11 DOWNTO 0);
-
+            END IF;
+            --address mux if free
+            IF (free = '1') THEN
+                written_address <= src1(11 DOWNTO 0);
+                address := src1(11 DOWNTO 0);
+                written_data <= (OTHERS => '0');
             END IF;
 
             IF (prot = '1') THEN

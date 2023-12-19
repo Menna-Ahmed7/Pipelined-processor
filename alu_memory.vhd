@@ -9,9 +9,9 @@ ENTITY alu_memory IS
     PORT (
         clk : IN STD_LOGIC;
         RST : IN STD_LOGIC;
+        swap : IN STD_LOGIC;
         free : IN STD_LOGIC;
         protect : IN STD_LOGIC;
-
         src1_data : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
         io_read : IN STD_LOGIC;
         push : IN STD_LOGIC;
@@ -23,12 +23,13 @@ ENTITY alu_memory IS
         memory_write : IN STD_LOGIC;
         write_back : IN STD_LOGIC;
         reg_dest : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+        reg_dest2 : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
         result_alu : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
         flags_alu : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         EA : IN STD_LOGIC_VECTOR (19 DOWNTO 0);
-
         out_write_back : OUT STD_LOGIC;
         out_reg_dest : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+        out_reg_dest2 : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
         out_result_alu : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
         out_flags_alu : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         out_io_read : OUT STD_LOGIC;
@@ -42,7 +43,8 @@ ENTITY alu_memory IS
         out_EA : OUT STD_LOGIC_VECTOR (19 DOWNTO 0);
         out_src1_data : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
         out_free : OUT STD_LOGIC;
-        out_protect : OUT STD_LOGIC
+        out_protect : OUT STD_LOGIC;
+        out_swap : OUT STD_LOGIC
     );
 END ENTITY;
 
@@ -54,6 +56,7 @@ BEGIN
         IF RST = '1' THEN
             out_write_back <= '0';
             out_reg_dest <= (OTHERS => '0');
+            out_reg_dest2 <= (OTHERS => '0');
             out_result_alu <= (OTHERS => '0');
             out_io_read <= '0';
             out_push <= '0';
@@ -68,10 +71,12 @@ BEGIN
             out_flags_alu <= (OTHERS => '0');
             out_free <= '0';
             out_protect <= '0';
+            out_swap <= '0';
 
         ELSIF clk'event AND clk = '1'THEN
             out_write_back <= write_back;
             out_reg_dest <= reg_dest;
+            out_reg_dest2 <= reg_dest2;
             out_result_alu <= result_alu;
             out_io_read <= io_read;
             out_push <= push;
@@ -86,6 +91,7 @@ BEGIN
             out_flags_alu <= flags_alu;
             out_free <= free;
             out_protect <= protect;
+            out_swap <= swap;
         END IF;
     END PROCESS;
 

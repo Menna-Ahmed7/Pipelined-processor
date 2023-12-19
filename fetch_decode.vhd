@@ -10,12 +10,10 @@ ENTITY fetch_decode IS
     PORT (
         clk : IN STD_LOGIC;
         in_port : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-
         RST : IN STD_LOGIC;
         instruction : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         pc : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         out_instruction : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-
         out_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         out_in_port : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );

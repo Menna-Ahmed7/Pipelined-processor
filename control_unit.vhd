@@ -87,7 +87,7 @@ BEGIN
                     swap <= '1';
                     read_src1 <= '1';
                     read_src2 <= '1';
-                    reg_dest_selector <= "11";
+                    reg_dest_selector <= "01";
                     alu_signal <= "0101";
 
                     --add
@@ -239,8 +239,8 @@ BEGIN
                     --free
                 ELSIF opcode = "11110" THEN
                     read_src1 <= '1';
-
                     free <= '1';
+                    memory_write <= '1';
 
                 END IF;
             END IF;

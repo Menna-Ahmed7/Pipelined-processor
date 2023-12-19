@@ -31,11 +31,11 @@ ENTITY decode_alu IS
         call : IN STD_LOGIC;
         jz : IN STD_LOGIC;
         reg_dest : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+        reg_dest2 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         out_instruction : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         out_src2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         out_src1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         out_alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-
         out_memory_read : OUT STD_LOGIC;
         out_memory_write : OUT STD_LOGIC;
         out_write_back : OUT STD_LOGIC;
@@ -51,6 +51,7 @@ ENTITY decode_alu IS
         out_call : OUT STD_LOGIC;
         out_jz : OUT STD_LOGIC;
         out_reg_dest : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+        out_reg_dest2 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
         out_out_instruction : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
         out_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         out_free : OUT STD_LOGIC;
@@ -67,6 +68,7 @@ BEGIN
         IF RST = '1' THEN
             out_out_instruction <= (OTHERS => '0');
             out_reg_dest <= (OTHERS => '0');
+            out_reg_dest2 <= (OTHERS => '0');
             out_jz <= '0';
             out_call <= '0';
             out_RET <= '0';
@@ -93,6 +95,7 @@ BEGIN
         ELSIF clk'event AND clk = '1'THEN
             out_out_instruction <= out_instruction;
             out_reg_dest <= reg_dest;
+            out_reg_dest2 <= reg_dest2;
             out_jz <= jz;
             out_call <= call;
             out_RET <= RET;

@@ -61,6 +61,7 @@ BEGIN
             result <= in_port WHEN ior_signal = '1';
             result <= temp_result(31 DOWNTO 0);
             result <= (sign_imm & imm) WHEN ALU_signal = "0000" AND imm_signal = '1';
+            result <= src2 WHEN ALU_signal = "0101";
             -- flags(2) <= temp_result(32);
             carry := temp_result(32);
             -- flags(2) <= NOT flags(2) WHEN ALU_signal = "0010" AND ALU_signal = "0100" AND ALU_signal = "1000";

@@ -20,10 +20,13 @@ ENTITY register_file IS
         clk : IN STD_LOGIC;
         RST : IN STD_LOGIC;
         we : IN STD_LOGIC;
+        swap : IN STD_LOGIC;
         address1 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         address2 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        write_address : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        datain : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        write_address1 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+        write_address2 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+        datain1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        datain2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         dataout1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         dataout2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 
@@ -37,7 +40,7 @@ BEGIN
     dataout1 <= registers(to_integer(unsigned(address1)));
     dataout2 <= registers(to_integer(unsigned(address2)));
 
-    reg_file : PROCESS (clk, we, datain, address1,address1,write_address)
+    reg_file : PROCESS (clk, we, datain1, datain2, address1, address2, write_address1, write_address2)
         FILE reg_file : text;
         VARIABLE file_line : line;
         VARIABLE temp_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -58,8 +61,11 @@ BEGIN
             flag <= '0';
             file_close(reg_file);
         ELSIF clk = '1' THEN
-            IF (we = '1') THEN
-                registers(to_integer(unsigned(write_address))) <= datain;
+            IF (swap = '1' AND we = '1') THEN
+                registers(to_integer(unsigned(write_address1))) <= datain1;
+                registers(to_integer(unsigned(write_address2))) <= datain2;
+            ELSIF (we = '1') THEN
+                registers(to_integer(unsigned(write_address1))) <= datain1;
             END IF;
         END IF;
 

@@ -25,6 +25,7 @@ ENTITY decode IS
     call : OUT STD_LOGIC;
     jz : OUT STD_LOGIC;
     reg_dest : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+    reg_dest2 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     src1 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     src2 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     free : OUT STD_LOGIC;
@@ -71,6 +72,7 @@ BEGIN
       src1 <= (OTHERS => '0');
       src2 <= (OTHERS => '0');
       reg_dest <= (OTHERS => '0');
+      reg_dest2 <= (OTHERS => '0');
 
     ELSIF clk'event AND clk = '0' THEN
       src1 <= instruction(10 DOWNTO 8);
@@ -90,6 +92,14 @@ BEGIN
         reg_dest <= instruction(4 DOWNTO 2);
       ELSE
         reg_dest <= (OTHERS => '0');
+      END IF;
+
+      IF (instruction(15 DOWNTO 11) = "00101") THEN
+        IF (read_src2 = '1') THEN
+          reg_dest2 <= instruction(7 DOWNTO 5);
+        ELSE
+          reg_dest2 <= instruction(4 DOWNTO 2);
+        END IF;
       END IF;
 
     END IF;
