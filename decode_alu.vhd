@@ -8,6 +8,7 @@ USE std.textio.ALL;
 ENTITY decode_alu IS
     PORT (
         clk : IN STD_LOGIC;
+        flush : IN STD_LOGIC;
         in_port : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         RST : IN STD_LOGIC;
         free : IN STD_LOGIC;
@@ -30,6 +31,7 @@ ENTITY decode_alu IS
         RET : IN STD_LOGIC;
         call : IN STD_LOGIC;
         jz : IN STD_LOGIC;
+        jump : IN STD_LOGIC;
         reg_dest : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         reg_dest2 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         out_instruction : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -50,6 +52,7 @@ ENTITY decode_alu IS
         out_RET : OUT STD_LOGIC;
         out_call : OUT STD_LOGIC;
         out_jz : OUT STD_LOGIC;
+        out_jump : OUT STD_LOGIC;
         out_reg_dest : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
         out_reg_dest2 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
         out_out_instruction : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -65,11 +68,12 @@ ARCHITECTURE arch_decode_alu OF decode_alu IS
 BEGIN
     decode_alu_p : PROCESS (clk, RST)
     BEGIN
-        IF RST = '1' THEN
+        IF RST = '1' OR flush = '1' THEN
             out_out_instruction <= (OTHERS => '0');
             out_reg_dest <= (OTHERS => '0');
             out_reg_dest2 <= (OTHERS => '0');
             out_jz <= '0';
+            out_jump <= '0';
             out_call <= '0';
             out_RET <= '0';
             out_RTI <= '0';
@@ -83,7 +87,7 @@ BEGIN
             out_write_back <= '0';
             out_memory_write <= '0';
             out_memory_read <= '0';
-
+            
             out_alu_signal <= (OTHERS => '0');
             out_src2_data <= (OTHERS => '0');
             out_src1_data <= (OTHERS => '0');
@@ -92,11 +96,13 @@ BEGIN
             out_in_port <= (OTHERS => '0');
             out_free <= '0';
             out_protect <= '0';
-        ELSIF clk'event AND clk = '1'THEN
+            
+        ELSIF clk'event AND clk = '1'  THEN
             out_out_instruction <= out_instruction;
             out_reg_dest <= reg_dest;
             out_reg_dest2 <= reg_dest2;
             out_jz <= jz;
+            out_jump <= jump;
             out_call <= call;
             out_RET <= RET;
             out_RTI <= RTI;

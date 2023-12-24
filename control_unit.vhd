@@ -7,7 +7,6 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 ENTITY control_unit IS
     PORT (
         RST : IN STD_LOGIC;
-
         opcode : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
         alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
         memory_read : OUT STD_LOGIC;
@@ -26,6 +25,7 @@ ENTITY control_unit IS
         RET : OUT STD_LOGIC;
         call : OUT STD_LOGIC;
         jz : OUT STD_LOGIC;
+        jump : OUT STD_LOGIC;
         free : OUT STD_LOGIC;
         protect : OUT STD_LOGIC
     );
@@ -52,6 +52,7 @@ BEGIN
         RET <= '0';
         call <= '0';
         jz <= '0';
+        jump <= '0';
         free <= '0';
         protect <= '0';
         alu_signal <= (OTHERS => '0');
@@ -173,6 +174,7 @@ BEGIN
                     --jmp
                 ELSIF opcode = "10010" THEN
                     read_src1 <= '1';
+                    jump <= '1';
 
                     --call
                 ELSIF opcode = "10011" THEN
