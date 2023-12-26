@@ -147,7 +147,7 @@ BEGIN
             -- flags(1) <= '1' WHEN temp_result(31) = '1';
             --not signal has no carry or sign flag
             IF (alu_signal /= "0000") THEN
-                IF ALU_signal = "0001" OR ALU_signal = "1001" OR ALU_signal = "1010" OR ALU_signal = "1011" OR ALU_signal = "0100" OR ALU_signal = "0011"THEN
+                IF ALU_signal = "0001" OR ALU_signal = "1001" OR ALU_signal = "1010" OR ALU_signal = "1011" THEN
                     -- flags(2) <= '0';
                     My_flags(2) <= '0';
                 ELSIF ALU_signal = "0010" OR ALU_signal = "1000" THEN
