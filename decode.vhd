@@ -15,6 +15,7 @@ ENTITY decode IS
     memory_write : OUT STD_LOGIC;
     write_back : OUT STD_LOGIC;
     read_src1 : OUT STD_LOGIC;
+    read_src2 : OUT STD_LOGIC;
     io_read : OUT STD_LOGIC;
     io_write : OUT STD_LOGIC;
     push : OUT STD_LOGIC;
@@ -70,7 +71,7 @@ ARCHITECTURE arch_decode OF decode IS
       get_pc_int : OUT STD_LOGIC
     );
   END COMPONENT;
-  SIGNAL read_src2 : STD_LOGIC;
+  -- SIGNAL read_src2 : STD_LOGIC;
   SIGNAL reg_dest_selector : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
 BEGIN

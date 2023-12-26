@@ -37,9 +37,10 @@ ARCHITECTURE arch_fetch OF fetch IS
     SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', OTHERS => '0');
     SIGNAL two : STD_LOGIC_VECTOR(31 DOWNTO 0) := (1 => '1', OTHERS => '0');
     SIGNAL pc : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL out_memory_instruction : STD_LOGIC_VECTOR(15 DOWNTO 0);
 BEGIN
 
-    memory_instance : instruction_memory PORT MAP(clk, RST, pc(11 DOWNTO 0), instruction);
+    memory_instance : instruction_memory PORT MAP(clk, RST, pc(11 DOWNTO 0), out_memory_instruction);
 
     fetch_unit : PROCESS (clk, RST) IS
         CONSTANT constant_value : STD_LOGIC_VECTOR(31 DOWNTO 0) := "00000000000000000000111111111111";
@@ -69,6 +70,8 @@ BEGIN
         END IF;
         IF (interrupt = '1') THEN
             instruction <= (OTHERS => '0');
+        ELSE
+            instruction <= out_memory_instruction;
         END IF;
 
         out_interrupt <= interrupt;

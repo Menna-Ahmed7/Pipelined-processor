@@ -26,6 +26,7 @@ ENTITY decode_alu IS
         memory_write : IN STD_LOGIC;
         write_back : IN STD_LOGIC;
         read_src1 : IN STD_LOGIC;
+        read_src2 : IN STD_LOGIC;
         io_read : IN STD_LOGIC;
         io_write : IN STD_LOGIC;
         push : IN STD_LOGIC;
@@ -47,6 +48,7 @@ ENTITY decode_alu IS
         out_memory_write : OUT STD_LOGIC;
         out_write_back : OUT STD_LOGIC;
         out_read_src1 : OUT STD_LOGIC;
+        out_read_src2 : OUT STD_LOGIC;
         out_io_read : OUT STD_LOGIC;
         out_io_write : OUT STD_LOGIC;
         out_push : OUT STD_LOGIC;
@@ -93,6 +95,7 @@ BEGIN
             out_io_write <= '0';
             out_io_read <= '0';
             out_read_src1 <= '0';
+            out_read_src2 <= '0';
             out_write_back <= '0';
             out_memory_write <= '0';
             out_memory_read <= '0';
@@ -126,6 +129,7 @@ BEGIN
             out_io_write <= io_write;
             out_io_read <= io_read;
             out_read_src1 <= read_src1;
+            out_read_src2 <= read_src2;
             out_write_back <= write_back;
             out_memory_write <= memory_write;
             out_memory_read <= memory_read;
