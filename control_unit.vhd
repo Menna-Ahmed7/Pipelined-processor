@@ -32,7 +32,8 @@ ENTITY control_unit IS
         protect : OUT STD_LOGIC;
         pop_flags : OUT STD_LOGIC;
         push_pc : OUT STD_LOGIC;
-        get_pc_int : OUT STD_LOGIC
+        get_pc_int : OUT STD_LOGIC;
+        forward_read_src2 : OUT STD_LOGIC
     );
 END ENTITY;
 
@@ -86,22 +87,26 @@ BEGIN
             --not
             IF opcode = "00001" THEN
                 write_back <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
                 alu_signal <= "0001";
                 --neg
             ELSIF opcode = "00010" THEN
                 write_back <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
                 alu_signal <= "0010";
 
                 --inc
             ELSIF opcode = "00011" THEN
                 write_back <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
                 alu_signal <= "0011";
                 --dec
             ELSIF opcode = "00100" THEN
                 write_back <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
                 alu_signal <= "0100";
 
@@ -111,6 +116,7 @@ BEGIN
                 swap <= '1';
                 read_src1 <= '1';
                 read_src2 <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "01";
                 alu_signal <= "0101";
 
@@ -119,6 +125,7 @@ BEGIN
                 write_back <= '1';
                 read_src1 <= '1';
                 read_src2 <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
                 alu_signal <= "0111";
 
@@ -127,6 +134,7 @@ BEGIN
                 write_back <= '1';
                 read_src1 <= '1';
                 read_src2 <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
                 alu_signal <= "1000";
 
@@ -135,6 +143,7 @@ BEGIN
                 write_back <= '1';
                 read_src1 <= '1';
                 read_src2 <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
                 alu_signal <= "1001";
 
@@ -143,6 +152,7 @@ BEGIN
                 write_back <= '1';
                 read_src1 <= '1';
                 read_src2 <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
                 alu_signal <= "1010";
 
@@ -151,6 +161,7 @@ BEGIN
                 write_back <= '1';
                 read_src1 <= '1';
                 read_src2 <= '1';
+                forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
                 alu_signal <= "1011";
 
@@ -166,6 +177,7 @@ BEGIN
             ELSIF opcode = "01101" THEN
                 read_src1 <= '1';
                 read_src2 <= '1';
+                forward_read_src2 <= '1';
                 alu_signal <= "1000";
 
                 --bitset

@@ -15,7 +15,7 @@ ENTITY decode IS
     memory_write : OUT STD_LOGIC;
     write_back : OUT STD_LOGIC;
     read_src1 : OUT STD_LOGIC;
-    read_src2 : OUT STD_LOGIC;
+    forward_read_src2 : OUT STD_LOGIC;
     io_read : OUT STD_LOGIC;
     io_write : OUT STD_LOGIC;
     push : OUT STD_LOGIC;
@@ -68,14 +68,15 @@ ARCHITECTURE arch_decode OF decode IS
       protect : OUT STD_LOGIC;
       pop_flags : OUT STD_LOGIC;
       push_pc : OUT STD_LOGIC;
-      get_pc_int : OUT STD_LOGIC
+      get_pc_int : OUT STD_LOGIC;
+      forward_read_src2 : OUT STD_LOGIC
     );
   END COMPONENT;
-  -- SIGNAL read_src2 : STD_LOGIC;
+  SIGNAL read_src2 : STD_LOGIC;
   SIGNAL reg_dest_selector : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
 BEGIN
-  control : control_unit PORT MAP(clk, RST, interrupt, instruction(15 DOWNTO 11), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, jump, free, protect, pop_flags, push_pc, get_pc_int);
+  control : control_unit PORT MAP(clk, RST, interrupt, instruction(15 DOWNTO 11), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, jump, free, protect, pop_flags, push_pc, get_pc_int, forward_read_src2);
 
   deocode_unit : PROCESS (clk)
 
