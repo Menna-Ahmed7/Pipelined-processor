@@ -21,7 +21,9 @@ ENTITY fetch IS
         instruction : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
         next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         alu_pc : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-        out_interrupt : OUT STD_LOGIC
+        out_interrupt : OUT STD_LOGIC;
+        in_port : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+        out_in_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
     );
 END ENTITY;
 ARCHITECTURE arch_fetch OF fetch IS
@@ -75,6 +77,7 @@ BEGIN
         END IF;
 
         out_interrupt <= interrupt;
+        out_in_port <= in_port;
     END PROCESS;
 
 END ARCHITECTURE;

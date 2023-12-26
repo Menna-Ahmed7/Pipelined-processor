@@ -95,7 +95,9 @@ ARCHITECTURE arch_processor OF processor IS
             instruction : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
             next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
             alu_pc : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-            out_interrupt : OUT STD_LOGIC
+            out_interrupt : OUT STD_LOGIC;
+            in_port : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+            out_in_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
         );
     END COMPONENT;
     COMPONENT write_back IS
@@ -493,15 +495,16 @@ ARCHITECTURE arch_processor OF processor IS
     SIGNAL fetch_get_pc_int : STD_LOGIC;
     SIGNAL forward1 : STD_LOGIC_VECTOR (2 DOWNTO 0);
     SIGNAL forward2 : STD_LOGIC_VECTOR (2 DOWNTO 0);
+    SIGNAL decode_in_port : STD_LOGIC_VECTOR (31 DOWNTO 0);
 
 BEGIN
     forwarding_unit : data_forwarding PORT MAP(src1, src2, out_out_reg_dest, out_out_out_reg_dest, out_out_reg_dest2, out_out_out_reg_dest2, forward1, forward2, out_out_write_back, out_out_out_write_back, out_out_swap, out_out_out_swap, out_read_src1, out_read_src2);
 
     reg_file_instance : register_file PORT MAP(clk, RST, out_out_out_write_back, out_out_out_swap, src1, src2, out_out_out_reg_dest, out_out_out_reg_dest2, reg_datain1, reg_datain2, src1_data, src2_data);
 
-    fetch_instance : fetch PORT MAP(clk, RST, fetch_get_pc_int, interrupt, out_out_jz, out_flags_alu(0), out_out_out_rti, out_out_out_ret, out_out_jump, out_out_call, memory_pc, in_instruction, next_pc, out_result_alu, in_interrupt);
+    fetch_instance : fetch PORT MAP(clk, RST, fetch_get_pc_int, interrupt, out_out_jz, out_flags_alu(0), out_out_out_rti, out_out_out_ret, out_out_jump, out_out_call, memory_pc, in_instruction, next_pc, out_result_alu, in_interrupt, in_port, decode_in_port);
 
-    fetch_decode_instance : fetch_decode PORT MAP(clk, in_interrupt, out_flush, out_flush2, in_port, RST, in_instruction, next_pc, out_instruction, out_pc, out_in_port, out_interrupt);
+    fetch_decode_instance : fetch_decode PORT MAP(clk, in_interrupt, out_flush, out_flush2, decode_in_port, RST, in_instruction, next_pc, out_instruction, out_pc, out_in_port, out_interrupt);
 
     decode_instance : decode PORT MAP(clk, RST, out_interrupt, out_instruction, alu_signal, memory_read, memory_write, write_back_signal, read_src1, read_src2, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, jump, reg_dest, reg_dest2, src1, src2, free, protect, pop_flags, push_pc, get_pc_int);
 
