@@ -9,6 +9,8 @@ ENTITY fetch IS
     PORT (
         clk : IN STD_LOGIC;
         RST : IN STD_LOGIC;
+        get_pc_int : IN STD_LOGIC;
+        interrupt : IN STD_LOGIC;
         jz : IN STD_LOGIC;
         zeroFlag : IN STD_LOGIC;
         rti : IN STD_LOGIC;
@@ -18,7 +20,8 @@ ENTITY fetch IS
         memory_pc : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         instruction : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
         next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        alu_pc : IN STD_LOGIC_VECTOR (31 DOWNTO 0)
+        alu_pc : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+        out_interrupt : OUT STD_LOGIC
     );
 END ENTITY;
 ARCHITECTURE arch_fetch OF fetch IS
@@ -56,7 +59,7 @@ BEGIN
             ELSIF ((jz = '1' AND zeroFlag = '1')) THEN
                 pc <= alu_pc;
                 next_pc <= alu_pc;
-            ELSIF (ret = '1' OR rti = '1') THEN
+            ELSIF (ret = '1' OR rti = '1'OR get_pc_int = '1') THEN
                 pc <= memory_pc;
                 next_pc <= memory_pc;
             ELSE
@@ -64,6 +67,11 @@ BEGIN
                 next_pc <= pc + one;
             END IF;
         END IF;
+        IF (interrupt = '1') THEN
+            instruction <= (OTHERS => '0');
+        END IF;
+
+        out_interrupt <= interrupt;
     END PROCESS;
 
 END ARCHITECTURE;

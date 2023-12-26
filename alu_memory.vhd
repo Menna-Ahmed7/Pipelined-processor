@@ -8,6 +8,9 @@ USE std.textio.ALL;
 ENTITY alu_memory IS
     PORT (
         clk : IN STD_LOGIC;
+        push_pc : IN STD_LOGIC;
+        get_pc_int : IN STD_LOGIC;
+        interrupt : IN STD_LOGIC;
         pop_flags : IN STD_LOGIC;
         RST : IN STD_LOGIC;
         flush : IN STD_LOGIC;
@@ -55,7 +58,10 @@ ENTITY alu_memory IS
         out_swap : OUT STD_LOGIC;
         out_flush : OUT STD_LOGIC;
         out_pc : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-        out_pop_flags : OUT STD_LOGIC
+        out_pop_flags : OUT STD_LOGIC;
+        out_interrupt : OUT STD_LOGIC;
+        out_push_pc : OUT STD_LOGIC;
+        out_get_pc_int : OUT STD_LOGIC
     );
 END ENTITY;
 
@@ -88,6 +94,9 @@ BEGIN
             out_swap <= '0';
             out_flush <= '0';
             out_pop_flags <= '0';
+            out_interrupt <= '0';
+            out_push_pc <= '0';
+            out_get_pc_int <= '0';
 
         ELSIF clk'event AND clk = '1'THEN
             out_write_back <= write_back;
@@ -113,6 +122,9 @@ BEGIN
             out_flush <= flush;
             out_pc <= pc;
             out_pop_flags <= pop_flags;
+            out_interrupt <= interrupt;
+            out_get_pc_int <= get_pc_int;
+            out_push_pc <= push_pc;
         END IF;
     END PROCESS;
 

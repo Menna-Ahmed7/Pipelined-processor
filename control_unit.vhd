@@ -6,7 +6,9 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY control_unit IS
     PORT (
+        clk : IN STD_LOGIC;
         RST : IN STD_LOGIC;
+        interrupt : IN STD_LOGIC;
         opcode : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
         alu_signal : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
         memory_read : OUT STD_LOGIC;
@@ -28,13 +30,17 @@ ENTITY control_unit IS
         jump : OUT STD_LOGIC;
         free : OUT STD_LOGIC;
         protect : OUT STD_LOGIC;
-        pop_flags : OUT STD_LOGIC
+        pop_flags : OUT STD_LOGIC;
+        push_pc : OUT STD_LOGIC;
+        get_pc_int : OUT STD_LOGIC
     );
 END ENTITY;
 
 ARCHITECTURE arch_control_unit OF control_unit IS
     SIGNAL instruction_32bit : STD_LOGIC := '0';
     SIGNAL second_memory : STD_LOGIC := '0';
+    SIGNAL second_memory_int : STD_LOGIC := '0';
+    SIGNAL third_memory_int : STD_LOGIC := '0';
 BEGIN
     PROCESS (opcode, RST) IS
     BEGIN
@@ -57,207 +63,247 @@ BEGIN
         jump <= '0';
         free <= '0';
         protect <= '0';
-        pop_flags <= '0';
+        -- pop_flags <= '0';
+        -- push_pc <= '0';
+        -- get_pc_int <= '0';
         alu_signal <= (OTHERS => '0');
         IF (RST = '0') THEN
+            -- IF (instruction_32bit = '1') THEN
+            --     instruction_32bit <= '0';
+            -- ELSIF (second_memory = '1') THEN
+            --     second_memory <= '0';
+            --     pop_flags <= '1';
+            -- ELSIF (second_memory_int = '1') THEN
+            --     second_memory_int <= '0';
+            --     memory_write <= '1';
+            --     push_pc <= '1';
+            --     third_memory_int <= '1';
+            -- ELSIF (third_memory_int = '1') THEN
+            --     memory_read <= '1';
+            --     third_memory_int <= '0';
+            --     get_pc_int <= '1';
+            -- ELSE
+            --not
+            IF opcode = "00001" THEN
+                write_back <= '1';
+                reg_dest_selector <= "11";
+                alu_signal <= "0001";
+                --neg
+            ELSIF opcode = "00010" THEN
+                write_back <= '1';
+                reg_dest_selector <= "11";
+                alu_signal <= "0010";
+
+                --inc
+            ELSIF opcode = "00011" THEN
+                write_back <= '1';
+                reg_dest_selector <= "11";
+                alu_signal <= "0011";
+                --dec
+            ELSIF opcode = "00100" THEN
+                write_back <= '1';
+                reg_dest_selector <= "11";
+                alu_signal <= "0100";
+
+                --swap
+            ELSIF opcode = "00101" THEN
+                write_back <= '1';
+                swap <= '1';
+                read_src1 <= '1';
+                read_src2 <= '1';
+                reg_dest_selector <= "01";
+                alu_signal <= "0101";
+
+                --add
+            ELSIF opcode = "00111" THEN
+                write_back <= '1';
+                read_src1 <= '1';
+                read_src2 <= '1';
+                reg_dest_selector <= "11";
+                alu_signal <= "0111";
+
+                --sub
+            ELSIF opcode = "01000" THEN
+                write_back <= '1';
+                read_src1 <= '1';
+                read_src2 <= '1';
+                reg_dest_selector <= "11";
+                alu_signal <= "1000";
+
+                --and
+            ELSIF opcode = "01001" THEN
+                write_back <= '1';
+                read_src1 <= '1';
+                read_src2 <= '1';
+                reg_dest_selector <= "11";
+                alu_signal <= "1001";
+
+                --or
+            ELSIF opcode = "01010" THEN
+                write_back <= '1';
+                read_src1 <= '1';
+                read_src2 <= '1';
+                reg_dest_selector <= "11";
+                alu_signal <= "1010";
+
+                --xor
+            ELSIF opcode = "01011" THEN
+                write_back <= '1';
+                read_src1 <= '1';
+                read_src2 <= '1';
+                reg_dest_selector <= "11";
+                alu_signal <= "1011";
+
+                --addi
+            ELSIF opcode = "01100" THEN
+                write_back <= '1';
+                read_src1 <= '1';
+                imm <= '1';
+                reg_dest_selector <= "10";
+                alu_signal <= "0111";
+                instruction_32bit <= '1';
+                --cmp
+            ELSIF opcode = "01101" THEN
+                read_src1 <= '1';
+                read_src2 <= '1';
+                alu_signal <= "1000";
+
+                --bitset
+            ELSIF opcode = "01110" THEN
+                write_back <= '1';
+                imm <= '1';
+                read_src1 <= '1';
+                reg_dest_selector <= "01";
+                alu_signal <= "1100";
+                instruction_32bit <= '1';
+
+                --rcl
+            ELSIF opcode = "01111" THEN
+                write_back <= '1';
+                imm <= '1';
+                read_src1 <= '1';
+                reg_dest_selector <= "01";
+                alu_signal <= "1101";
+                instruction_32bit <= '1';
+                --rcr
+            ELSIF opcode = "10000" THEN
+                write_back <= '1';
+                imm <= '1';
+                read_src1 <= '1';
+                reg_dest_selector <= "01";
+                alu_signal <= "1110";
+                instruction_32bit <= '1';
+                --jz
+            ELSIF opcode = "10001" THEN
+                jz <= '1';
+                read_src1 <= '1';
+
+                --jmp
+            ELSIF opcode = "10010" THEN
+                read_src1 <= '1';
+                jump <= '1';
+
+                --call
+            ELSIF opcode = "10011" THEN
+                read_src1 <= '1';
+                call <= '1';
+                memory_write <= '1';
+
+                --ret
+            ELSIF opcode = "10100" THEN
+                memory_read <= '1';
+                ret <= '1';
+
+                --rti
+            ELSIF opcode = "10101" THEN
+                memory_read <= '1';
+                rti <= '1';
+                second_memory <= '1';
+                --push
+            ELSIF opcode = "10110" THEN
+                memory_write <= '1';
+                read_src1 <= '1';
+                push <= '1';
+
+                --pop
+            ELSIF opcode = "10111" THEN
+                memory_read <= '1';
+                pop <= '1';
+                reg_dest_selector <= "01";
+                write_back <= '1';
+
+                --in
+            ELSIF opcode = "11000" THEN
+                write_back <= '1';
+                io_read <= '1';
+                reg_dest_selector <= "01";
+
+                --out
+            ELSIF opcode = "11001" THEN
+                io_write <= '1';
+                read_src1 <= '1';
+
+                --  ldm
+            ELSIF opcode = "11010" THEN
+                write_back <= '1';
+                reg_dest_selector <= "01";
+                imm <= '1';
+                instruction_32bit <= '1';
+                --lld
+            ELSIF opcode = "11011" THEN
+                write_back <= '1';
+                memory_read <= '1';
+                reg_dest_selector <= "01";
+                instruction_32bit <= '1';
+                --std
+            ELSIF opcode = "11100" THEN
+                read_src1 <= '1';
+                instruction_32bit <= '1';
+                memory_write <= '1';
+                --protect
+            ELSIF opcode = "11101" THEN
+                read_src1 <= '1';
+
+                protect <= '1';
+                --free
+            ELSIF opcode = "11110" THEN
+                read_src1 <= '1';
+                free <= '1';
+                memory_write <= '1';
+
+            END IF;
+        END IF;
+        --interupt
+
+        -- END IF;
+
+    END PROCESS;
+
+    PROCESS (clk, opcode) IS
+    BEGIN
+        IF (clk = '1') THEN
+            push_pc <= '0';
+            get_pc_int <= '0';
+            pop_flags <= '0';
             IF (instruction_32bit = '1') THEN
                 instruction_32bit <= '0';
             ELSIF (second_memory = '1') THEN
                 second_memory <= '0';
                 pop_flags <= '1';
-            ELSE
-                --not
-                IF opcode = "00001" THEN
-                    write_back <= '1';
-                    reg_dest_selector <= "11";
-                    alu_signal <= "0001";
-                    --neg
-                ELSIF opcode = "00010" THEN
-                    write_back <= '1';
-                    reg_dest_selector <= "11";
-                    alu_signal <= "0010";
-
-                    --inc
-                ELSIF opcode = "00011" THEN
-                    write_back <= '1';
-                    reg_dest_selector <= "11";
-                    alu_signal <= "0011";
-                    --dec
-                ELSIF opcode = "00100" THEN
-                    write_back <= '1';
-                    reg_dest_selector <= "11";
-                    alu_signal <= "0100";
-
-                    --swap
-                ELSIF opcode = "00101" THEN
-                    write_back <= '1';
-                    swap <= '1';
-                    read_src1 <= '1';
-                    read_src2 <= '1';
-                    reg_dest_selector <= "01";
-                    alu_signal <= "0101";
-
-                    --add
-                ELSIF opcode = "00111" THEN
-                    write_back <= '1';
-                    read_src1 <= '1';
-                    read_src2 <= '1';
-                    reg_dest_selector <= "11";
-                    alu_signal <= "0111";
-
-                    --sub
-                ELSIF opcode = "01000" THEN
-                    write_back <= '1';
-                    read_src1 <= '1';
-                    read_src2 <= '1';
-                    reg_dest_selector <= "11";
-                    alu_signal <= "1000";
-
-                    --and
-                ELSIF opcode = "01001" THEN
-                    write_back <= '1';
-                    read_src1 <= '1';
-                    read_src2 <= '1';
-                    reg_dest_selector <= "11";
-                    alu_signal <= "1001";
-
-                    --or
-                ELSIF opcode = "01010" THEN
-                    write_back <= '1';
-                    read_src1 <= '1';
-                    read_src2 <= '1';
-                    reg_dest_selector <= "11";
-                    alu_signal <= "1010";
-
-                    --xor
-                ELSIF opcode = "01011" THEN
-                    write_back <= '1';
-                    read_src1 <= '1';
-                    read_src2 <= '1';
-                    reg_dest_selector <= "11";
-                    alu_signal <= "1011";
-
-                    --addi
-                ELSIF opcode = "01100" THEN
-                    write_back <= '1';
-                    read_src1 <= '1';
-                    imm <= '1';
-                    reg_dest_selector <= "10";
-                    alu_signal <= "0111";
-                    instruction_32bit <= '1';
-                    --cmp
-                ELSIF opcode = "01101" THEN
-                    read_src1 <= '1';
-                    read_src2 <= '1';
-                    alu_signal <= "1000";
-
-                    --bitset
-                ELSIF opcode = "01110" THEN
-                    write_back <= '1';
-                    imm <= '1';
-                    read_src1 <= '1';
-                    reg_dest_selector <= "01";
-                    alu_signal <= "1100";
-                    instruction_32bit <= '1';
-
-                    --rcl
-                ELSIF opcode = "01111" THEN
-                    write_back <= '1';
-                    imm <= '1';
-                    read_src1 <= '1';
-                    reg_dest_selector <= "01";
-                    alu_signal <= "1101";
-                    instruction_32bit <= '1';
-                    --rcr
-                ELSIF opcode = "10000" THEN
-                    write_back <= '1';
-                    imm <= '1';
-                    read_src1 <= '1';
-                    reg_dest_selector <= "01";
-                    alu_signal <= "1110";
-                    instruction_32bit <= '1';
-                    --jz
-                ELSIF opcode = "10001" THEN
-                    jz <= '1';
-                    read_src1 <= '1';
-
-                    --jmp
-                ELSIF opcode = "10010" THEN
-                    read_src1 <= '1';
-                    jump <= '1';
-
-                    --call
-                ELSIF opcode = "10011" THEN
-                    read_src1 <= '1';
-                    call <= '1';
-                    memory_write <= '1';
-
-                    --ret
-                ELSIF opcode = "10100" THEN
-                    memory_read <= '1';
-                    ret <= '1';
-
-                    --rti
-                ELSIF opcode = "10101" THEN
-                    memory_read <= '1';
-                    rti <= '1';
-                    second_memory <= '1';
-                    --push
-                ELSIF opcode = "10110" THEN
-                    memory_write <= '1';
-                    read_src1 <= '1';
-                    push <= '1';
-
-                    --pop
-                ELSIF opcode = "10111" THEN
-                    memory_read <= '1';
-                    pop <= '1';
-                    reg_dest_selector <= "01";
-                    write_back <= '1';
-
-                    --in
-                ELSIF opcode = "11000" THEN
-                    write_back <= '1';
-                    io_read <= '1';
-                    reg_dest_selector <= "01";
-
-                    --out
-                ELSIF opcode = "11001" THEN
-                    io_write <= '1';
-                    read_src1 <= '1';
-
-                    --  ldm
-                ELSIF opcode = "11010" THEN
-                    write_back <= '1';
-                    reg_dest_selector <= "01";
-                    imm <= '1';
-                    instruction_32bit <= '1';
-                    --lld
-                ELSIF opcode = "11011" THEN
-                    write_back <= '1';
-                    memory_read <= '1';
-                    reg_dest_selector <= "01";
-                    instruction_32bit <= '1';
-                    --std
-                ELSIF opcode = "11100" THEN
-                    read_src1 <= '1';
-                    instruction_32bit <= '1';
-                    memory_write <= '1';
-                    --protect
-                ELSIF opcode = "11101" THEN
-                    read_src1 <= '1';
-
-                    protect <= '1';
-                    --free
-                ELSIF opcode = "11110" THEN
-                    read_src1 <= '1';
-                    free <= '1';
-                    memory_write <= '1';
-
-                END IF;
+            ELSIF (second_memory_int = '1') THEN
+                second_memory_int <= '0';
+                -- memory_write <= '1';
+                push_pc <= '1';
+                third_memory_int <= '1';
+            ELSIF (third_memory_int = '1') THEN
+                -- memory_read <= '1';
+                third_memory_int <= '0';
+                get_pc_int <= '1';
             END IF;
-
+            IF interrupt = '1' THEN
+                -- memory_write <= '1';
+                second_memory_int <= '1';
+            END IF;
         END IF;
-
     END PROCESS;
 END ARCHITECTURE;

@@ -8,6 +8,9 @@ USE std.textio.ALL;
 ENTITY decode_alu IS
     PORT (
         clk : IN STD_LOGIC;
+        push_pc : IN STD_LOGIC;
+        get_pc_int : IN STD_LOGIC;
+        interrupt : IN STD_LOGIC;
         pop_flags : IN STD_LOGIC;
         flush : IN STD_LOGIC;
         flush2 : IN STD_LOGIC;
@@ -62,7 +65,10 @@ ENTITY decode_alu IS
         out_free : OUT STD_LOGIC;
         out_protect : OUT STD_LOGIC;
         out_in_port : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        out_pop_flags : OUT STD_LOGIC
+        out_pop_flags : OUT STD_LOGIC;
+        out_interrupt : OUT STD_LOGIC;
+        out_push_pc : OUT STD_LOGIC;
+        out_get_pc_int : OUT STD_LOGIC
 
     );
 END ENTITY;
@@ -100,6 +106,9 @@ BEGIN
             out_in_port <= (OTHERS => '0');
             out_free <= '0';
             out_protect <= '0';
+            out_interrupt <= '0';
+            out_push_pc <= '0';
+            out_get_pc_int <= '0';
 
         ELSIF clk'event AND clk = '1' THEN
             out_out_instruction <= out_instruction;
@@ -130,6 +139,9 @@ BEGIN
             out_protect <= protect;
             out_in_port <= in_port;
             out_pop_flags <= pop_flags;
+            out_interrupt <= interrupt;
+            out_push_pc <= push_pc;
+            out_get_pc_int <= get_pc_int;
 
         END IF;
     END PROCESS;

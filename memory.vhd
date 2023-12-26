@@ -9,6 +9,10 @@ USE std.textio.ALL;
 ENTITY memory IS
     PORT (
         clk : IN STD_LOGIC;
+        push_pc : IN STD_LOGIC;
+        get_pc_int : IN STD_LOGIC;
+        interrupt : IN STD_LOGIC;
+        alu_flags : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         pop_flags : IN STD_LOGIC;
         RST : IN STD_LOGIC;
         EA : IN STD_LOGIC_VECTOR(19 DOWNTO 0);
@@ -29,7 +33,8 @@ ENTITY memory IS
         out_CCR : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
         flush2 : OUT STD_LOGIC;
         flags : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-        out_pop_flags : OUT STD_LOGIC
+        out_pop_flags : OUT STD_LOGIC;
+        out_get_int : OUT STD_LOGIC
     );
 END ENTITY;
 ARCHITECTURE arch_memory OF memory IS
@@ -81,7 +86,7 @@ BEGIN
             address := EA(11 DOWNTO 0);
             written_data <= datain;
             --address mux selector
-            temp := ret OR rti OR call OR push OR pop OR pop_flags;
+            temp := ret OR rti OR call OR push OR pop OR pop_flags OR push_pc OR interrupt;
             --address mux if free
             IF (free = '1') THEN
                 written_address <= datain(11 DOWNTO 0);
@@ -97,6 +102,19 @@ BEGIN
                 written_data <= pc;
                 sp <= sp - two;
                 temp_sp := sp(11 DOWNTO 0) - one;
+                --interupt
+            ELSIF (interrupt = '1') THEN
+                written_data <= "0000000000000000000000000000" & alu_flags;
+                sp <= sp - two;
+                temp_sp := sp(11 DOWNTO 0) - one;
+                --push_pc
+            ELSIF (push_pc = '1') THEN
+                written_data <= pc - two;
+                sp <= sp - two;
+                temp_sp := sp(11 DOWNTO 0) - one;
+                --get_pc_int
+            ELSIF (get_pc_int = '1') THEN
+                written_address <= two;
                 --push
             ELSIF (push = '1') THEN
                 written_data <= datain;
@@ -135,11 +153,13 @@ BEGIN
         END IF;
         IF (memory_write = '1' AND (protect(to_integer(unsigned(address))) = '1' OR protect(to_integer(unsigned(address + one))) = '1')) THEN
             we1 <= '0';
+        ELSIF (push_pc = '1' OR interrupt = '1') THEN
+            we1 <= '1';
         ELSE
             we1 <= memory_write;
         END IF;
 
-        IF (pop_flags = '1') THEN
+        IF (pop_flags = '1' OR get_pc_int = '1') THEN
             re1 <= '1';
         ELSE
             re1 <= memory_read;
@@ -149,8 +169,11 @@ BEGIN
 
     next_pc <= dataout - one WHEN rti = '1'
         ELSE
+        dataout WHEN get_pc_int = '1'
+        ELSE
         dataout;
 
     flags <= dataout(3 DOWNTO 0);
     out_pop_flags <= pop_flags WHEN clk = '1';
+    out_get_int <= get_pc_int;
 END ARCHITECTURE;
