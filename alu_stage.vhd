@@ -12,8 +12,9 @@ ENTITY alu_stage IS
         jump : IN STD_LOGIC;
         jz : IN STD_LOGIC;
         src1, src2, write_back_data, result_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        write_back_data2, result_in2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         imm : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-        forward_unit_signal1, forward_unit_signal2 : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+        forward_unit_signal1, forward_unit_signal2 : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
         imm_signal, iow_signal, ior_signal : IN STD_LOGIC;
         ALU_sig : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         out_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -31,9 +32,8 @@ ARCHITECTURE arch_alu_stage OF alu_stage IS
 
     COMPONENT mux_3bits IS
         PORT (
-            IN1, IN2, IN3 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-            SEL : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
-
+            IN1, IN2, IN3, IN4, IN5 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            SEL : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
             SELECTED : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
         );
     END COMPONENT;
@@ -61,12 +61,19 @@ BEGIN
     tmp_imm <= "0000000000000000" & imm;
     tmp <= src2 WHEN imm_signal = '0' ELSE
         tmp_imm WHEN imm_signal = '1';
+
+    --------------------------------------------------------------------
+
     obj1 : mux_3bits PORT MAP(
-        src1, result_in, write_back_data, forward_unit_signal1, src1_alu
+        src1, result_in, result_in2, write_back_data, write_back_data2, forward_unit_signal1, src1_alu
     );
+
+    --------------------------------------------------------------------
     obj2 : mux_3bits PORT MAP(
-        tmp, result_in, write_back_data, forward_unit_signal2, src2_alu
+        tmp, result_in, result_in2, write_back_data, write_back_data2, forward_unit_signal2, src2_alu
     );
+    --------------------------------------------------------------------
+
     obj3 : alu PORT MAP(
         clk, RST, pop_flags, memory_flags,
         src1_alu, src2_alu, ALU_sig, temp_result_alu, flags_alu, iow_signal, ior_signal, out_port, in_port, imm, imm_signal
