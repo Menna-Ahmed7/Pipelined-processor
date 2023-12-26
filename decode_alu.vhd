@@ -8,7 +8,9 @@ USE std.textio.ALL;
 ENTITY decode_alu IS
     PORT (
         clk : IN STD_LOGIC;
+        pop_flags : IN STD_LOGIC;
         flush : IN STD_LOGIC;
+        flush2 : IN STD_LOGIC;
         in_port : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         RST : IN STD_LOGIC;
         free : IN STD_LOGIC;
@@ -59,7 +61,8 @@ ENTITY decode_alu IS
         out_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         out_free : OUT STD_LOGIC;
         out_protect : OUT STD_LOGIC;
-        out_in_port : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+        out_in_port : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+        out_pop_flags : OUT STD_LOGIC
 
     );
 END ENTITY;
@@ -68,7 +71,7 @@ ARCHITECTURE arch_decode_alu OF decode_alu IS
 BEGIN
     decode_alu_p : PROCESS (clk, RST)
     BEGIN
-        IF RST = '1' OR flush = '1' THEN
+        IF RST = '1' OR flush = '1' OR flush2 = '1' THEN
             out_out_instruction <= (OTHERS => '0');
             out_reg_dest <= (OTHERS => '0');
             out_reg_dest2 <= (OTHERS => '0');
@@ -87,7 +90,8 @@ BEGIN
             out_write_back <= '0';
             out_memory_write <= '0';
             out_memory_read <= '0';
-            
+            out_pop_flags <= '0';
+
             out_alu_signal <= (OTHERS => '0');
             out_src2_data <= (OTHERS => '0');
             out_src1_data <= (OTHERS => '0');
@@ -96,8 +100,8 @@ BEGIN
             out_in_port <= (OTHERS => '0');
             out_free <= '0';
             out_protect <= '0';
-            
-        ELSIF clk'event AND clk = '1'  THEN
+
+        ELSIF clk'event AND clk = '1' THEN
             out_out_instruction <= out_instruction;
             out_reg_dest <= reg_dest;
             out_reg_dest2 <= reg_dest2;
@@ -125,6 +129,7 @@ BEGIN
             out_free <= free;
             out_protect <= protect;
             out_in_port <= in_port;
+            out_pop_flags <= pop_flags;
 
         END IF;
     END PROCESS;

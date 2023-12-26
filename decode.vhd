@@ -30,7 +30,8 @@ ENTITY decode IS
     src1 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     src2 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     free : OUT STD_LOGIC;
-    protect : OUT STD_LOGIC
+    protect : OUT STD_LOGIC;
+    pop_flags : OUT STD_LOGIC
   );
 END ENTITY;
 
@@ -58,14 +59,15 @@ ARCHITECTURE arch_decode OF decode IS
       jz : OUT STD_LOGIC;
       jump : OUT STD_LOGIC;
       free : OUT STD_LOGIC;
-      protect : OUT STD_LOGIC
+      protect : OUT STD_LOGIC;
+      pop_flags : OUT STD_LOGIC
     );
   END COMPONENT;
   SIGNAL read_src2 : STD_LOGIC;
   SIGNAL reg_dest_selector : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
 BEGIN
-  control : control_unit PORT MAP(RST, instruction(15 DOWNTO 11), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz,jump, free, protect);
+  control : control_unit PORT MAP(RST, instruction(15 DOWNTO 11), alu_signal, memory_read, memory_write, write_back, read_src1, read_src2, reg_dest_selector, io_read, io_write, push, pop, swap, imm, RTI, RET, call, jz, jump, free, protect,pop_flags);
 
   deocode_unit : PROCESS (clk)
 

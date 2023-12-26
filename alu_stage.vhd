@@ -6,6 +6,8 @@ ENTITY alu_stage IS
     PORT (
         clk : IN STD_LOGIC;
         RST : IN STD_LOGIC;
+        pop_flags : IN STD_LOGIC;
+        memory_flags : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         call : IN STD_LOGIC;
         jump : IN STD_LOGIC;
         jz : IN STD_LOGIC;
@@ -40,6 +42,8 @@ ARCHITECTURE arch_alu_stage OF alu_stage IS
         PORT (
             clk : IN STD_LOGIC;
             RST : IN STD_LOGIC;
+            pop_flags : IN STD_LOGIC;
+            memory_flags : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             src1, src2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
             ALU_signal : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -64,17 +68,20 @@ BEGIN
         tmp, result_in, write_back_data, forward_unit_signal2, src2_alu
     );
     obj3 : alu PORT MAP(
-        clk, RST,
+        clk, RST, pop_flags, memory_flags,
         src1_alu, src2_alu, ALU_sig, temp_result_alu, flags_alu, iow_signal, ior_signal, out_port, in_port, imm, imm_signal
     );
     ----to flush fetched instructions before call or jump
-    flush <= '1' WHEN call = '1' OR jump = '1' OR jz = '1'
+    flush <= '1' WHEN call = '1' OR jump = '1'
+        ELSE
+        '1' WHEN (jz = '1' AND flags_alu(0) = '1')
         ELSE
         '0';
     ----send pc to fetch stage to jump to the new address
     -- alu_pc <= src1;
-    result_alu <= src1 WHEN call = '1' OR jump = '1' OR jz = '1'
+    result_alu <= src1 WHEN call = '1' OR jump = '1'
+        ELSE
+        src1 WHEN (jz = '1' AND flags_alu(0) = '1')
         ELSE
         temp_result_alu;
-
 END ARCHITECTURE;

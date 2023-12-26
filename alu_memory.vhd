@@ -8,8 +8,11 @@ USE std.textio.ALL;
 ENTITY alu_memory IS
     PORT (
         clk : IN STD_LOGIC;
+        pop_flags : IN STD_LOGIC;
         RST : IN STD_LOGIC;
         flush : IN STD_LOGIC;
+        pc : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+        flush2 : IN STD_LOGIC;
         swap : IN STD_LOGIC;
         free : IN STD_LOGIC;
         protect : IN STD_LOGIC;
@@ -50,7 +53,9 @@ ENTITY alu_memory IS
         out_free : OUT STD_LOGIC;
         out_protect : OUT STD_LOGIC;
         out_swap : OUT STD_LOGIC;
-        out_flush : OUT STD_LOGIC
+        out_flush : OUT STD_LOGIC;
+        out_pc : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+        out_pop_flags : OUT STD_LOGIC
     );
 END ENTITY;
 
@@ -59,7 +64,7 @@ BEGIN
     decode_alu_p : PROCESS (clk, RST)
     BEGIN
 
-        IF RST = '1' THEN
+        IF RST = '1' OR flush2 = '1' THEN
             out_write_back <= '0';
             out_reg_dest <= (OTHERS => '0');
             out_reg_dest2 <= (OTHERS => '0');
@@ -77,10 +82,12 @@ BEGIN
             out_EA <= (OTHERS => '0');
             out_src1_data <= (OTHERS => '0');
             out_flags_alu <= (OTHERS => '0');
+            out_pc <= (OTHERS => '0');
             out_free <= '0';
             out_protect <= '0';
             out_swap <= '0';
-            out_flush <='0';
+            out_flush <= '0';
+            out_pop_flags <= '0';
 
         ELSIF clk'event AND clk = '1'THEN
             out_write_back <= write_back;
@@ -104,6 +111,8 @@ BEGIN
             out_protect <= protect;
             out_swap <= swap;
             out_flush <= flush;
+            out_pc <= pc;
+            out_pop_flags <= pop_flags;
         END IF;
     END PROCESS;
 

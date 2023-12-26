@@ -27,12 +27,14 @@ ENTITY control_unit IS
         jz : OUT STD_LOGIC;
         jump : OUT STD_LOGIC;
         free : OUT STD_LOGIC;
-        protect : OUT STD_LOGIC
+        protect : OUT STD_LOGIC;
+        pop_flags : OUT STD_LOGIC
     );
 END ENTITY;
 
 ARCHITECTURE arch_control_unit OF control_unit IS
     SIGNAL instruction_32bit : STD_LOGIC := '0';
+    SIGNAL second_memory : STD_LOGIC := '0';
 BEGIN
     PROCESS (opcode, RST) IS
     BEGIN
@@ -55,10 +57,14 @@ BEGIN
         jump <= '0';
         free <= '0';
         protect <= '0';
+        pop_flags <= '0';
         alu_signal <= (OTHERS => '0');
         IF (RST = '0') THEN
             IF (instruction_32bit = '1') THEN
                 instruction_32bit <= '0';
+            ELSIF (second_memory = '1') THEN
+                second_memory <= '0';
+                pop_flags <= '1';
             ELSE
                 --not
                 IF opcode = "00001" THEN
@@ -149,21 +155,25 @@ BEGIN
                 ELSIF opcode = "01110" THEN
                     write_back <= '1';
                     imm <= '1';
-                    reg_dest_selector <= "10";
+                    read_src1 <= '1';
+                    reg_dest_selector <= "01";
                     alu_signal <= "1100";
+                    instruction_32bit <= '1';
 
                     --rcl
                 ELSIF opcode = "01111" THEN
                     write_back <= '1';
                     imm <= '1';
-                    reg_dest_selector <= "10";
+                    read_src1 <= '1';
+                    reg_dest_selector <= "01";
                     alu_signal <= "1101";
                     instruction_32bit <= '1';
                     --rcr
                 ELSIF opcode = "10000" THEN
                     write_back <= '1';
                     imm <= '1';
-                    reg_dest_selector <= "10";
+                    read_src1 <= '1';
+                    reg_dest_selector <= "01";
                     alu_signal <= "1110";
                     instruction_32bit <= '1';
                     --jz
@@ -191,7 +201,7 @@ BEGIN
                 ELSIF opcode = "10101" THEN
                     memory_read <= '1';
                     rti <= '1';
-
+                    second_memory <= '1';
                     --push
                 ELSIF opcode = "10110" THEN
                     memory_write <= '1';

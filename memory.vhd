@@ -9,6 +9,7 @@ USE std.textio.ALL;
 ENTITY memory IS
     PORT (
         clk : IN STD_LOGIC;
+        pop_flags : IN STD_LOGIC;
         RST : IN STD_LOGIC;
         EA : IN STD_LOGIC_VECTOR(19 DOWNTO 0);
         datain : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -25,7 +26,10 @@ ENTITY memory IS
         free : IN STD_LOGIC;
         next_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         dataout : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        out_CCR : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+        out_CCR : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+        flush2 : OUT STD_LOGIC;
+        flags : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+        out_pop_flags : OUT STD_LOGIC
     );
 END ENTITY;
 ARCHITECTURE arch_memory OF memory IS
@@ -77,7 +81,7 @@ BEGIN
             address := EA(11 DOWNTO 0);
             written_data <= datain;
             --address mux selector
-            temp := ret OR rti OR call OR push OR pop;
+            temp := ret OR rti OR call OR push OR pop OR pop_flags;
             --address mux if free
             IF (free = '1') THEN
                 written_address <= datain(11 DOWNTO 0);
@@ -88,23 +92,32 @@ BEGIN
 
             IF (prot = '1') THEN
                 protect(to_integer(unsigned(datain))) <= '1';
-            --call
+                --call
             ELSIF (call = '1') THEN
                 written_data <= pc;
                 sp <= sp - two;
                 temp_sp := sp(11 DOWNTO 0) - one;
-            --push
+                --push
             ELSIF (push = '1') THEN
                 written_data <= datain;
                 sp <= sp - two;
                 temp_sp := sp(11 DOWNTO 0) - one;
-            --ret or pop
-            ELSIF (ret = '1' OR pop = '1') THEN
+                -- pop
+            ELSIF (pop = '1') THEN
                 sp <= sp + two;
                 temp_sp := sp(11 DOWNTO 0) + one;
-
+                --ret
+            ELSIF (ret = '1') THEN
+                sp <= sp + two;
+                temp_sp := sp(11 DOWNTO 0) + one;
+                --rti
             ELSIF (rti = '1') THEN
-                next_pc <= dataout;
+                sp <= sp + two;
+                temp_sp := sp(11 DOWNTO 0) + one;
+                --pop_flags
+            ELSIF (pop_flags = '1') THEN
+                sp <= sp + two;
+                temp_sp := sp(11 DOWNTO 0) + one;
             END IF;
 
             --address mux
@@ -113,15 +126,31 @@ BEGIN
                 address := temp_sp(11 DOWNTO 0);
             END IF;
 
+            IF (ret = '1' OR rti = '1') THEN
+                flush2 <= '1';
+            ELSE
+                flush2 <= '0';
+            END IF;
+
         END IF;
         IF (memory_write = '1' AND (protect(to_integer(unsigned(address))) = '1' OR protect(to_integer(unsigned(address + one))) = '1')) THEN
             we1 <= '0';
         ELSE
             we1 <= memory_write;
         END IF;
-        re1 <= memory_read;
+
+        IF (pop_flags = '1') THEN
+            re1 <= '1';
+        ELSE
+            re1 <= memory_read;
+        END IF;
+
     END PROCESS memory;
 
-    next_pc <= dataout;
+    next_pc <= dataout - one WHEN rti = '1'
+        ELSE
+        dataout;
 
+    flags <= dataout(3 DOWNTO 0);
+    out_pop_flags <= pop_flags WHEN clk = '1';
 END ARCHITECTURE;

@@ -34,11 +34,9 @@ ARCHITECTURE arch_fetch OF fetch IS
     SIGNAL one : STD_LOGIC_VECTOR(31 DOWNTO 0) := (0 => '1', OTHERS => '0');
     SIGNAL two : STD_LOGIC_VECTOR(31 DOWNTO 0) := (1 => '1', OTHERS => '0');
     SIGNAL pc : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
-    SIGNAL rti_ret : STD_LOGIC;
 BEGIN
 
     memory_instance : instruction_memory PORT MAP(clk, RST, pc(11 DOWNTO 0), instruction);
-    rti_ret <= ret OR rti;
 
     fetch_unit : PROCESS (clk, RST) IS
         CONSTANT constant_value : STD_LOGIC_VECTOR(31 DOWNTO 0) := "00000000000000000000111111111111";
@@ -52,10 +50,15 @@ BEGIN
 
         ELSIF clk'event AND clk = '0' THEN
 
-            IF (call = '1' OR jump = '1' OR (jz='1' and zeroFlag='1') ) THEN
+            IF (call = '1' OR jump = '1' OR (jz = '1' AND zeroFlag = '1')) THEN
                 pc <= alu_pc;
                 next_pc <= alu_pc;
-
+            ELSIF ((jz = '1' AND zeroFlag = '1')) THEN
+                pc <= alu_pc;
+                next_pc <= alu_pc;
+            ELSIF (ret = '1' OR rti = '1') THEN
+                pc <= memory_pc;
+                next_pc <= memory_pc;
             ELSE
                 pc <= pc + one;
                 next_pc <= pc + one;
