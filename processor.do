@@ -10,6 +10,19 @@ add wave -position end  sim:/processor/reg_file_instance/registers
 add wave -position end  sim:/processor/memory_instance/memory_instance/ram
 add wave -position end  sim:/processor/alu_instance/obj3/ALU_signal
 add wave -position end  sim:/processor/out_alu_signal
+force -freeze sim:/processor/RST 1 0
+force -freeze sim:/processor/clk 1 1, 0 {51 ps} -r 100
+run
 force -freeze sim:/processor/RST 0 0
 force -freeze sim:/processor/in_port 10#7 0
-force -freeze sim:/processor/clk 1 1, 0 {51 ps} -r 100
+force -freeze sim:/processor/in_port 10#5 0
+run
+run
+run
+run
+force -freeze sim:/processor/in_port 10#16 0
+run
+run
+run
+run
+run

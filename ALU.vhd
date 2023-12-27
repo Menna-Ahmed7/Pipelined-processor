@@ -38,8 +38,10 @@ ARCHITECTURE arch_alu OF alu IS
 
 BEGIN
     sign_imm <= (OTHERS => imm(15));
-    temp_src2 <= src2(31) & src2;
-    temp_src1 <= src1(31) & src1;
+    -- temp_src2 <= src2(31) & src2;
+    -- temp_src1 <= src1(31) & src1;
+    temp_src2 <= '0' & src2;
+    temp_src1 <= '0' & src1;
     zero <= (OTHERS => '0');
     one <= (0 => '1', OTHERS => '0');
     temp <= (OTHERS => '0');
@@ -79,12 +81,14 @@ BEGIN
                 result <= src2;
             END IF;
             -- flags(2) <= temp_result(32);
-            carry := temp_result(32);
+            IF NOT (ALU_signal = "0001" OR ALU_signal = "1001" OR ALU_signal = "1010" OR ALU_signal = "1011") THEN
+                carry := temp_result(32);
+            END IF;
             -- flags(2) <= NOT flags(2) WHEN ALU_signal = "0010" AND ALU_signal = "0100" AND ALU_signal = "1000";
-            IF temp_result(31 DOWNTO 0) = "00000000000000000000000000000000" THEN
+            IF temp_result(31 DOWNTO 0) = "00000000000000000000000000000000" AND alu_signal /= "0000" THEN
                 -- flags(0) <= '1';
                 My_flags(0) <= '1';
-            ELSE
+            ELSIF alu_signal /= "0000" THEN
                 -- flags(0) <= '0';
                 My_flags(0) <= '0';
             END IF;
@@ -147,10 +151,11 @@ BEGIN
             -- flags(1) <= '1' WHEN temp_result(31) = '1';
             --not signal has no carry or sign flag
             IF (alu_signal /= "0000") THEN
-                IF ALU_signal = "0001" OR ALU_signal = "1001" OR ALU_signal = "1010" OR ALU_signal = "1011" THEN
-                    -- flags(2) <= '0';
-                    My_flags(2) <= '0';
-                ELSIF ALU_signal = "0010" OR ALU_signal = "1000" THEN
+                -- IF ALU_signal = "0001" OR ALU_signal = "1001" OR ALU_signal = "1010" OR ALU_signal = "1011" THEN
+                --     -- flags(2) <= '0';
+                --     My_flags(2) <= '0';
+
+                IF ALU_signal = "0010" OR ALU_signal = "1000" THEN
                     -- flags(2) <= NOT carry;
                     My_flags(2) <= NOT carry;
                 ELSIF ALU_signal = "1110" OR ALU_signal = "1101" THEN

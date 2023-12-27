@@ -56,7 +56,7 @@ ARCHITECTURE arch_processor OF processor IS
             memory_write : OUT STD_LOGIC;
             write_back : OUT STD_LOGIC;
             read_src1 : OUT STD_LOGIC;
-            read_src2 : OUT STD_LOGIC;
+            forward_read_src2 : OUT STD_LOGIC;
             io_read : OUT STD_LOGIC;
             io_write : OUT STD_LOGIC;
             push : OUT STD_LOGIC;
