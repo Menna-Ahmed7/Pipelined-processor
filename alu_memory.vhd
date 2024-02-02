@@ -94,9 +94,12 @@ BEGIN
             out_swap <= '0';
             out_flush <= '0';
             out_pop_flags <= '0';
-            out_interrupt <= '0';
-            out_push_pc <= '0';
-            out_get_pc_int <= '0';
+            -- out_interrupt <= '0';
+            -- out_push_pc <= '0';
+            -- out_get_pc_int <= '0';
+            out_interrupt <= interrupt;
+            out_get_pc_int <= get_pc_int;
+            out_push_pc <= push_pc;
 
         ELSIF clk'event AND clk = '1'THEN
             out_write_back <= write_back;

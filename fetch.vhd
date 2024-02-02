@@ -55,16 +55,17 @@ BEGIN
             pc <= (OTHERS => '0');
 
         ELSIF clk'event AND clk = '0' THEN
-
-            IF (call = '1' OR jump = '1' OR (jz = '1' AND zeroFlag = '1')) THEN
+            IF (ret = '1' OR rti = '1'OR get_pc_int = '1') THEN
+                pc <= memory_pc;
+                next_pc <= memory_pc;
+            ELSIF (call = '1' OR jump = '1') THEN
                 pc <= alu_pc;
                 next_pc <= alu_pc;
+
             ELSIF ((jz = '1' AND zeroFlag = '1')) THEN
                 pc <= alu_pc;
                 next_pc <= alu_pc;
-            ELSIF (ret = '1' OR rti = '1'OR get_pc_int = '1') THEN
-                pc <= memory_pc;
-                next_pc <= memory_pc;
+
             ELSE
                 pc <= pc + one;
                 next_pc <= pc + one;

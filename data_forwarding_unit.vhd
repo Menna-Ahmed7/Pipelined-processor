@@ -27,19 +27,26 @@ ENTITY data_forwarding IS
 END ENTITY;
 
 ARCHITECTURE data_forwarding_arch OF data_forwarding IS
+    SIGNAL source1_signal_temp : STD_LOGIC_VECTOR (2 DOWNTO 0);
+    SIGNAL source2_signal_temp : STD_LOGIC_VECTOR (2 DOWNTO 0);
 BEGIN
 
-    source1_signal <= "001" WHEN source1_reg_num = dest_before_reg_num1 AND read_src1 = '1' AND alu_write_back = '1' ELSE
+    source1_signal_temp <= "001" WHEN source1_reg_num = dest_before_reg_num1 AND read_src1 = '1' AND alu_write_back = '1' ELSE
         "010" WHEN source1_reg_num = dest_before_reg_num2 AND read_src1 = '1' AND swap_alu = '1' ELSE
         "011" WHEN source1_reg_num = dest_before_before_reg_num1 AND read_src1 = '1' AND memory_write_back = '1'ELSE
         "100" WHEN source1_reg_num = dest_before_before_reg_num2 AND read_src1 = '1' AND swap_memory = '1'ELSE
         "000";
 
     -----------------------------------------------------------
-    source2_signal <= "001" WHEN source2_reg_num = dest_before_reg_num1 AND read_src2 = '1' AND alu_write_back = '1' ELSE
+    source2_signal_temp <= "001" WHEN source2_reg_num = dest_before_reg_num1 AND read_src2 = '1' AND alu_write_back = '1' ELSE
         "010" WHEN source2_reg_num = dest_before_reg_num2 AND read_src2 = '1' AND swap_alu = '1' ELSE
         "011" WHEN source2_reg_num = dest_before_before_reg_num1 AND read_src2 = '1' AND memory_write_back = '1'ELSE
         "100" WHEN source2_reg_num = dest_before_before_reg_num2 AND read_src2 = '1' AND swap_memory = '1'ELSE
         "000";
 
+    source1_signal <= source2_signal_temp WHEN (swap_alu = '1' OR swap_memory = '1') ELSE
+        source1_signal_temp;
+
+    source2_signal <= source1_signal_temp WHEN (swap_alu = '1' OR swap_memory = '1') ELSE
+        source2_signal_temp;
 END ARCHITECTURE;

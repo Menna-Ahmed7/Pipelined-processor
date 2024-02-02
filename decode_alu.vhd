@@ -109,10 +109,11 @@ BEGIN
             out_in_port <= (OTHERS => '0');
             out_free <= '0';
             out_protect <= '0';
-            out_interrupt <= '0';
-            out_push_pc <= '0';
-            out_get_pc_int <= '0';
-
+            -- out_interrupt <= '0';
+            -- out_push_pc <= '0';
+            -- out_get_pc_int <= '0';
+            out_push_pc <= push_pc;
+            out_get_pc_int <= get_pc_int;
         ELSIF clk'event AND clk = '1' THEN
             out_out_instruction <= out_instruction;
             out_reg_dest <= reg_dest;

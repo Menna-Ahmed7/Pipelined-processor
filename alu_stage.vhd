@@ -1,4 +1,3 @@
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
@@ -21,7 +20,8 @@ ENTITY alu_stage IS
         in_port : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
         result_alu : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
         flags_alu : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-        flush : OUT STD_LOGIC
+        flush : OUT STD_LOGIC;
+        out_src1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
 END ENTITY;
 ARCHITECTURE arch_alu_stage OF alu_stage IS
@@ -53,7 +53,8 @@ ARCHITECTURE arch_alu_stage OF alu_stage IS
             out_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
             in_port : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
             imm : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-            imm_signal : IN STD_LOGIC
+            imm_signal : IN STD_LOGIC;
+            out_src1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -76,7 +77,7 @@ BEGIN
 
     obj3 : alu PORT MAP(
         clk, RST, pop_flags, memory_flags,
-        src1_alu, src2_alu, ALU_sig, temp_result_alu, flags_alu, iow_signal, ior_signal, out_port, in_port, imm, imm_signal
+        src1_alu, src2_alu, ALU_sig, temp_result_alu, flags_alu, iow_signal, ior_signal, out_port, in_port, imm, imm_signal, out_src1
     );
     ----to flush fetched instructions before call or jump
     flush <= '1' WHEN call = '1' OR jump = '1'
@@ -86,9 +87,10 @@ BEGIN
         '0';
     ----send pc to fetch stage to jump to the new address
     -- alu_pc <= src1;
-    result_alu <= src1 WHEN call = '1' OR jump = '1'
+    result_alu <= src1_alu WHEN call = '1' OR jump = '1'
         ELSE
-        src1 WHEN (jz = '1' AND flags_alu(0) = '1')
+        src1_alu WHEN (jz = '1' AND flags_alu(0) = '1')
         ELSE
         temp_result_alu;
+
 END ARCHITECTURE;

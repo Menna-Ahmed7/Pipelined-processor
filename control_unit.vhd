@@ -1,4 +1,3 @@
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -69,7 +68,7 @@ BEGIN
         -- get_pc_int <= '0';
         alu_signal <= (OTHERS => '0');
         IF (RST = '0') THEN
-            -- IF (instruction_32bit = '1') THEN
+            -- IF NOT (instruction_32bit = '1') THEN
             --     instruction_32bit <= '0';
             -- ELSIF (second_memory = '1') THEN
             --     second_memory <= '0';
@@ -85,7 +84,10 @@ BEGIN
             --     get_pc_int <= '1';
             -- ELSE
             --not
-            IF opcode = "00001" THEN
+            IF (instruction_32bit = '1') THEN
+                instruction_32bit <= '0';
+
+            ELSIF opcode = "00001" THEN
                 write_back <= '1';
                 forward_read_src2 <= '1';
                 reg_dest_selector <= "11";
@@ -170,7 +172,7 @@ BEGIN
                 write_back <= '1';
                 read_src1 <= '1';
                 imm <= '1';
-                reg_dest_selector <= "10";
+                reg_dest_selector <= "11";
                 alu_signal <= "0111";
                 instruction_32bit <= '1';
                 --cmp
@@ -185,7 +187,7 @@ BEGIN
                 write_back <= '1';
                 imm <= '1';
                 read_src1 <= '1';
-                reg_dest_selector <= "01";
+                reg_dest_selector <= "11";
                 alu_signal <= "1100";
                 instruction_32bit <= '1';
 
@@ -194,7 +196,7 @@ BEGIN
                 write_back <= '1';
                 imm <= '1';
                 read_src1 <= '1';
-                reg_dest_selector <= "01";
+                reg_dest_selector <= "11";
                 alu_signal <= "1101";
                 instruction_32bit <= '1';
                 --rcr
@@ -202,7 +204,7 @@ BEGIN
                 write_back <= '1';
                 imm <= '1';
                 read_src1 <= '1';
-                reg_dest_selector <= "01";
+                reg_dest_selector <= "11";
                 alu_signal <= "1110";
                 instruction_32bit <= '1';
                 --jz
@@ -297,9 +299,8 @@ BEGIN
             push_pc <= '0';
             get_pc_int <= '0';
             pop_flags <= '0';
-            IF (instruction_32bit = '1') THEN
-                instruction_32bit <= '0';
-            ELSIF (second_memory = '1') THEN
+
+            IF (second_memory = '1') THEN
                 second_memory <= '0';
                 pop_flags <= '1';
             ELSIF (second_memory_int = '1') THEN

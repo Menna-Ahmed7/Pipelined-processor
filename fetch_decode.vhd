@@ -30,7 +30,8 @@ BEGIN
             out_instruction <= (OTHERS => '0');
             out_pc <= (OTHERS => '0');
             out_in_port <= (OTHERS => '0');
-            out_interrupt <= '0';
+            -- out_interrupt <= '0';
+               out_interrupt <= interrupt;
         ELSIF clk'event AND clk = '1' THEN
             out_instruction <= instruction;
             out_pc <= pc;

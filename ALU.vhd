@@ -21,7 +21,8 @@ ENTITY alu IS
         out_port : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
         in_port : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
         imm : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-        imm_signal : IN STD_LOGIC
+        imm_signal : IN STD_LOGIC;
+        out_src1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
 END ENTITY;
 
@@ -80,18 +81,29 @@ BEGIN
             ELSIF (ALU_signal = "0101") THEN
                 result <= src2;
             END IF;
-            -- flags(2) <= temp_result(32);
+
             IF NOT (ALU_signal = "0001" OR ALU_signal = "1001" OR ALU_signal = "1010" OR ALU_signal = "1011") THEN
                 carry := temp_result(32);
             END IF;
+
             -- flags(2) <= NOT flags(2) WHEN ALU_signal = "0010" AND ALU_signal = "0100" AND ALU_signal = "1000";
             IF temp_result(31 DOWNTO 0) = "00000000000000000000000000000000" AND alu_signal /= "0000" THEN
-                -- flags(0) <= '1';
+
                 My_flags(0) <= '1';
-            ELSIF alu_signal /= "0000" THEN
-                -- flags(0) <= '0';
+            ELSIF ALU_signal /= "0000" THEN
+
                 My_flags(0) <= '0';
             END IF;
+            IF (ALU_signal /= "0000") THEN
+                IF temp_result(31) = '1' THEN
+                    -- flags(1) <= '1';
+                    My_flags(1) <= '1';
+                ELSE
+                    -- flags(1) <= '0';
+                    My_flags(1) <= '0';
+                END IF;
+            END IF;
+
             ------------------------------------------------------
             ----bitset
             IF (ALU_signal = "1100") THEN
@@ -140,32 +152,23 @@ BEGIN
                 END IF;
             END IF;
             ------------------------------------------------------
-            IF temp_result(31) = '1' THEN
-                -- flags(1) <= '1';
-                My_flags(1) <= '1';
-            ELSE
-                -- flags(1) <= '0';
-                My_flags(1) <= '0';
-            END IF;
             -- flags(0) <= '1' WHEN temp_result(31 DOWNTO 0) = "00000000000000000000000000000000";
             -- flags(1) <= '1' WHEN temp_result(31) = '1';
             --not signal has no carry or sign flag
-            IF (alu_signal /= "0000") THEN
-                -- IF ALU_signal = "0001" OR ALU_signal = "1001" OR ALU_signal = "1010" OR ALU_signal = "1011" THEN
-                --     -- flags(2) <= '0';
-                --     My_flags(2) <= '0';
-
-                IF ALU_signal = "0010" OR ALU_signal = "1000" THEN
-                    -- flags(2) <= NOT carry;
+            IF (ALU_signal /= "0000") THEN
+                IF ALU_signal = "0010" OR ALU_signal = "1000" OR ALU_signal = "0100" THEN
                     My_flags(2) <= NOT carry;
+                ELSIF ALU_signal = "0011" OR ALU_signal = "0111" THEN
+                    My_flags(2) <= carry;
+
                 ELSIF ALU_signal = "1110" OR ALU_signal = "1101" THEN
                     -- flags(2) <= temp_carry2;
                     My_flags(2) <= temp_carry2;
-                ELSIF (ALU_signal /= "1100") THEN
-                    -- flags(2) <= temp_result(32);
-                    My_flags(2) <= temp_result(32);
+
                 END IF;
             END IF;
+            ------------------------------------------------------
+
             --0 ->zero flag
             --1 -> sign flag
             --2 -> carry flag
@@ -173,6 +176,8 @@ BEGIN
         IF (pop_flags = '1') THEN
             My_flags <= memory_flags;
         END IF;
+
+        out_src1 <= src1;
     END PROCESS;
 
     flags <= memory_flags WHEN pop_flags = '1' ELSE
