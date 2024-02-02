@@ -8,6 +8,7 @@ USE IEEE.numeric_std.ALL;
 --Entity B
 ENTITY alu IS
     PORT (
+        
         clk : IN STD_LOGIC;
         RST : IN STD_LOGIC;
         pop_flags : IN STD_LOGIC;
