@@ -11,6 +11,7 @@
   <img  src="https://www.shutterstock.com/image-illustration/programming-term-vhdl-very-high-600nw-571579909.jpg"  width="90" />
 
 ## Design
+  <img  src="./design/design.jpg"  width="1500" />
 
 ## ISA  
  
